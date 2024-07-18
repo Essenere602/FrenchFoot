@@ -1,0 +1,30 @@
+{# templates/forum/category_show.html.twig #}
+
+{% extends 'base.html.twig' %}
+        {% block stylesheets %}
+                <link rel="stylesheet" href="{{ asset('asset/css/forum.css') }}">
+        {% endblock %}
+
+{% block title %}Catégorie: {{ category.label }}{% endblock %}
+
+{% block body %}
+    <h1 class="page-title">Catégorie: {{ category.label }}</h1>
+
+    <div class="forum-category">
+        <h2>Sujets</h2>
+        <ul>
+            {% for topic in topics %}
+                <li>
+                    <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="forum-category">
+        {{ form_start(form) }}
+                <h2>Créer un nouveau sujet</h2>
+        {{ form_row(form.title) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

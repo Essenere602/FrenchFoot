@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid gainsboro;
+}
+a {
+    color: #2e3136;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}

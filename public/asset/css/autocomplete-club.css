@@ -1,0 +1,36 @@
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+.autocomplete input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+.autocomplete .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 99;
+    background-color: #fff;
+}
+.autocomplete .autocomplete-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.club-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+.autocomplete .autocomplete-item:hover {
+    background-color: #e9e9e9;
+}
+.autocomplete-item span {
+    font-size: 16px;
+}

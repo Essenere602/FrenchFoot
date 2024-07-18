@@ -1,0 +1,54 @@
+{# templates/message/index.html.twig #}
+
+{% extends 'base.html.twig' %}        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
+        {% endblock %}
+
+{% block body %}
+    <h1>Mes Conversations</h1>
+
+    <h2>Nouvelle Conversation</h2>
+    <input type="text" id="username-autocomplete" placeholder="Rechercher un utilisateur...">
+    <div id="autocomplete-results"></div>
+
+    <ul>
+        {% for conversation in conversations %}
+            <li>
+                <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
+                    Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        document.getElementById('username-autocomplete').addEventListener('input', function() {
+            let term = this.value;
+            let resultsDiv = document.getElementById('autocomplete-results');
+            
+            if (term === '') {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            fetch('/user/autocomplete?term=' + term)
+                .then(response => response.json())
+                .then(data => {
+                    resultsDiv.innerHTML = '';
+
+                    data.forEach(user => {
+                        let div = document.createElement('div');
+                        div.textContent = user.username;
+                        div.dataset.userId = user.id;
+
+                        div.addEventListener('click', function() {
+                            window.location.href = '/messages/new/' + user.username;
+                        });
+
+                        resultsDiv.appendChild(div);
+                    });
+                });
+        });
+    </script>
+{% endblock %}

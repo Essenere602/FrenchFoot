@@ -1,0 +1,24 @@
+<nav>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <div class="nav-links">
+                <a href="{{ path('app_homepage') }}">Accueil</a>
+                <a href="{{ path('app_forum') }}">Forum</a>
+                <a href="{{ path('championnat_index') }}">Football</a>
+                <a href="{{ path('contact') }}">Contact</a>
+                {% if app.user is null %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_register') }}">S'inscrire</a>
+                {% else %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_admin') }}">Admin</a>
+                    {% endif %}
+                    <a href="{{ path('app_profile') }}">Profil</a>
+                    <a href="{{ path('app_messages') }}">Messages</a>
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% endif %}
+            </div>
+        </nav>

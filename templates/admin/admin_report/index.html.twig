@@ -1,0 +1,45 @@
+{# templates/admin_report/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}UserReport index{% endblock %}
+
+{% block body %}
+    <h1>UserReport index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reason</th>
+                <th>Reported User</th>
+                <th>Reporting User</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_report in user_reports %}
+            <tr>
+                <td>{{ user_report.id }}</td>
+                <td>{{ user_report.reason }}</td>
+                <td>{{ user_report.reportedUser.username }}</td>
+                <td>{{ user_report.reportingUser.username }}</td>
+                <td>
+                    <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">show</a>
+                    <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">edit</a>
+                    <form method="post" action="{{ path('app_admin_report_ban', {'id': user_report.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('ban' ~ user_report.id) }}">
+                        <button class="btn btn-danger btn-sm">Ban</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_report_new') }}">Create new</a>
+{% endblock %}

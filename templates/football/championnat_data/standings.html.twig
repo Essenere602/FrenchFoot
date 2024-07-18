@@ -1,0 +1,20 @@
+{# templates/championnat_data/standings.html.twig #}
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('asset/css/championnat.css') }}">
+    {% endblock %}
+
+{% block title %}{{ championnat.ligue }} Standings{% endblock %}
+
+{% block body %}
+    <h1>{{ championnat.ligue }} Standings</h1>
+    <ul>
+        {% if standings is defined %}
+            {% for team in standings.standings[0].table %}
+                <li>{{ team.position }}. {{ team.team.name }} - Points: {{ team.points }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No standings available</li>
+        {% endif %}
+    </ul>
+{% endblock %}

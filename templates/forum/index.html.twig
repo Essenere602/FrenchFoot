@@ -1,0 +1,21 @@
+{# templates/forum/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('asset/css/forum.css') }}">
+    {% endblock %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+    <h1 class="page-title">Forum</h1>
+    <div class="forum-category">
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ path('forum_category_show', {'id': category.id}) }}">{{ category.label }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{# templates/championnat_data/matches.html.twig #}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('asset/css/championnat.css') }}">
+{% endblock %}
+
+{% block title %}{{ championnat.ligue }} Matches{% endblock %}
+
+{% block body %}
+    <h1>{{ championnat.ligue }} Matches</h1>
+    <ul>
+        {% if matches is defined %}
+            {% for match in matches.matches %}
+                <li>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }} - 
+                    {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
+                        {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
+                    {% else %}
+                        Not played yet
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No matches available</li>
+        {% endif %}
+    </ul>
+{% endblock %}

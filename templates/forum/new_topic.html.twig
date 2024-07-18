@@ -1,0 +1,15 @@
+{# templates/forum/new_topic.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Sujet{% endblock %}
+
+{% block body %}
+
+    <div class="forum-post">
+        {{ form_start(form) }}
+            <h1 class="page-title">Nouveau Sujet</h1>
+        {{ form_row(form.title) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

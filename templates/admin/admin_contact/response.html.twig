@@ -1,0 +1,13 @@
+{# templates/admin_contact/response.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Respond to Contact{% endblock %}
+
+{% block body %}
+    <h1>Respond to Contact</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Save Response</button>
+    {{ form_end(form) }}
+{% endblock %}

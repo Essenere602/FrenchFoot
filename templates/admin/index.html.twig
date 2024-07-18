@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="admin-menu-container">
+            <ul class="admin-menu">
+                <a href="{{ path("app_admin_category_index") }}">CRUD Category</a>
+                <a href="{{ path("app_admin_topic_index") }}">CRUD Topic</a>
+                <a href="{{ path("app_admin_post_index") }}">CRUD Post</a>
+                <a href="{{ path("app_admin_contact_index") }}">CRUD Contact</a>
+                <a href="{{ path("app_admin_report_index") }}">CRUD Report</a>
+                <a href="{{ path("app_admin_club_index") }}">CRUD Club</a>
+                <a href="{{ path("app_admin_championnat_index") }}">CRUD Championnat</a>
+                <a href="{{ path("app_admin_card_index") }}">CRUD Card</a>
+            </ul>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-menu-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centrer verticalement */
+        }
+
+        .admin-menu  {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center; /* Centrer les éléments de la liste */
+        }
+
+        .admin-menu {
+            margin-bottom: 10px;
+        }
+
+        .admin-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+        }
+    </style>
+{% endblock %}

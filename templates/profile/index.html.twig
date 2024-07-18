@@ -1,0 +1,124 @@
+{# templates/profile/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .autocomplete input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        .autocomplete .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 99;
+            background-color: #fff;
+        }
+        .autocomplete .autocomplete-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .club-logo {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .autocomplete .autocomplete-item:hover {
+            background-color: #e9e9e9;
+        }
+        .autocomplete-item span {
+            font-size: 16px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        <h1>Mettre à jour le profil</h1>
+        {{ form_row(form.name) }}
+        {{ form_row(form.lastname) }}
+        <div class="autocomplete">
+            <label for="clubSearch">Club</label>
+            <input type="text" id="clubSearch" name="clubSearch" placeholder="Nom du club" value="{{ user.userProfile.club ? user.userProfile.club.name : '' }}">
+            <input type="hidden" id="clubId" name="clubId" value="{{ user.userProfile.club ? user.userProfile.club.id : '' }}">
+            <div class="autocomplete-items" id="clubSearchResults"></div>
+        </div>
+        {{ form_row(form.birth_date) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clubSearchInput = document.getElementById('clubSearch');
+            const clubIdInput = document.getElementById('clubId');
+            const clubSearchResults = document.getElementById('clubSearchResults');
+
+            clubSearchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+
+                fetch(`/profile/clubs/search?q=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        clubSearchResults.innerHTML = '';
+                        data.forEach(club => {
+                            const item = document.createElement('div');
+                            item.classList.add('autocomplete-item');
+
+                            const clubName = document.createElement('span');
+                            clubName.textContent = club.name;
+
+                            const logo = document.createElement('img');
+                            logo.src = club.logo;
+                            logo.classList.add('club-logo');
+
+                            item.appendChild(logo);
+                            item.appendChild(clubName);
+
+                            item.addEventListener('click', function() {
+                                clubSearchInput.value = club.name;
+                                clubIdInput.value = club.id;
+                                clubSearchResults.innerHTML = '';
+                            });
+
+                            clubSearchResults.appendChild(item);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching clubs:', error);
+                    });
+            });
+
+            // Réinitialiser la liste si le champ de recherche est vide
+            clubSearchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Backspace' || event.key === 'Delete') {
+                    if (clubSearchInput.value === '') {
+                        clubSearchResults.innerHTML = '';
+                    }
+                }
+            });
+
+            // Réinitialiser la liste si le champ de recherche perd le focus
+            clubSearchInput.addEventListener('blur', function() {
+                if (clubSearchInput.value === '') {
+                    clubSearchResults.innerHTML = '';
+                }
+            });
+        });
+    </script>
+{% endblock %}

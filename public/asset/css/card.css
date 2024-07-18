@@ -1,0 +1,64 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    justify-items: center; /* Centrer horizontalement les cartes */
+    margin: 20px 0;
+    gap: 20px;
+}
+.card {
+    background-color: #f8f3ea;
+    border: 1px solid #f8f3ea;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    width: 300px; /* Largeur fixe pour chaque carte */
+    height: 450px; /* Hauteur fixe pour chaque carte */
+    display: flex;
+    flex-direction: column;
+}
+.card h1 {
+    display: block;
+    padding: 10px;
+    background-color: #003B57;
+    color: #f8f3ea;
+    text-decoration: none;
+    border-radius: 8 8 0px 0px;
+    margin-top: auto;
+}
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+.card-description {
+    flex: 1;
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.card a {
+    display: block;
+    padding: 10px;
+    background-color: #003B57;
+    color: #f8f3ea;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Une colonne sur les petits écrans */
+        justify-items: center; /* Centrer sur les petits écrans */
+    }
+    .card {
+        width: 80%; /* Pleine largeur sur les petits écrans */
+    }
+    .card img {
+        object-fit: contain;
+    }
+}

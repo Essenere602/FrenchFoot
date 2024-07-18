@@ -1,0 +1,25 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2e3136;
+    padding: 0.5rem;
+    height: 30px;
+}
+nav a {
+    color: #003B57;
+    width: 100%;
+    justify-content: space-around;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+@media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+    nav a {
+      margin: 0.5rem 0;
+    }
+}
+  

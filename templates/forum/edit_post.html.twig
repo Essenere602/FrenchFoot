@@ -1,0 +1,15 @@
+{# templates/forum/edit_post.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer Post{% endblock %}
+
+{% block body %}
+    <div class="forum-edit-post">
+        {{ form_start(form) }}
+            <h1 class="page-title">Éditer Post</h1>
+        {{ form_row(form.label) }}
+        {{ form_row(form.message) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

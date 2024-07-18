@@ -1,0 +1,20 @@
+{# templates/forum/report_post.html.twig #}
+
+{% extends 'base.html.twig' %}
+       
+
+
+{% block title %}Signaler le post{% endblock %}
+
+{% block body %}
+    <h1 class="page-title">Signaler le post</h1>
+
+    <div class="forum-post">
+        <p>Post par <strong>{{ post.user.username }}</strong>: {{ post.label }} - {{ post.message }}</p>
+
+        {{ form_start(form) }}
+            {{ form_row(form.reason) }}
+            <button type="submit" class="btn btn-primary">Envoyer le signalement</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Topic{% endblock %}
+
+{% block body %}
+    <h1>Topic</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ topic.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ topic.title }}</td>
+            </tr>
+            <tr>
+                <th>Creation_date</th>
+                <td>{{ topic.creationDate ? topic.creationDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Num_views</th>
+                <td>{{ topic.numViews }}</td>
+            </tr>
+            <tr>
+                <th>Num_replies</th>
+                <td>{{ topic.numReplies }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_topic_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_topic_edit', {'id': topic.id}) }}">edit</a>
+
+    {{ include('admin/admin_topic/_delete_form.html.twig') }}
+{% endblock %}
