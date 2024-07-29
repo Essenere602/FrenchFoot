@@ -10,6 +10,8 @@ use App\Entity\UserReport;
 use App\Form\PostType;
 use App\Form\TopicType;
 use App\Form\UserReportType;
+use App\Repository\CardRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,12 +33,18 @@ class ForumController extends AbstractController
     }
 
     #[Route('/forum', name: 'app_forum', methods: ['GET'])]
-    public function index(): Response
+    public function index(CardRepository $cardRepository, CategoryRepository $categoryRepository): Response
     {
-        $categories = $this->entityManager->getRepository(Category::class)->findAll();
+        // Récupérer toutes les catégories
+        $categories = $categoryRepository->findAll();
+        
+        // Récupérer uniquement les cartes avec les IDs 34, 35, 36
+        $cardIds = [34, 35, 36];
+        $cards = $cardRepository->findBy(['id' => $cardIds]);
 
         return $this->render('forum/index.html.twig', [
             'categories' => $categories,
+            'cards' => $cards,
         ]);
     }
 

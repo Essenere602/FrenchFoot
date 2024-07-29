@@ -122,13 +122,12 @@
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 300px;
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    border: 1px solid #717070;
 }
 
 .card img {
@@ -139,12 +138,11 @@
 }
 
 .card-content {
-    background: #f7f6f0;
+    background:#cae0fa;
     padding: 20px;
-    color: #C8A764;
+    color: #131313;
     text-align: center;
     flex-grow: 1;
-    color: #C8A764;
 }
 
 .card h1 {

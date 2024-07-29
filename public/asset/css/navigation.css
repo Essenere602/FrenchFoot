@@ -27,13 +27,17 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 300px; /* Ajustez cette hauteur selon vos besoins */
+  height: 400px; /* Ajustez cette hauteur selon vos besoins */
   margin: 0;
+  overflow: hidden; /* Pour éviter que le texte dépasse les limites */
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
 }
 
 .banner-image {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover; /* Remplit le conteneur sans déformer l'image */
 }
 
@@ -42,16 +46,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #f7f6f0;
   text-align: center;
-  padding: 1rem;
+  width: 100%; /* Assure que le texte est centré horizontalement */
 }
 
-.banner-caption h1, .banner-caption p {
-  padding-bottom: 50px;
-  margin: 0;
-  color: #f7f6f0;
+.banner-caption p {
+  margin: 0; /* Évite les marges par défaut */
+  color: #cae0fa;
   font-weight: 600;
+  padding: 20px;
+  font-size: 40px;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
+
+.banner-logo {
+  display: block; /* Pour éviter les espaces blancs sous l'image */
+  max-width: 80%; /* Ajustez cette valeur selon la taille désirée du logo */
+  height: auto; /* Conserve les proportions de l'image */
+  margin: 0 auto; /* Centre horizontalement l'image */
 }
 
 /* Styles pour les liens de navigation */
@@ -81,19 +95,20 @@
 }
 
 .btn-rounded {
-  background-color: white;
+  background-color: #cae0fa;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   height: 20px;
+  font-weight: 700;
 }
 
 .welcome-message {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: white;
+  color: #cae0fa;
   font-weight: 900 ;
 }
 

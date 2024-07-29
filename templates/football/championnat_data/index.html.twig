@@ -1,0 +1,108 @@
+{# templates/football/championnat_data/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/standings.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/matches.css') }}">
+{% endblock %}
+
+{% block title %}{{ championnat.ligue }}{% endblock %}
+
+{% block body %}
+    <h1>{{ championnat.ligue }}</h1>
+
+    <div class="standings-section">
+        <h2>Standings</h2>
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Logo</th>
+                    <th>ÉQUIPE</th>
+                    <th>PTS</th>
+                    <th>J</th>
+                    <th>DIF</th>
+                    <th>G</th>
+                    <th>N</th>
+                    <th>D</th>
+                    <th>BP</th>
+                    <th>BC</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if standings is defined %}
+                    {% for team in standings.standings[0].table %}
+                        <tr class="{% if team.position <= 4 %}champions-league{% elseif team.position == 5 %}europa-league{% elseif team.position == 6 %}conference-league{% elseif team.position > 17 %}relegation{% endif %}">
+                            <td class="position">{{ team.position }}</td>
+                            <td class="team-logo"><img src="{{ asset(team.team.logo) }}" alt="Logo de {{ team.team.name }} " class="logo-img"></td>
+                            <td class="team-name">{{ team.team.name }}</td>
+                            <td>{{ team.points }}</td>
+                            <td>{{ team.playedGames }}</td>
+                            <td>{{ team.goalDifference }}</td>
+                            <td>{{ team.won }}</td>
+                            <td>{{ team.draw }}</td>
+                            <td>{{ team.lost }}</td>
+                            <td>{{ team.goalsFor }}</td>
+                            <td>{{ team.goalsAgainst }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="11">No standings available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="legend">
+        <p><span class="legend-color champions-league"></span> UEFA Champions League</p>
+        <p><span class="legend-color europa-league"></span> UEFA Europa League</p>
+        <p><span class="legend-color conference-league"></span> UEFA Conference League Qualifiers</p>
+        <p><span class="legend-color relegation"></span> Relegation</p>
+    </div>
+
+    <div class="matches-section">
+        <h2>Matches</h2>
+        <ul>
+            {% if matches is defined %}
+                {% for match in matches %}
+                    <li>
+                        <div class="team">
+                            <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}" style="width: 30px; height: auto; margin-right: 10px;">
+                            {{ match.homeTeam.name }}
+                        </div>
+                        vs
+                        <div class="team">
+                            <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}" style="width: 30px; height: auto; margin-right: 10px;">
+                            {{ match.awayTeam.name }}
+                        </div>
+                        -
+                        {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
+                            {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
+                        {% else %}
+                            Not played yet
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No matches available</li>
+            {% endif %}
+        </ul>
+
+        <div class="pagination">
+            {% if pagination.currentPageNumber > 1 %}
+                <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber - 1 }) }}" class="pagination-button">
+                    <span>&lt; Journée {{ pagination.currentPageNumber - 1 }}</span>
+                </a>
+            {% endif %}
+
+            <span class="pagination-current">Journée {{ pagination.currentPageNumber }}</span>
+
+            {% if pagination.currentPageNumber < pagination.pageCount %}
+                <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber + 1 }) }}" class="pagination-button">
+                    <span>Journée {{ pagination.currentPageNumber + 1 }} &gt;</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

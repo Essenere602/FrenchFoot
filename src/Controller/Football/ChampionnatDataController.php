@@ -17,15 +17,18 @@ class ChampionnatDataController extends AbstractController
         $this->championnatDataService = $championnatDataService;
     }
 
-    #[Route('/championnats/{id}/standings', name: 'championnat_data_standings', methods: ['GET'])]
-    public function standings(int $id): Response
-    {
-        return $this->championnatDataService->getStandings($id);
-    }
+#[Route('/championnats/{id}/{page}', name: 'championnat_data', methods: ['GET'], requirements: ['page' => '\d+'])]
+public function championnatData(int $id, int $page = 1): Response
+{
+    $data = $this->championnatDataService->getChampionnatData($id, $page);
 
-    #[Route('/championnats/{id}/matches/{page}', name: 'championnat_data_matches', methods: ['GET'], requirements: ['page' => '\d+'])]
-    public function matches(int $id, int $page = 1): Response
-    {
-        return $this->championnatDataService->getMatches($id, $page);
-    }
+    return $this->render('football/championnat_data/index.html.twig', [
+        'championnat' => $data['championnat'],
+        'standings' => $data['standings'],
+        'matches' => $data['matches'],
+        'pagination' => $data['pagination'],
+    ]);
+}
+
+
 }

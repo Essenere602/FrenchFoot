@@ -1,24 +1,26 @@
-{# templates/championnat/index.html.twig #}
+{# templates/football/championnat/index.html.twig #}
 {% extends 'base.html.twig' %}
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('asset/css/standings.css') }}">
-    {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/card.css') }}">
+{% endblock %}
 
 {% block title %}Liste des Championnats{% endblock %}
 {% block content %}
 
 {% block body %}
-    <h1>Liste des Championnats</h1>
-    <ul>
-        {% for championnat in championnats %}
-            <li>
-                {{ championnat.ligue }} ({{ championnat.country }})
-                <ul>
-                    <li><a href="{{ path('championnat_data_standings', { 'id': championnat.id }) }}">Voir les standings</a></li>
-                    <li><a href="{{ path('championnat_data_matches', { 'id': championnat.id }) }}">Voir les matches</a></li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="main-container">
+        <div class="card-container">
+            {% for card in cards %}
+                <div class="card">
+                    <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
+                    <div class="card-content">
+                        <h1 class="oswald">{{ card.title }}</h1>
+                        <p class="card-description">{{ card.description }}</p>
+                        <a href="{{ card.link }}" class="card-link">En savoir plus</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 {% endblock %}

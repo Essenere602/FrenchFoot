@@ -4,41 +4,45 @@
 
         {% block stylesheets %}
                 <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
-                <link rel="stylesheet" href="{{ asset('asset/css/forum.css') }}">
+                <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
         {% endblock %}
 
 {% block title %}Sujet: {{ topic.title }}{% endblock %}
 
 {% block body %}
-    <h1 class="page-title">Sujet: {{ topic.title }}</h1>
-
+    <h1 class="page-title">{{ topic.title }}</h1>
     <div class="forum-topic">
-        <h2>Posts</h2>
-        <ul>
-            {% for post in posts %}
-                <li class="forum-post">
-                    <strong>{{ post.user.username }}</strong>: {{ post.label }} - {{ post.message }}
-                    <a href="{{ path('forum_post_report', {id: post.id}) }}" class="btn btn-danger btn-sm">Signaler</a>
-
-                    {# Affichez les liens d'édition et de suppression si l'utilisateur est l'auteur du post #}
-                    {% if post.user == app.user %}
-                        <a href="{{ path('forum_post_edit', {id: post.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
-                        <form action="{{ path('forum_post_delete', {id: post.id}) }}" method="post" style="display:inline;">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
-                            <button class="btn btn-danger btn-sm">Supprimer</button>
-                        </form>
+    <h2>Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li class="forum-post">
+                <strong>
+                    {{ post.user.username }}
+                    {% if post.user.userProfile and post.user.userProfile.club and post.user.userProfile.club.logoClub %}
+                        <img src="{{ asset(post.user.userProfile.club.logoClub) }}" alt="{{ post.user.userProfile.club.name }}" class="club-logo" style="height: 15px; margin-left: 5px;">
                     {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                </strong>: {{ post.label }} - {{ post.message }}
+                <a href="{{ path('forum_post_report', {id: post.id}) }}" class="btn btn-danger btn-sm">Signaler</a>
 
+                {# Affichez les liens d'édition et de suppression si l'utilisateur est l'auteur du post #}
+                {% if post.user == app.user %}
+                    <a href="{{ path('forum_post_edit', {id: post.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
+                    <form action="{{ path('forum_post_delete', {id: post.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    
         <div class="pagination">
             {{ knp_pagination_render(posts) }}
-        </div>
-
-        
+        </div>        
         {{ form_start(form) }}
-        <h2>Nouveau Post</h2>
+        <h2 class="form-title">Nouveau Post</h2>
         {{ form_row(form.label) }}
         {{ form_row(form.message) }}
         {{ form_end(form) }}

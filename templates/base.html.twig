@@ -5,9 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('asset/style.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/navigation.css') }}">
-        <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
         {% block stylesheets %}
-
         {% endblock %}
 
         {% block javascripts %}
@@ -21,6 +19,7 @@
             burger.classList.toggle('toggle');
     });
 });
+
 
         </script>
         {% endblock %}

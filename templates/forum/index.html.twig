@@ -2,20 +2,25 @@
 
 {% extends 'base.html.twig' %}
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('asset/css/forum.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/card.css') }}">
     {% endblock %}
 
 {% block title %}Forum{% endblock %}
 
 {% block body %}
     <h1 class="page-title">Forum</h1>
-    <div class="forum-category">
-        <ul>
-            {% for category in categories %}
-                <li>
-                    <a href="{{ path('forum_category_show', {'id': category.id}) }}">{{ category.label }}</a>
-                </li>
+<div class="main-container">
+        <div class="card-container">
+            {% for card in cards %}
+                <div class="card">
+                    <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
+                    <div class="card-content">
+                        <h1 class="oswald">{{ card.title }}</h1>
+                        <p class="card-description">{{ card.description }}</p>
+                        <a href="{{ card.link }}" class="card-link">En savoir plus</a>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 {% endblock %}

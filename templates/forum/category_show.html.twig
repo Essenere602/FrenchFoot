@@ -2,29 +2,30 @@
 
 {% extends 'base.html.twig' %}
         {% block stylesheets %}
-                <link rel="stylesheet" href="{{ asset('asset/css/forum.css') }}">
+                <link rel="stylesheet" href="{{ asset('asset/css/topic.css') }}">
+                <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
         {% endblock %}
 
-{% block title %}Catégorie: {{ category.label }}{% endblock %}
+{% block title %}{{ category.label }}{% endblock %}
 
 {% block body %}
-    <h1 class="page-title">Catégorie: {{ category.label }}</h1>
-
-    <div class="forum-category">
-        <h2>Sujets</h2>
-        <ul>
+<h1 class="page-title">{{ category.label }}</h1>
+<div class="container">
+    <div class="forum-topic form-topic-create">
+        {{ form_start(form) }}
+        <h2 class="form-title">Créer un nouveau sujet </h2>
+        {{ form_row(form.title) }}
+        {{ form_end(form) }}
+    </div>
+    <div class="forum-topic">
+        <h2 class="form-title">Les Sujets &#9917;</h2>
+        <ul class="topic-list">
             {% for topic in topics %}
                 <li>
-                    <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }}</a>
+                    <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }} </a>
                 </li>
             {% endfor %}
         </ul>
     </div>
-
-    <div class="forum-category">
-        {{ form_start(form) }}
-                <h2>Créer un nouveau sujet</h2>
-        {{ form_row(form.title) }}
-        {{ form_end(form) }}
-    </div>
+</div>
 {% endblock %}

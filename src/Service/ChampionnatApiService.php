@@ -23,14 +23,13 @@ class ChampionnatApiService extends AbstractController
         $this->paginator = $paginator;
         $this->clubRepository = $clubRepository;
     }
-
-    public function getStandings(int $id): Response
+    public function getChampionnatData(int $id, int $page = 1, int $limit = 10): array
     {
         $championnat = $this->championnatRepository->find($id);
 
-        if (!$championnat) {
-            throw $this->createNotFoundException('Le championnat n\'existe pas');
-        }
+            if (!$championnat) {
+                throw $this->createNotFoundException('Le championnat n\'existe pas');
+            }
 
         $apiToken = $_ENV['FOOTBALL_DATA_API_TOKEN'];
 
@@ -41,23 +40,35 @@ class ChampionnatApiService extends AbstractController
             ],
         ]);
 
-        try {
-            $responseStandings = $client->request('GET', '/v4/competitions/' . $championnat->getCodeApi() . '/standings');
-            $standings = $responseStandings->toArray();
-        } catch (ExceptionInterface $e) {
-            $errorMessage = sprintf('Error fetching data for %s: %s', $championnat->getLigue(), $e->getMessage());
-            $standings = [];
-        }
+    try {
+        $responseStandings = $client->request('GET', '/v4/competitions/' . $championnat->getCodeApi() . '/standings');
+        $standings = $responseStandings->toArray();
 
-        // Associer les logos aux clubs
-        $this->addLogosToStandings($standings);
-
-        return $this->render('football/championnat_data/standings.html.twig', [
-            'standings' => $standings,
-            'championnat' => $championnat,
-        ]);
+        $responseMatches = $client->request('GET', '/v4/competitions/' . $championnat->getCodeApi() . '/matches');
+        $matches = $responseMatches->toArray();
+    } catch (ExceptionInterface $e) {
+        $errorMessage = sprintf('Error fetching data for %s: %s', $championnat->getLigue(), $e->getMessage());
+        $standings = [];
+        $matches = [];
     }
 
+    // Associer les logos aux clubs
+    $this->addLogosToStandings($standings);
+
+    // Paginate matches
+    $pagination = $this->paginator->paginate(
+        $matches['matches'], // array of items
+        $page, // current page number
+        $limit // limit per page
+    );
+
+    return [
+        'championnat' => $championnat,
+        'standings' => $standings,
+        'matches' => $pagination->getItems(),
+        'pagination' => $pagination,
+    ];
+    }
     private function addLogosToStandings(array &$standings): void
     {
         foreach ($standings['standings'][0]['table'] as &$team) {
@@ -68,41 +79,5 @@ class ChampionnatApiService extends AbstractController
                 $team['team']['logo'] = 'media/default_logo.png'; // Logo par défaut
             }
         }
-    }    public function getMatches(int $id, int $page = 1, int $limit = 10): Response
-    {
-        $championnat = $this->championnatRepository->find($id);
-
-        if (!$championnat) {
-            throw $this->createNotFoundException('Le championnat n\'existe pas');
-        }
-
-        $apiToken = $_ENV['FOOTBALL_DATA_API_TOKEN'];
-
-        $client = HttpClient::create([
-            'base_uri' => 'https://api.football-data.org',
-            'headers' => [
-                'X-Auth-Token' => $apiToken,
-            ],
-        ]);
-
-        try {
-            $responseMatches = $client->request('GET', '/v4/competitions/' . $championnat->getCodeApi() . '/matches');
-            $matches = $responseMatches->toArray();
-        } catch (ExceptionInterface $e) {
-            $errorMessage = sprintf('Error fetching data for %s: %s', $championnat->getLigue(), $e->getMessage());
-            $matches = [];
-        }
-
-        $pagination = $this->paginator->paginate(
-            $matches['matches'], // array of items
-            $page, // current page number
-            $limit // limit per page
-        );
-
-        return $this->render('football/championnat_data/matches.html.twig', [
-            'matches' => $pagination->getItems(),
-            'championnat' => $championnat,
-            'pagination' => $pagination,
-        ]);
-    }
+    }   
 }
