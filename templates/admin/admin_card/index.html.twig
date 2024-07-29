@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 
 {% block title %}Card index{% endblock %}
 
 {% block body %}
     <h1>Card index</h1>
-
+    <a href="{{ path('app_admin_card_new') }}">Create new</a>
     <table class="table">
         <thead>
             <tr>
@@ -13,7 +16,8 @@
                 <th>Description</th>
                 <th>Image</th>
                 <th>Link</th>
-                <th>actions</th>
+                <th>Code Drapeau</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,20 +26,23 @@
                 <td>{{ card.id }}</td>
                 <td>{{ card.title }}</td>
                 <td>{{ card.description }}</td>
-                <td>{{ card.image }}</td>
-                <td>{{ card.link }}</td>
+                <td><img src="{{ asset(card.image) }}" alt="{{ card.title }}" style="width: 100px;"></td>
+                <td><a href="{{ card.link }}">{{ card.link }}</a></td>
+                <td>{{ card.codeFlag|raw }}</td>
                 <td>
                     <a href="{{ path('app_admin_card_show', {'id': card.id}) }}">show</a>
                     <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}">edit</a>
+                    <form action="{{ path('app_admin_card_delete', {'id': card.id}) }}" method="post" style="display:inline;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ card.id) }}">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_card_new') }}">Create new</a>
 {% endblock %}

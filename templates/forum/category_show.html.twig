@@ -23,6 +23,8 @@
             {% for topic in topics %}
                 <li>
                     <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }} </a>
+                    <small>Créé par {{ topic.user.username }} le {{ topic.creationDate|date('d/m/Y H:i') }}</small><br>
+                    <small>Nombre de posts : {{ topic.posts|length }}</small>
                 </li>
             {% endfor %}
         </ul>

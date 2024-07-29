@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    {% endblock %}
 
 {% block title %}New Card{% endblock %}
 
 {% block body %}
     <h1>Create new Card</h1>
 
-    {{ include('admin/admin_card/_form.html.twig') }}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
 
     <a href="{{ path('app_admin_card_index') }}">back to list</a>
 {% endblock %}

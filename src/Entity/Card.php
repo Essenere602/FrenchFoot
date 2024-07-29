@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\CardRepository;
@@ -25,6 +24,10 @@ class Card
 
     #[ORM\Column(length: 50)]
     private ?string $link = null;
+
+    // Ajoutez cette propriété pour le code du drapeau
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $codeFlag = null;
 
     public function getId(): ?int
     {
@@ -75,6 +78,19 @@ class Card
     public function setLink(string $link): static
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    // Ajoutez ces méthodes getter et setter
+    public function getCodeFlag(): ?string
+    {
+        return $this->codeFlag;
+    }
+
+    public function setCodeFlag(?string $codeFlag): static
+    {
+        $this->codeFlag = $codeFlag;
 
         return $this;
     }

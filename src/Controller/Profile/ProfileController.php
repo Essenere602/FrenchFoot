@@ -56,6 +56,7 @@ class ProfileController extends AbstractController
             'user' => $user, // Pass the user to the template
         ]);
     }
+    
     #[Route('/profile/clubs/search', name: 'profile_club_search', methods: ['GET'])]
     public function searchClubs(Request $request, ClubRepository $clubRepository): JsonResponse
     {

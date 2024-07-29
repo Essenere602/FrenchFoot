@@ -13,7 +13,7 @@
         <div class="card">
             <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
             <div class="card-content">
-                <h1 class="oswald">{{ card.title }}</h1>
+                <h1 class="oswald">{{ card.title }} {{ card.codeFlag|raw }}</h1>
                 <p class="card-description">{{ card.description }}</p>
                 <a href="{{ card.link }}" class="card-link">En savoir plus</a>
             </div>

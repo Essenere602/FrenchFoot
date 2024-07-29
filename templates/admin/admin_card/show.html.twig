@@ -21,11 +21,15 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ card.image }}</td>
+                <td><img src="{{ asset(card.image) }}" alt="{{ card.title }}" style="width: 100px;"></td>
             </tr>
             <tr>
                 <th>Link</th>
-                <td>{{ card.link }}</td>
+                <td><a href="{{ card.link }}">{{ card.link }}</a></td>
+            </tr>
+            <tr>
+                <th>Code Drapeau</th>
+                <td>{{ card.codeFlag|raw }}</td>
             </tr>
         </tbody>
     </table>
