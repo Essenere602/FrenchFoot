@@ -1,0 +1,49 @@
+/* asset/css/matches.css */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid gainsboro;
+  }
+  a {
+    color: #2e3136;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #0056b3;
+}
+
+.pagination-current {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #e9ecef;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.pagination-current {
+    font-weight: bold;
+}

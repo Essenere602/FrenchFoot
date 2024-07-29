@@ -1,24 +1,41 @@
-<nav>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <div class="nav-links">
-                <a href="{{ path('app_homepage') }}">Accueil</a>
-                <a href="{{ path('app_forum') }}">Forum</a>
-                <a href="{{ path('championnat_index') }}">Football</a>
-                <a href="{{ path('contact') }}">Contact</a>
-                {% if app.user is null %}
-                <a href="{{ path('app_login') }}">Connexion</a>
-                <a href="{{ path('app_register') }}">S'inscrire</a>
-                {% else %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('app_admin') }}">Admin</a>
+<nav class="navbar">
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <div class="nav-links">
+        <a href="{{ path('app_homepage') }}"><img src="{{ asset('media/Logo.png') }}" alt="Logo du site Footix" style="height: 15px;"></a>
+        <a href="{{ path('app_forum') }}">Forum</a>
+        <a href="{{ path('championnat_index') }}">Football</a>
+        <a href="{{ path('contact') }}">Contact</a>
+        {% if app.user %}
+            <a href="{{ path('app_profile') }}">Profil</a>
+            <a href="{{ path('app_messages') }}">Messages</a>
+        {% endif %}
+        <div class="auth-links">
+            {% if app.user is null %}
+                <a href="{{ path('app_login') }}" class="btn-rounded">Connexion</a>
+                <a href="{{ path('app_register') }}" class="btn-rounded">S'inscrire</a>
+            {% else %}
+                <span class="welcome-message">
+                    Bienvenue, {{ app.user.username }}
+                    {% if app.user.userProfile and app.user.userProfile.club and app.user.userProfile.club.logoClub %}
+                        <img src="{{ asset( app.user.userProfile.club.logoClub) }}" alt="{{ app.user.userProfile.club.name }}" class="club-logo">
                     {% endif %}
-                    <a href="{{ path('app_profile') }}">Profil</a>
-                    <a href="{{ path('app_messages') }}">Messages</a>
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </span>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_admin') }}" class="btn-rounded">Admin</a>
                 {% endif %}
-            </div>
-        </nav>
+                <a href="{{ path('app_logout') }}" class="btn-rounded">Déconnexion</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<figure class="banner">
+    <img src="{{ asset('media/Bannière.webp') }}" alt="Bannière" class="banner-image">
+        <figcaption class="banner-caption">
+            <h1>FootiX</h1>
+            <p>Le site Football pour les passionnés.</p>
+        </figcaption>
+</figure>

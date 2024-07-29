@@ -23,9 +23,9 @@ class ChampionnatDataController extends AbstractController
         return $this->championnatDataService->getStandings($id);
     }
 
-    #[Route('/championnats/{id}/matches', name: 'championnat_data_matches', methods: ['GET'])]
-    public function matches(int $id): Response
+    #[Route('/championnats/{id}/matches/{page}', name: 'championnat_data_matches', methods: ['GET'], requirements: ['page' => '\d+'])]
+    public function matches(int $id, int $page = 1): Response
     {
-        return $this->championnatDataService->getMatches($id);
+        return $this->championnatDataService->getMatches($id, $page);
     }
 }

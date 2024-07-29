@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Footix{% endblock %}
 
         {% block stylesheets %}
                     <link rel="stylesheet" href="{{ asset('asset/css/card.css') }}">
         {% endblock %}
 
 {% block body %}
-    <div class="card-container">
-        {% for card in cards %}
-            <div class="card">
-                <h1>{{ card.title }}</h1>
-                <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
-                <div class="card-description">{{ card.description }}</div>
-                <a href="{{ card.link }}">En savoir plus</a>
+<div class="main-container">
+<div class="card-container">
+    {% for card in cards %}
+        <div class="card">
+            <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
+            <div class="card-content">
+                <h1 class="oswald">{{ card.title }}</h1>
+                <p class="card-description">{{ card.description }}</p>
+                <a href="{{ card.link }}" class="card-link">En savoir plus</a>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
 {% endblock %}

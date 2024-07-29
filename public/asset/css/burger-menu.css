@@ -1,4 +1,4 @@
-nav {
+/* nav {
     display: flex;
     justify-content: space-around;
     background-color: #2e3136;
@@ -21,5 +21,108 @@ nav a {
     nav a {
       margin: 0.5rem 0;
     }
+} */
+/* Styles généraux pour la navigation */
+/* Styles généraux pour la navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #131313, #C8A764);
+  padding: 1rem 2rem;
+  color: #FFFFFE;
+  font-family: 'Arial', sans-serif;
 }
-  
+
+/* Styles pour le menu burger */
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #FFFFFE;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Styles pour les liens de navigation */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #FFFFFE;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #C8A764;
+}
+
+/* Styles pour les liens de connexion et d'inscription */
+.auth-links {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-rounded {
+  background-color: #C8A764;
+  color: #131313;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-rounded:hover {
+  background-color: #FFFFFE;
+  color: #131313;
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      background: linear-gradient(to right, #131313, #C8A764);
+      padding: 1rem;
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .burger {
+      display: block;
+  }
+
+  .auth-links {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+}
+
+/* Animation du menu burger */
+.burger.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+  opacity: 0;
+}
+
+.burger.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}

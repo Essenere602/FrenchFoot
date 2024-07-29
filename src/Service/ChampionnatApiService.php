@@ -4,18 +4,24 @@
 namespace App\Service;
 
 use App\Repository\ChampionnatRepository;
+use App\Repository\ClubRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 
 class ChampionnatApiService extends AbstractController
 {
     private $championnatRepository;
+    private $paginator;
+    private $clubRepository;
 
-    public function __construct(ChampionnatRepository $championnatRepository)
+    public function __construct(ClubRepository $clubRepository,ChampionnatRepository $championnatRepository, PaginatorInterface $paginator)
     {
         $this->championnatRepository = $championnatRepository;
+        $this->paginator = $paginator;
+        $this->clubRepository = $clubRepository;
     }
 
     public function getStandings(int $id): Response
@@ -43,13 +49,26 @@ class ChampionnatApiService extends AbstractController
             $standings = [];
         }
 
+        // Associer les logos aux clubs
+        $this->addLogosToStandings($standings);
+
         return $this->render('football/championnat_data/standings.html.twig', [
             'standings' => $standings,
             'championnat' => $championnat,
         ]);
     }
 
-    public function getMatches(int $id): Response
+    private function addLogosToStandings(array &$standings): void
+    {
+        foreach ($standings['standings'][0]['table'] as &$team) {
+            $club = $this->clubRepository->findOneBy(['name' => $team['team']['name']]);
+            if ($club) {
+                $team['team']['logo'] = $club->getLogoClub(); // Ajouter le chemin du logo
+            } else {
+                $team['team']['logo'] = 'media/default_logo.png'; // Logo par défaut
+            }
+        }
+    }    public function getMatches(int $id, int $page = 1, int $limit = 10): Response
     {
         $championnat = $this->championnatRepository->find($id);
 
@@ -74,9 +93,16 @@ class ChampionnatApiService extends AbstractController
             $matches = [];
         }
 
+        $pagination = $this->paginator->paginate(
+            $matches['matches'], // array of items
+            $page, // current page number
+            $limit // limit per page
+        );
+
         return $this->render('football/championnat_data/matches.html.twig', [
-            'matches' => $matches,
+            'matches' => $pagination->getItems(),
             'championnat' => $championnat,
+            'pagination' => $pagination,
         ]);
     }
 }

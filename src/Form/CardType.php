@@ -18,7 +18,7 @@ class CardType extends AbstractType
             ->add('description')
             ->add('link')
             ->add('image', FileType::class, [
-                'label' => 'Image (JPG, PNG file)',
+                'label' => 'Image (JPG, PNG, WEBP, SVG file)',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -28,6 +28,7 @@ class CardType extends AbstractType
                             'image/jpeg',
                             'image/png',
                             'image/webp',
+                            'image/svg',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid image file (JPEG or PNG)',
                     ])
