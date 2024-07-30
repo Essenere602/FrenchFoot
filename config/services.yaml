@@ -8,6 +8,12 @@ parameters:
     media_directory: '%kernel.project_dir%/public/media'
     
 services:
+    App\Twig\AppExtension:
+        arguments:
+            $messageRepository: '@App\Repository\MessageRepository'
+            $security: '@security.token_storage'
+        tags:
+            - { name: 'twig.extension' }
     # default configuration for services in *this* file
     App\Service\ChampionnatDataService:
         autowire: true

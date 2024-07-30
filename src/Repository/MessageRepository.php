@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Message;
+use App\Entity\User;
+use App\Entity\Conversation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -40,4 +42,28 @@ class MessageRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function countUnreadMessagesForUser(User $user): int
+    {
+        return $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->where('m.recipient = :user')
+            ->andWhere('m.isRead = false')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    public function markMessagesAsReadForConversation(User $user, Conversation $conversation): void
+    {
+        $this->createQueryBuilder('m')
+            ->update()
+            ->set('m.isRead', ':isRead')  // Assurez-vous d'utiliser `isRead`
+            ->where('m.recipient = :user')
+            ->andWhere('m.conversation = :conversation')
+            ->andWhere('m.isRead = false')
+            ->setParameter('isRead', true)
+            ->setParameter('user', $user)
+            ->setParameter('conversation', $conversation)
+            ->getQuery()
+            ->execute();
+    }
 }

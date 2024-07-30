@@ -61,8 +61,10 @@
         {{ form_row(form.birth_date) }}
         {{ form_row(form.save) }}
     {{ form_end(form) }}
-{% endblock %}
 
+    <a href="{{ path('app_profile_change_password') }}" class="btn btn-link">Changer le mot de passe</a>
+    
+{% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script>

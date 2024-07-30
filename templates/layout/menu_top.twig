@@ -1,4 +1,5 @@
 <nav class="navbar">
+    {% set unreadMessagesCount = unread_messages_count() %}
     <div class="burger">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -11,7 +12,12 @@
         <a href="{{ path('contact') }}">Contact</a>
         {% if app.user %}
             <a href="{{ path('app_profile') }}">Profil</a>
-            <a href="{{ path('app_messages') }}">Messages</a>
+            <a href="{{ path('app_messages') }}">
+                Messages
+                {% if unreadMessagesCount > 0 %}
+                    <span class="notification-dot"></span>
+                {% endif %}
+            </a>
         {% endif %}
         <div class="auth-links">
             {% if app.user is null %}

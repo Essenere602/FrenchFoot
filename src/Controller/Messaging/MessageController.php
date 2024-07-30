@@ -21,19 +21,22 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class MessageController extends AbstractController
 {
     #[Route('/', name: 'app_messages')]
-    public function index(ConversationRepository $conversationRepository): Response
+    public function index(MessageRepository $messageRepository, ConversationRepository $conversationRepository): Response
     {
         $user = $this->getUser();
 
         $conversations = $conversationRepository->findByUser($user);
 
+        $unreadMessagesCount = $messageRepository->countUnreadMessagesForUser($user);
+
         return $this->render('messaging/index.html.twig', [
             'conversations' => $conversations,
+            'unreadMessagesCount' => $unreadMessagesCount,
         ]);
     }
 
     #[Route('/conversation/{id}', name: 'app_message_conversation')]
-    public function conversation(Conversation $conversation, Request $request, EntityManagerInterface $entityManager): Response
+    public function conversation(Conversation $conversation, Request $request, EntityManagerInterface $entityManager, MessageRepository $messageRepository): Response
     {
         $user = $this->getUser();
         if ($conversation->getUser1() !== $user && $conversation->getUser2() !== $user) {
@@ -43,6 +46,9 @@ class MessageController extends AbstractController
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
+
+        // Marquer les messages non lus comme lus pour l'utilisateur actuel
+        $messageRepository->markMessagesAsReadForConversation($user, $conversation);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recipient = $conversation->getUser1() === $user ? $conversation->getUser2() : $conversation->getUser1();

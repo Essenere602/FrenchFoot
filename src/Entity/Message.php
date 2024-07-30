@@ -33,7 +33,21 @@ class Message
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $isRead = false;  // Changez ici pour `isRead`
+
     // Getters et setters...
+
+    public function getIsRead(): bool
+    {
+        return $this->isRead;
+    }
+
+    public function setIsRead(bool $isRead): self
+    {
+        $this->isRead = $isRead;
+        return $this;
+    }
 
     public function getId(): ?int
     {
