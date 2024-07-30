@@ -10,6 +10,7 @@
         {% for message in messages %}
             <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
                 <p>{{ message.content }}</p>
+                <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
             </div>
         {% endfor %}
     </div>

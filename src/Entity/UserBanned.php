@@ -21,6 +21,9 @@ class UserBanned
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $numberBan = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $isPermanentlyBanned = false;
+
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="userBanned", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
@@ -67,14 +70,28 @@ class UserBanned
     }
 
     public function isBanned(): bool
+{
+    if ($this->isPermanentlyBanned) {
+        return false; // Un utilisateur définitivement banni ne devrait pas être considéré comme temporairement banni
+    }
+
+    if ($this->bannedDate === null) {
+        return false;
+    }
+
+    $now = new \DateTime();
+    $bannedUntil = (clone $this->bannedDate)->modify('+7 days');
+
+    return $now <= $bannedUntil;
+}
+    public function isPermanentlyBanned(): bool
     {
-        if ($this->bannedDate === null) {
-            return false;
-        }
+        return $this->isPermanentlyBanned;
+    }
 
-        $now = new \DateTime();
-        $bannedUntil = (clone $this->bannedDate)->modify('+7 days');
-
-        return $now <= $bannedUntil;
+    public function setPermanentlyBanned(bool $isPermanentlyBanned): self
+    {
+        $this->isPermanentlyBanned = $isPermanentlyBanned;
+        return $this;
     }
 }

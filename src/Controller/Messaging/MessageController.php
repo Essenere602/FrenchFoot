@@ -58,6 +58,7 @@ class MessageController extends AbstractController
             $message->setRecipient($recipient);
             $message->setConversation($conversation);
             $message->setOwner($user);
+            $message->setSentAt(new \DateTime()); // Définir la date d'envoi
 
             $entityManager->persist($message);
 
@@ -68,6 +69,7 @@ class MessageController extends AbstractController
             $recipientMessage->setRecipient($recipient);
             $recipientMessage->setConversation($conversation);
             $recipientMessage->setOwner($recipient);
+            $recipientMessage->setSentAt(new \DateTime()); // Définir la date d'envoi
 
             $entityManager->persist($recipientMessage);
 

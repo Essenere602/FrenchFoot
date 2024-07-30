@@ -85,24 +85,30 @@ class AdminReportController extends AbstractController
     {
         $user = $userReport->getReportedUser();
         
-        // Vérifie si l'utilisateur est déjà banni
         $existingBan = $entityManager->getRepository(UserBanned::class)->findOneBy(['user' => $user]);
         
         if (!$existingBan) {
             $userBanned = new UserBanned();
             $userBanned->setUser($user);
             $userBanned->setBannedDate(new \DateTime());
-            $userBanned->setNumberBan(1); // Ou mettre à jour cette logique selon votre besoin
-
+            $userBanned->setNumberBan(1); // Premier bannissement
+            $userBanned->setPermanentlyBanned(false);
+    
             $entityManager->persist($userBanned);
-            $entityManager->flush();
         } else {
-            // Met à jour le nombre de bannissements existants et la date de bannissement
             $existingBan->setNumberBan($existingBan->getNumberBan() + 1);
             $existingBan->setBannedDate(new \DateTime());
-            $entityManager->flush();
+    
+            // Met à jour le statut de bannissement permanent
+            if ($existingBan->getNumberBan() >= 3) {
+                $existingBan->setPermanentlyBanned(true);
+            }
+    
+            $entityManager->persist($existingBan);
         }
-
+    
+        $entityManager->flush();
+    
         return $this->redirectToRoute('app_admin_report_index');
     }
 }

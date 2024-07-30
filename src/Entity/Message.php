@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use App\Repository\MessageRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
@@ -34,7 +35,11 @@ class Message
     private ?User $owner = null;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $isRead = false;  // Changez ici pour `isRead`
+    private bool $isRead = false;
+
+    #[ORM\Column(type:'datetime', nullable:true)]
+    private ?\DateTimeInterface $sentAt = null;  // Changez ici pour `isRead`
+
 
     // Getters et setters...
 
@@ -108,4 +113,17 @@ class Message
         $this->owner = $owner;
         return $this;
     }
+
+    public function getSentAt(): ?\DateTimeInterface
+    {
+        return $this->sentAt;
+    }
+
+    public function setSentAt(\DateTimeInterface $sentAt): static
+    {
+        $this->sentAt = $sentAt;
+
+        return $this;
+    }
+
 }

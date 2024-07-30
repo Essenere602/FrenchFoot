@@ -8,6 +8,10 @@ parameters:
     media_directory: '%kernel.project_dir%/public/media'
     
 services:
+    App\Security\UserChecker:
+        arguments:
+            $logger: '@logger'
+
     App\Twig\AppExtension:
         arguments:
             $messageRepository: '@App\Repository\MessageRepository'
