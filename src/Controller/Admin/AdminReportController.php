@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller\Admin;
 
 use App\Entity\UserBanned;
@@ -10,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/report')]
 class AdminReportController extends AbstractController
@@ -19,7 +18,7 @@ class AdminReportController extends AbstractController
     public function index(UserReportRepository $userReportRepository): Response
     {
         return $this->render('admin/admin_report/index.html.twig', [
-            'user_reports' => $userReportRepository->findAll(),
+            'user_reports' => $userReportRepository->findAllActiveReports(),
         ]);
     }
 
@@ -40,6 +39,16 @@ class AdminReportController extends AbstractController
         return $this->render('admin/admin_report/new.html.twig', [
             'user_report' => $userReport,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/archived', name: 'app_admin_report_archived', methods: ['GET'])]
+    public function archived(UserReportRepository $userReportRepository): Response
+    {
+        $userReports = $userReportRepository->findAllArchivedReports();
+        
+        return $this->render('admin/admin_report/archived.html.twig', [
+            'user_reports' => $userReports,
         ]);
     }
 
@@ -72,7 +81,7 @@ class AdminReportController extends AbstractController
     #[Route('/{id}', name: 'app_admin_report_delete', methods: ['POST'])]
     public function delete(Request $request, UserReport $userReport, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$userReport->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$userReport->getId(), $request->request->get('_token'))) {
             $entityManager->remove($userReport);
             $entityManager->flush();
         }
@@ -109,6 +118,17 @@ class AdminReportController extends AbstractController
     
         $entityManager->flush();
     
+        return $this->redirectToRoute('app_admin_report_index');
+    }
+
+    #[Route('/{id}/archive', name: 'app_admin_report_archive', methods: ['POST'])]
+    public function archive(Request $request, UserReport $userReport, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('archive'.$userReport->getId(), $request->request->get('_token'))) {
+            $userReport->setArchived(true);
+            $entityManager->flush();
+        }
+
         return $this->redirectToRoute('app_admin_report_index');
     }
 }

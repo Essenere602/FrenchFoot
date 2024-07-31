@@ -23,6 +23,11 @@ class UserChecker implements UserCheckerInterface
             return;
         }
 
+        if (!$user->isVerified()) {
+            $this->logger->info('UserChecker: User is not verified.', ['user' => $user->getUsername()]);
+            throw new CustomUserMessageAuthenticationException('Votre compte n\'est pas vérifié.');
+        }
+
         $userBanned = $user->getUserBanned();
 
         if ($userBanned) {

@@ -170,3 +170,18 @@
     background-color: #131313;
     color: #C8A764;
 }
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Une colonne unique */
+        gap: 20px; /* Réduit l'espace entre les cartes pour les petits écrans */
+        padding: 10px; /* Réduit le padding pour les petits écrans */
+    }
+
+    .card img {
+        height: auto; /* Ajuste la hauteur de l'image pour qu'elle soit proportionnelle */
+    }
+
+    .card {
+        margin: 0; /* Supprime la marge inférieure */
+    }
+}

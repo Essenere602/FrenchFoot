@@ -1,0 +1,47 @@
+/* Style général du footer */
+.footer {
+    background-color: #131313; /* Couleur de fond */
+    height: 30px; /* Hauteur du footer */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.footer-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-nav a {
+    color: #C8A764; /* Couleur des liens */
+    text-decoration: none;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px; /* Taille de la police */
+}
+
+.footer-nav a:hover {
+    text-decoration: underline; /* Souligner les liens au survol */
+}
+
+.footer-nav svg {
+    fill: #C8A764; /* Couleur de l'icône */
+    transition: fill 0.3s; /* Transition pour l'effet de survol */
+    margin-left: 15px; /* Espace entre les liens et l'icône */
+}
+
+.footer-nav a:hover svg {
+    fill: #F5E5D8; /* Couleur de l'icône au survol */
+}

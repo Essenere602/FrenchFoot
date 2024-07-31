@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('asset/style.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/navigation.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
         {% block stylesheets %}
         {% endblock %}
 
@@ -29,7 +30,12 @@
             {% set unreadMessagesCount = unread_messages_count() %}
             {% include "layout/menu_top.twig"   %}
     {% endblock %}
+
         {% block body %}
         {% endblock %}
+
+    {% block footer %}
+            {% include "layout/menu_bottom.twig"   %}
+    {% endblock %}
     </body>
 </html>

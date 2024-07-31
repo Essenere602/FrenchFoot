@@ -40,4 +40,21 @@ class UserReportRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findAllActiveReports()
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.archived = false')
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllArchivedReports(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.archived = true')
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

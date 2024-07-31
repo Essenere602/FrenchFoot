@@ -1,0 +1,36 @@
+{# templates/admin_report/archived.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Archived UserReports{% endblock %}
+
+{% block body %}
+    <h1>Archived UserReports</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reason</th>
+                <th>Reported User</th>
+                <th>Reporting User</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_report in user_reports %}
+            <tr>
+                <td>{{ user_report.id }}</td>
+                <td>{{ user_report.reason }}</td>
+                <td>{{ user_report.reportedUser.username }}</td>
+                <td>{{ user_report.reportingUser.username }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_report_index') }}" class="btn btn-secondary">Back to Active Reports</a>
+{% endblock %}

@@ -2,10 +2,10 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}UserReport index{% endblock %}
+{% block title %}UserReport Index{% endblock %}
 
 {% block body %}
-    <h1>UserReport index</h1>
+    <h1>UserReport Index</h1>
 
     <table class="table">
         <thead>
@@ -14,7 +14,7 @@
                 <th>Reason</th>
                 <th>Reported User</th>
                 <th>Reporting User</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,21 +25,26 @@
                 <td>{{ user_report.reportedUser.username }}</td>
                 <td>{{ user_report.reportingUser.username }}</td>
                 <td>
-                    <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">show</a>
-                    <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">Show</a>
+                    <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">Edit</a>
                     <form method="post" action="{{ path('app_admin_report_ban', {'id': user_report.id}) }}" style="display:inline;">
                         <input type="hidden" name="_token" value="{{ csrf_token('ban' ~ user_report.id) }}">
                         <button class="btn btn-danger btn-sm">Ban</button>
+                    </form>
+                    <form method="post" action="{{ path('app_admin_report_archive', {'id': user_report.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('archive' ~ user_report.id) }}">
+                        <button class="btn btn-warning btn-sm">Archive</button>
                     </form>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_admin_report_new') }}">Create new</a>
+    <a href="{{ path('app_admin_report_archived') }}" class="btn btn-secondary">View Archived Reports</a>
 {% endblock %}

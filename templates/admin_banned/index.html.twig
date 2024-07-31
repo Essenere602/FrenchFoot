@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserBanned index{% endblock %}
+
+{% block body %}
+    <h1>UserBanned index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>BannedDate</th>
+                <th>NumberBan</th>
+                <th>IsPermanentlyBanned</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_banned in user_banneds %}
+            <tr>
+                <td>{{ user_banned.id }}</td>
+                <td>{{ user_banned.bannedDate ? user_banned.bannedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ user_banned.numberBan }}</td>
+                <td>{{ user_banned.isPermanentlyBanned ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_banned_show', {'id': user_banned.id}) }}">show</a>
+                    <a href="{{ path('app_admin_banned_edit', {'id': user_banned.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_banned_new') }}">Create new</a>
+{% endblock %}

@@ -1,12 +1,9 @@
 {# templates/forum/topic_show.html.twig #}
-
 {% extends 'base.html.twig' %}
-
         {% block stylesheets %}
                 <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
                 <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
         {% endblock %}
-
 {% block title %}Sujet: {{ topic.title }}{% endblock %}
 
 {% block body %}

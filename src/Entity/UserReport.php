@@ -28,6 +28,10 @@ class UserReport
     #[ORM\JoinColumn(nullable: false)]
     private ?User $reportedUser = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $archived = false;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +82,16 @@ class UserReport
     {
         $this->reportedUser = $reportedUser;
 
+        return $this;
+    }
+    public function isArchived(): bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): self
+    {
+        $this->archived = $archived;
         return $this;
     }
 }
