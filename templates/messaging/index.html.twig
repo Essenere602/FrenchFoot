@@ -1,26 +1,30 @@
-{# templates/message/index.html.twig #}
+{% extends 'base.html.twig' %}
 
-{% extends 'base.html.twig' %}        
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
-        {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/conversation.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Mes Conversations</h1>
+    <div class="container">
+        <h1>Mes Conversations</h1>
+        <ul>
+            {% for conversation in conversations %}
+                <li>
+                    <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
+                        Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
 
-    <h2>Nouvelle Conversation</h2>
-    <input type="text" id="username-autocomplete" placeholder="Rechercher un utilisateur...">
-    <div id="autocomplete-results"></div>
+        <div class="autocomplete-container">
+            <h2>Nouvelle Conversation</h2>
+            <input type="text" id="username-autocomplete" placeholder="Rechercher un utilisateur...">
+            <div id="autocomplete-results"></div>
+        </div>
 
-    <ul>
-        {% for conversation in conversations %}
-            <li>
-                <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
-                    Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    </div>
 
     <script>
         document.getElementById('username-autocomplete').addEventListener('input', function() {
@@ -32,7 +36,7 @@
                 return;
             }
 
-            fetch('/user/autocomplete?term=' + term)
+            fetch('/user/autocomplete?term=' + encodeURIComponent(term))
                 .then(response => response.json())
                 .then(data => {
                     resultsDiv.innerHTML = '';
@@ -49,6 +53,14 @@
                         resultsDiv.appendChild(div);
                     });
                 });
+        });
+
+        // Close autocomplete results when clicking outside
+        document.addEventListener('click', function(event) {
+            let resultsDiv = document.getElementById('autocomplete-results');
+            if (!resultsDiv.contains(event.target) && event.target !== document.getElementById('username-autocomplete')) {
+                resultsDiv.innerHTML = '';
+            }
         });
     </script>
 {% endblock %}

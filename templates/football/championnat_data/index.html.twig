@@ -9,7 +9,7 @@
 {% block title %}{{ championnat.ligue }}{% endblock %}
 
 {% block body %}
-    <h1>{{ championnat.ligue }}</h1>
+    <h1 class="page-title">{{ championnat.ligue }}</h1>
 
     <div class="standings-section">
         <h2>Standings</h2>
@@ -54,6 +54,7 @@
             </tbody>
         </table>
     </div>
+
     <div class="legend">
         <p><span class="legend-color champions-league"></span> UEFA Champions League</p>
         <p><span class="legend-color europa-league"></span> UEFA Europa League</p>
@@ -68,20 +69,20 @@
                 {% for match in matches %}
                     <li>
                         <div class="team">
-                            <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}" style="width: 30px; height: auto; margin-right: 10px;">
-                            {{ match.homeTeam.name }}
+                            <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}">
+                            <span class="team-name">{{ match.homeTeam.name }}</span>
                         </div>
-                        vs
+                        <div class="score">
+                            {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
+                                {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
+                            {% else %}
+                                Not <br> played yet
+                            {% endif %}
+                        </div>
                         <div class="team">
-                            <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}" style="width: 30px; height: auto; margin-right: 10px;">
-                            {{ match.awayTeam.name }}
+                            <span class="team-name">{{ match.awayTeam.name }}</span>
+                            <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}">
                         </div>
-                        -
-                        {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
-                            {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
-                        {% else %}
-                            Not played yet
-                        {% endif %}
                     </li>
                 {% endfor %}
             {% else %}

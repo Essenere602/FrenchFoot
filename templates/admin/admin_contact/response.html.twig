@@ -1,6 +1,8 @@
 {# templates/admin_contact/response.html.twig #}
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+{% endblock %}
 {% block title %}Respond to Contact{% endblock %}
 
 {% block body %}

@@ -34,6 +34,35 @@ form button {
 form button:hover {
     background-color: #17181a;
 } */
+
+/* Exclusions pour les formulaires de suppression de posts */
+form.delete-form {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    display: inline;
+}
+
+form.delete-form button {
+    padding: 0;
+    background-color: transparent;
+    color: #C8A764;
+    border: none;
+    cursor: pointer;
+    transition: none;
+    display: inline;
+    margin: 0;
+}
+
+form.delete-form button:hover {
+    background-color: transparent;
+    color: #131313;
+}
+
+
 .form-title {
     color: #C8A764;
     display: flex;
@@ -62,7 +91,8 @@ textarea {
     margin-bottom: 16px;
     box-sizing: border-box;
     border: 1px solid #cccccc;
-    border-radius: 4px;}
+    border-radius: 4px;
+    background: #fcf7ed;}
 textarea {
     resize: vertical;
 }

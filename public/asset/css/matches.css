@@ -1,49 +1,121 @@
-/* asset/css/matches.css */
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  ul li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid gainsboro;
-  }
-  a {
-    color: #2e3136;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
+/* Conteneur des matches */
+.matches-section {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre des matches */
+.matches-section h2 {
+  font-size: 24px;
+  color: #131313;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Liste des matches */
+.matches-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.matches-section li {
+  padding: 15px;
+  border-bottom: 1px solid #C8A764;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matches-section li:last-child {
+  border-bottom: none;
+}
+
+.matches-section .team {
+  display: flex;
+  align-items: center;
+}
+
+.matches-section .team img {
+  width: 30px; /* Ajustez la taille des logos */
+  height: auto;
+  margin-right: 10px;
+}
+
+.matches-section .team-name {
+  font-size: 18px;
+  color: #131313;
+  white-space: nowrap;
+}
+
+/* Alignement du score */
+.matches-section .score {
+  font-size: 18px;
+  color: #131313;
+  text-align: center;
+  flex: 1; /* Permet au score de prendre toute la place disponible */
+}
+
+/* Pagination */
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .pagination-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 0 5px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+  padding: 10px 15px;
+  margin: 0 5px;
+  background-color: #C8A764;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .pagination-button:hover {
-    background-color: #0056b3;
+  background-color: #131313;
+  color: #C8A764;
 }
 
 .pagination-current {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 0 5px;
-    background-color: #e9ecef;
-    color: #333;
-    border-radius: 5px;
-    font-size: 16px;
+  padding: 10px 15px;
+  margin: 0 5px;
+  background-color: #fff;
+  color: #131313;
+  border: 1px solid #C8A764;
+  border-radius: 4px;
 }
 
-.pagination-current {
-    font-weight: bold;
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+  .matches-section {
+      padding: 10px;
+  }
+
+  .matches-section li {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .matches-section .team {
+      margin-bottom: 10px;
+  }
+
+  .matches-section .score {
+      margin: 10px 0;
+  }
+
+  .pagination {
+      flex-direction: column;
+  }
+
+  .pagination-button, .pagination-current {
+      margin: 5px 0;
+  }
 }

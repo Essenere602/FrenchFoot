@@ -7,6 +7,8 @@
     justify-content: space-around;
     padding: 10px 0;
     font-family: 'Arial', sans-serif;
+    margin-top: 50px;
+    bottom: 0;
 }
 
 .footer-container {
@@ -30,10 +32,6 @@
     display: flex;
     align-items: center;
     font-size: 14px; /* Taille de la police */
-}
-
-.footer-nav a:hover {
-    text-decoration: underline; /* Souligner les liens au survol */
 }
 
 .footer-nav svg {

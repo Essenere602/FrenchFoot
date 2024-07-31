@@ -7,6 +7,7 @@ body {
   color: #2e3136;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 .oswald {
   font-family: "Oswald", sans-serif;

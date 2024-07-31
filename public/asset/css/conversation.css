@@ -1,0 +1,55 @@
+
+/* Styles pour l'autocomplete */
+#username-autocomplete {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+#autocomplete-results {
+    position: absolute;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#autocomplete-results div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#autocomplete-results div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Styles pour la liste des conversations */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #username-autocomplete {
+        max-width: 100%;
+    }
+
+    #autocomplete-results {
+        width: 100%;
+        max-width: none;
+    }
+}

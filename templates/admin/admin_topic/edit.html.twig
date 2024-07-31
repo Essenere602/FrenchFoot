@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+{% endblock %}
 {% block title %}Edit Topic{% endblock %}
 
 {% block body %}
@@ -9,5 +11,4 @@
 
     <a href="{{ path('app_admin_topic_index') }}">back to list</a>
 
-    {{ include('admin/admin_topic/_delete_form.html.twig') }}
 {% endblock %}
