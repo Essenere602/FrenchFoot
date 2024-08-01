@@ -45,8 +45,8 @@ h1 {
 }
 
 .message.sent {
-    background-color: #C8A764;
-    color: #fff;
+    background-color: #d4edda;
+    color: #131313;
     margin-left: auto;
     text-align: right;
 }

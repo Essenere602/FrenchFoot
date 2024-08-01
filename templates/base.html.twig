@@ -26,16 +26,22 @@
         {% endblock %}
     </head>
     <body>
+        <div class="wrapper">
+                <header>
     {% block nav %}
             {% set unreadMessagesCount = unread_messages_count() %}
             {% include "layout/menu_top.twig"   %}
     {% endblock %}
-
+            </header>
+<main>
         {% block body %}
         {% endblock %}
-
+</main>
+        <footer>
     {% block footer %}
             {% include "layout/menu_bottom.twig"   %}
     {% endblock %}
+            </footer>
+                </div>
     </body>
 </html>

@@ -1,46 +1,83 @@
-{# templates/forum/topic_show.html.twig #}
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/post.css') }}">
-
 {% endblock %}
+
 {% block title %}Sujet: {{ topic.title }}{% endblock %}
 
 {% block body %}
 <h1 class="page-title">{{ topic.title }}</h1>
-    <div class="forum-topic">
-    {{ form_start(form) }}
+<div class="container">
+    <!-- Conteneur pour centrer le bouton -->
+    <div class="form-toggle-container">
+        <!-- Bouton pour afficher/masquer le formulaire de création de post -->
+        <button id="show-form-btn" class="btn-toggle-form">+ Nouveau Post</button>
+    </div>
+
+    <!-- Formulaire de création de post -->
+    <div id="post-form-container" class="forum-topic form-topic-create" style="display: none;">
+        {{ form_start(form) }}
         <h2 class="form-title">Nouveau Post</h2>
         {{ form_row(form.label) }}
         {{ form_row(form.message) }}
         {{ form_end(form) }}
-        <h2>Posts</h2>
-        <ul>
-            {% for post in posts %}
-                <li class="forum-post">
-                    <strong>
-                        {{ post.user.username }}
-                        {% if post.user.userProfile and post.user.userProfile.club and post.user.userProfile.club.logoClub %}
-                            <img src="{{ asset(post.user.userProfile.club.logoClub) }}" alt="{{ post.user.userProfile.club.name }}" class="club-logo" style="height: 24px; margin-left: 5px;">
-                        {% endif %}
-                    </strong>: {{ post.label }} - {{ post.message }}
-                    <a href="{{ path('forum_post_report', {id: post.id}) }}" class="btn btn-danger btn-sm">Signaler</a>
-
-                    {# Affichez les liens d'édition et de suppression si l'utilisateur est l'auteur du post #}
-                    {% if post.user == app.user %}
-                        <a href="{{ path('forum_post_edit', {id: post.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
-                        <form action="{{ path('forum_post_delete', {id: post.id}) }}" method="post" class="delete-form">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
-                            <button type="submit" class="delete-button">Supprimer</button>
-                        </form>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="pagination">
-            {{ knp_pagination_render(posts) }}
-        </div>        
     </div>
+
+    <h2>Posts</h2>
+    <ul class="posts-list">
+        {% for post in posts %}
+            <li class="forum-post">
+                <div class="post-header">
+                    <div>
+                        <strong class="post-username">
+                            {{ post.user.username }}
+                            {% if post.user.userProfile and post.user.userProfile.club and post.user.userProfile.club.logoClub %}
+                                <img src="{{ asset(post.user.userProfile.club.logoClub) }}" alt="{{ post.user.userProfile.club.name }}" class="club-logo">
+                            {% endif %}
+                        </strong>
+                        <small class="post-date">{{ post.creationDate|date('d/m/Y H:i') }}</small>
+                    </div>
+                    <div class="post-actions">
+                        {% if post.user != app.user %}
+                            <a href="{{ path('forum_post_report', {id: post.id}) }}" class="btn btn-danger btn-sm">Signaler</a>
+                        {% else %}
+                            <a href="{{ path('forum_post_edit', {id: post.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
+                            <form action="{{ path('forum_post_delete', {id: post.id}) }}" method="post" class="delete-form">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                                <button type="submit" class="delete-button">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+                <p class="post-content">{{ post.label }} : "&#x1F5E3; : {{ post.message }}"</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        {{ knp_pagination_render(posts) }}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('show-form-btn');
+            const formContainer = document.getElementById('post-form-container');
+
+            toggleButton.addEventListener('click', function() {
+                if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+                    formContainer.style.display = 'block';
+                    toggleButton.textContent = '- Annuler';
+                } else {
+                    formContainer.style.display = 'none';
+                    toggleButton.textContent = '+ Nouveau Post';
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -38,8 +38,7 @@ class Message
     private bool $isRead = false;
 
     #[ORM\Column(type:'datetime', nullable:true)]
-    private ?\DateTimeInterface $sentAt = null;  // Changez ici pour `isRead`
-
+    private ?\DateTimeInterface $sentAt = null;  
 
     // Getters et setters...
 

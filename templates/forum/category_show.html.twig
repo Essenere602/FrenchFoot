@@ -1,23 +1,25 @@
-{# templates/forum/category_show.html.twig #}
-
 {% extends 'base.html.twig' %}
-        {% block stylesheets %}
-                <link rel="stylesheet" href="{{ asset('asset/css/topic.css') }}">
-                <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
-        {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/topic.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+{% endblock %}
 
 {% block title %}{{ category.label }}{% endblock %}
 
 {% block body %}
 <h1 class="page-title">{{ category.label }}</h1>
 <div class="container">
-    <div class="forum-topic form-topic-create">
+    <button id="toggle-form" class="btn btn-primary">+ Créer un nouveau sujet</button>
+
+    <div id="topic-form-container" class="forum-topic form-topic-create" style="display: none;">
         {{ form_start(form) }}
-        <h2 class="form-title">Créer un nouveau sujet </h2>
+        <h2 class="form-title">Créer un nouveau sujet</h2>
         {{ form_row(form.title) }}
-                    <button type="submit">Créer</button>
+        <button type="submit">Créer</button>
         {{ form_end(form) }}
     </div>
+
     <div class="forum-topic">
         <h2 class="form-title">Les Sujets &#9917;</h2>
         <ul class="topic-list">
@@ -31,4 +33,24 @@
         </ul>
     </div>
 </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggle-form');
+            const formContainer = document.getElementById('topic-form-container');
+
+            toggleButton.addEventListener('click', function() {
+                if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+                    formContainer.style.display = 'block';
+                    toggleButton.textContent = '- Annuler';
+                } else {
+                    formContainer.style.display = 'none';
+                    toggleButton.textContent = '+ Créer un nouveau sujet';
+                }
+            });
+        });
+    </script>
 {% endblock %}

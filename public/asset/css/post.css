@@ -1,7 +1,5 @@
-
-
 /* Conteneur du forum */
-.forum-topic {
+.container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -10,54 +8,76 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre des sujets */
-.forum-topic h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+/* Titre de la page */
+.page-title {
+    text-align: center;
+    font-size: 28px;
     color: #131313;
+    margin-bottom: 30px;
 }
 
-/* Liste des sujets */
-.topic-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Conteneur pour centrer le bouton */
+.form-toggle-container {
+    text-align: center;
+    margin-bottom: 20px; /* Espacement entre le bouton et le formulaire ou la liste */
 }
 
-.topic-list li {
-    padding: 15px;
-    border-bottom: 1px solid #C8A764;
-}
-
-.topic-list li:last-child {
-    border-bottom: none;
-}
-
-/* Détails du sujet */
-.topic-list li a {
-    font-size: 18px;
-    color: #131313;
-}
-
-.topic-list li small {
+/* Bouton pour afficher/masquer le formulaire */
+.btn-toggle-form {
     display: block;
-    margin-top: 5px;
-    font-size: 14px;
-    color: #666;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #131313;
+    background-color: #C8A764;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* Accentuation */
-.topic-list li a:hover {
+.btn-toggle-form:hover {
+    background-color: #131313;
+    color: #C8A764;
+
+}
+
+/* Conteneur du formulaire */
+.forum-topic.form-topic-create {
+    max-width: 800px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Centrer horizontalement */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrer le formulaire à l'intérieur du conteneur */
+}
+
+.form-title {
+    font-size: 24px;
+    color: #131313;
+    margin-bottom: 15px;
+}
+
+/* Bouton de soumission du formulaire */
+.submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #C8A764;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #131313;
     color: #C8A764;
 }
 
-.topic-list li small {
-    color: #C8A764;
-}
-
-/* Conteneur des posts */
-/* Styles pour les posts */
-ul {
+/* Liste des posts */
+.posts-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -66,44 +86,97 @@ ul {
 .forum-post {
     padding: 15px;
     border-bottom: 1px solid #C8A764;
+    margin-bottom: 10px; /* Ajouter un espace entre les posts */
 }
 
 .forum-post:last-child {
     border-bottom: none;
 }
 
-/* Détails du post */
-.forum-post strong {
-    color: #131313;
-    font-size: 18px;
+/* En-tête du post */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.forum-post a {
-    color: #C8A764;
-    margin-left: 10px;
+.post-username {
+    font-size: 20px;
+    font-weight: bold;
+    color: #131313;
 }
 
-.forum-post a:hover {
+.club-logo {
+    height: 24px;
+    margin-left: 5px;
+}
+
+.post-date {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Contenu du post */
+.post-content {
+    font-size: 20px;
+    font-weight: 500;
     color: #131313;
-    text-decoration: underline;
+    margin-left: 20px;
+    border-left: 3px solid #C8A764;
+    padding-left: 10px;
+}
+
+/* Boutons d'action */
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+}
+
+.btn-sm {
+    font-size: 12px;
+    padding: 4px 8px;
 }
 
 /* Bouton de suppression */
-.forum-post .delete-button {
-    color: #C8A764;
+.delete-button {
     background: none;
     border: none;
+    color: #C8A764;
     cursor: pointer;
     padding: 0;
     font: inherit;
 }
 
-.forum-post .delete-button:hover {
+.delete-button:hover {
     color: #131313;
     text-decoration: underline;
 }
 
 /* Formulaire de suppression */
-.forum-post .delete-form {
+.delete-form {
     display: inline;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
 }

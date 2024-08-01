@@ -1,15 +1,5 @@
-a {
-    text-decoration: none;
-    color: #C8A764;
-}
-
-a:hover {
-    color: #131313;
-    text-decoration: underline;
-}
-
 /* Conteneur du forum */
-.forum-topic {
+.container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -18,11 +8,59 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre des sujets */
-.forum-topic h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+/* Titre de la page */
+.page-title {
+    text-align: center;
+    font-size: 28px;
     color: #131313;
+    margin-bottom: 30px;
+}
+
+/* Bouton pour afficher/masquer le formulaire */
+#toggle-form {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #131313;
+    background-color: #C8A764;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#toggle-form:hover {
+    background-color: #131313;
+    color: #C8A764;
+
+}
+
+/* Formulaire de création de sujet */
+.forum-topic.form-topic-create {
+    margin-bottom: 40px;
+}
+
+.form-title {
+    font-size: 24px;
+    color: #131313;
+    margin-bottom: 15px;
+}
+
+/* Bouton de soumission du formulaire */
+.forum-topic form button[type="submit"] {
+    background-color: #C8A764;
+    color: #131313;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forum-topic form button[type="submit"]:hover {
+    background-color: #131313;
+    color: #C8A764;
+
 }
 
 /* Liste des sujets */
@@ -31,15 +69,11 @@ a:hover {
     padding: 0;
     margin: 0;
 }
-.page-title {
-    text-align: center;
-    margin: 20px auto;
-}
-
 
 .topic-list li {
     padding: 15px;
     border-bottom: 1px solid #C8A764;
+    margin-bottom: 10px; /* Espacement entre les sujets */
 }
 
 .topic-list li:last-child {
@@ -48,22 +82,29 @@ a:hover {
 
 /* Détails du sujet */
 .topic-list li a {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     color: #131313;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.topic-list li a:hover {
+    color: #C8A764;
+    text-decoration: underline;
 }
 
 .topic-list li small {
     display: block;
-    margin-top: 5px;
     font-size: 14px;
     color: #666;
 }
 
-/* Accentuation */
-.topic-list li a:hover {
-    color: #C8A764;
+/* Date de création et nombre de posts */
+.topic-list li small:first-of-type {
+    font-weight: bold;
 }
 
-.topic-list li small {
+.topic-list li small:last-of-type {
     color: #C8A764;
 }
