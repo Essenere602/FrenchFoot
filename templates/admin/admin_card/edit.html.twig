@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 
-{% block title %}Edit Card{% endblock %}
+{% block title %}Mettre à jour la carte{% endblock %}
 
 {% block body %}
-    <h1>Edit Card</h1>
-
-    {{ include('admin/admin_card/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_card_index') }}">back to list</a>
+    <h1>Mettre à jour</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_card_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
+    {{ include('admin/admin_card/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
 {% endblock %}

@@ -1,7 +1,10 @@
 <?php
+// src/Twig/AppExtension.php
+
 namespace App\Twig;
 
 use App\Repository\MessageRepository;
+use App\Entity\Conversation;
 use Symfony\Component\Security\Core\Security;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -21,6 +24,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('unread_messages_count', [$this, 'getUnreadMessagesCount']),
+            new TwigFunction('unread_messages_for_conversation', [$this, 'getUnreadMessagesForConversation']),
         ];
     }
 
@@ -30,8 +34,17 @@ class AppExtension extends AbstractExtension
         if ($user) {
             return $this->messageRepository->countUnreadMessagesForUser($user);
         }
+        return 0;
+    }
 
+    public function getUnreadMessagesForConversation(Conversation $conversation): int
+    {
+        $user = $this->security->getUser();
+        if ($user) {
+            return $this->messageRepository->countUnreadMessagesForConversation($user, $conversation);
+        }
         return 0;
     }
 }
+
 

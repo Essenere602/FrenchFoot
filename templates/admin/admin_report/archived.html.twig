@@ -1,11 +1,16 @@
 {# templates/admin_report/archived.html.twig #}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Archived UserReports{% endblock %}
+{% block title %}Signalements archivés{% endblock %}
 
 {% block body %}
-    <h1>Archived UserReports</h1>
+    <h1>Signalements archivés</h1>
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_report_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
 
     <table class="table">
         <thead>
@@ -14,6 +19,7 @@
                 <th>Reason</th>
                 <th>Reported User</th>
                 <th>Reporting User</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +29,12 @@
                 <td>{{ user_report.reason }}</td>
                 <td>{{ user_report.reportedUser.username }}</td>
                 <td>{{ user_report.reportingUser.username }}</td>
+                <td>
+                    <form action="{{ path('app_admin_report_delete', {'id': user_report.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user_report.id) }}">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
+                </td>
             </tr>
         {% else %}
             <tr>
@@ -31,6 +43,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_report_index') }}" class="btn btn-secondary">Back to Active Reports</a>
 {% endblock %}

@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}Championnat index{% endblock %}
 
 {% block body %}
     <h1>Championnat index</h1>
-
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_championnat_new') }}" class="create-new-link">Créer un nouveau championnat</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -12,7 +16,7 @@
                 <th>Country</th>
                 <th>Ligue</th>
                 <th>Code_api</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +27,12 @@
                 <td>{{ championnat.ligue }}</td>
                 <td>{{ championnat.codeApi }}</td>
                 <td>
-                    <a href="{{ path('app_admin_championnat_show', {'id': championnat.id}) }}">show</a>
-                    <a href="{{ path('app_admin_championnat_edit', {'id': championnat.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_championnat_show', {'id': championnat.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_championnat_edit', {'id': championnat.id}) }}">Modifier</a>
+                    <form action="{{ path('app_admin_championnat_delete', {'id': championnat.id}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ championnat.id) }}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -34,6 +42,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_championnat_new') }}">Create new</a>
 {% endblock %}

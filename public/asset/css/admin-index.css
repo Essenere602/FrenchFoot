@@ -1,0 +1,85 @@
+.admin-section {
+    display: flex;
+    flex-direction: column; /* Dispose les éléments en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+    justify-content: center; /* Centre les éléments verticalement */
+    text-align: center; /* Centre le texte */
+    margin: 20px; /* Marge autour de la section */
+}
+
+/* Style pour le titre */
+.admin-section h1 {
+    font-size: 2rem; /* Taille du titre */
+    color: #C8A764; /* Couleur du titre */
+    margin-bottom: 15px; /* Marge en dessous du titre */
+}
+
+/* Style pour le message de bienvenue */
+.admin-section .welcome-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem; /* Taille du texte */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Marge en dessous du message de bienvenue */
+}
+
+/* Style pour le logo du club */
+.admin-section .club-logo {
+    height: 40px; /* Hauteur du logo */
+    margin-left: 10px; /* Espace entre le texte et le logo */
+}
+
+/* Style pour le paragraphe */
+.admin-section p {
+    font-size: 1rem; /* Taille du texte */
+    color: #666; /* Couleur du texte */
+    margin-bottom: 30px; /* Marge en dessous du paragraphe */
+    max-width: 800px; /* Largeur maximale pour le paragraphe */
+}
+
+/* Style pour le conteneur du menu admin */
+.admin-menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Occupe toute la largeur disponible */
+    background-color: #f9f9f9; /* Couleur de fond légère pour le back office */
+    padding: 40px;
+}
+
+/* Style pour le menu admin */
+.admin-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* Centre les éléments de la liste */
+    background-color: #fff; /* Fond blanc pour le menu */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour un effet de profondeur */
+    max-width: 600px; /* Largeur maximale du menu */
+    width: 100%; /* Occupe toute la largeur disponible */
+}
+
+/* Style pour chaque lien du menu admin */
+.admin-menu a {
+    text-decoration: none;
+    color: #131313; /* Couleur du texte */
+    font-size: 18px; /* Taille de police */
+    font-weight: bold; /* Texte en gras */
+    display: block;
+    padding: 15px; /* Espace autour du texte */
+    border-bottom: 1px solid #C8A764; /* Bordure en bas des éléments */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition pour les effets au survol */
+}
+
+/* Supprimer la bordure pour le dernier élément */
+.admin-menu a:last-child {
+    border-bottom: none;
+}
+
+/* Style pour les liens au survol */
+.admin-menu a:hover {
+    background-color: #C8A764; /* Fond au survol */
+    color: #fff; /* Couleur du texte au survol */
+}

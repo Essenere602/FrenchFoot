@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}Club index{% endblock %}
 
 {% block body %}
     <h1>Club index</h1>
-
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_club_new') }}" class="create-new-link">Créer un nouveau club</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Logo_club</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Logo</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +25,12 @@
                 <td>{{ club.name }}</td>
                 <td>{{ club.logoClub }}</td>
                 <td>
-                    <a href="{{ path('app_admin_club_show', {'id': club.id}) }}">show</a>
-                    <a href="{{ path('app_admin_club_edit', {'id': club.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_club_show', {'id': club.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_club_edit', {'id': club.id}) }}">Modifier</a>
+                    <form action="{{ path('app_admin_club_delete', {'id': club.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ club.id) }}">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -32,6 +40,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_club_new') }}">Create new</a>
 {% endblock %}

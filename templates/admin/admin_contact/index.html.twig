@@ -1,11 +1,15 @@
 {# templates/admin_contact/index.html.twig #}
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}Contact index{% endblock %}
 
 {% block body %}
     <h1>Contact index</h1>
-
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_contact_new') }}" class="create-new-link">Créer un nouveau contact</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -28,9 +32,13 @@
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.response }}</td>
                 <td>
-                    <a href="{{ path('app_admin_contact_response', {'id': contact.id}) }}">Respond</a>
-                    <a href="{{ path('app_admin_contact_show', {'id': contact.id}) }}">Show</a>
-                    <a href="{{ path('app_admin_contact_edit', {'id': contact.id}) }}">Edit</a>
+                    <a href="{{ path('app_admin_contact_response', {'id': contact.id}) }}">Répondre</a>
+                    <a href="{{ path('app_admin_contact_show', {'id': contact.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_contact_edit', {'id': contact.id}) }}">Modifier</a>
+                    <form action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -40,6 +48,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_contact_new') }}">Create new</a>
 {% endblock %}

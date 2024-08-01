@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Edit Topic{% endblock %}
+{% block title %}Mettre à jour un sujet{% endblock %}
 
 {% block body %}
-    <h1>Edit Topic</h1>
-
-    {{ include('admin/admin_topic/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_topic_index') }}">back to list</a>
-
+    <h1>Mettre à jour un sujet</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_topic_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
+    {{ include('admin/admin_topic/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 {% endblock %}

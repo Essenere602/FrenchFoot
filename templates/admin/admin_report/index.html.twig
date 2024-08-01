@@ -1,11 +1,18 @@
 {# templates/admin_report/index.html.twig #}
 
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}UserReport Index{% endblock %}
 
 {% block body %}
     <h1>UserReport Index</h1>
+
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_report_new') }}" class="create-new-link">Créer un nouveau signalement</a>
+        <a href="{{ path('app_admin_report_archived') }}" class="create-new-link">Voir les signalements archivés</a>
+    </div>
 
     <table class="table">
         <thead>
@@ -25,15 +32,19 @@
                 <td>{{ user_report.reportedUser.username }}</td>
                 <td>{{ user_report.reportingUser.username }}</td>
                 <td>
-                    <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">Show</a>
-                    <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">Edit</a>
+                    <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">Modifier</a>
                     <form method="post" action="{{ path('app_admin_report_ban', {'id': user_report.id}) }}" style="display:inline;">
                         <input type="hidden" name="_token" value="{{ csrf_token('ban' ~ user_report.id) }}">
                         <button class="btn btn-danger btn-sm">Ban</button>
                     </form>
                     <form method="post" action="{{ path('app_admin_report_archive', {'id': user_report.id}) }}" style="display:inline;">
                         <input type="hidden" name="_token" value="{{ csrf_token('archive' ~ user_report.id) }}">
-                        <button class="btn btn-warning btn-sm">Archive</button>
+                        <button class="btn btn-warning btn-sm" style="background:#a1f7be; border: 1px solid #a1f7be;">Archive</button>
+                    </form>
+                    <form action="{{ path('app_admin_report_delete', {'id': user_report.id}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user_report.id) }}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -44,7 +55,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_report_new') }}">Create new</a>
-    <a href="{{ path('app_admin_report_archived') }}" class="btn btn-secondary">View Archived Reports</a>
 {% endblock %}

@@ -6,9 +6,11 @@
 {% block title %}Card index{% endblock %}
 
 {% block body %}
-    <h1>Card index</h1>
-    <a href="{{ path('app_admin_card_new') }}">Create new</a>
-    <table class="table">
+    <h1>Cartes</h1>
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_card_new') }}" class="create-new-link">Créer une nouvelle carte</a>
+    </div>
+            <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -30,12 +32,12 @@
                 <td><a href="{{ card.link }}">{{ card.link }}</a></td>
                 <td>{{ card.codeFlag|raw }}</td>
                 <td>
-                    <a href="{{ path('app_admin_card_show', {'id': card.id}) }}">show</a>
-                    <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_card_show', {'id': card.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}">Modifier</a>
                     <form action="{{ path('app_admin_card_delete', {'id': card.id}) }}" method="post" style="display:inline;">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ card.id) }}">
-                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                </form>
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}

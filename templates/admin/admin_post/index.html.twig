@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}Post index{% endblock %}
 
 {% block body %}
     <h1>Post index</h1>
-
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_post_new') }}" class="create-new-link">Créer un nouveau post</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Label</th>
                 <th>Message</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +25,12 @@
                 <td>{{ post.label }}</td>
                 <td>{{ post.message }}</td>
                 <td>
-                    <a href="{{ path('app_admin_post_show', {'id': post.id}) }}">show</a>
-                    <a href="{{ path('app_admin_post_edit', {'id': post.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_post_show', {'id': post.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_post_edit', {'id': post.id}) }}">Modifier</a>
+                    <form action="{{ path('app_admin_post_delete', {'id': post.id}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -32,6 +40,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_post_new') }}">Create new</a>
 {% endblock %}

@@ -1,55 +1,100 @@
-
-/* Styles pour l'autocomplete */
-#username-autocomplete {
-    width: 100%;
-    max-width: 500px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin: 0 auto 20px;
-    display: block;
-}
-
-#autocomplete-results {
-    position: absolute;
-    max-width: 500px;
+/* Conteneur général */
+.container {
+    max-width: 800px;
     margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-}
-
-#autocomplete-results div {
-    padding: 10px;
-    cursor: pointer;
-}
-
-#autocomplete-results div:hover {
-    background-color: #f0f0f0;
-}
-
-/* Styles pour la liste des conversations */
-ul {
-    list-style-type: none;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  
+  /* Titre de la section */
+  .container h1,
+  .container h2 {
+    font-size: 24px;
+    color: #C8A764;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Liste des conversations */
+  ul {
+    list-style: none;
     padding: 0;
     margin: 0;
-}
-
-li {
-    margin: 10px 0;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    #username-autocomplete {
-        max-width: 100%;
+  }
+  
+  ul li {
+    padding: 15px;
+    border-bottom: 1px solid #C8A764;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  ul li:last-child {
+    border-bottom: none;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #131313;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  ul li a:hover {
+    color: #C8A764;
+  }
+  
+  /* Conteneur de l'autocomplete */
+  .autocomplete-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  #username-autocomplete {
+    width: 97%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #C8A764;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(20, 17, 17, 0.1);
+    margin: auto;
+  }
+  
+  #autocomplete-results {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  #autocomplete-results div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #autocomplete-results div:hover {
+    background-color: #C8A764;
+    color: #fff;
+  }
+  
+  /* Responsivité pour les petits écrans */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
     }
-
-    #autocomplete-results {
-        width: 100%;
-        max-width: none;
+  
+    ul li {
+      flex-direction: column;
+      align-items: flex-start;
     }
-}
+  }
+  

@@ -14,8 +14,8 @@ class TopicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('save', SubmitType::class, ['label' => 'Create Topic']);
+            ->add('title');
+            //->add('save', SubmitType::class, ['label' => 'Create Topic']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

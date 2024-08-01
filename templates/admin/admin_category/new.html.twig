@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}New Category{% endblock %}
+{% block title %}Nouvelle Catégorie{% endblock %}
 
 {% block body %}
-    <h1>Create new Category</h1>
-
+    <h1>Créer une nouvelle catégorie</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_category_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
     {{ include('admin/admin_category/_form.html.twig') }}
-
-    <a href="{{ path('app_admin_category_index') }}">back to list</a>
 {% endblock %}

@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
+    {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Edit Club{% endblock %}
+{% block title %}Mettre à jour le Club{% endblock %}
 
 {% block body %}
-    <h1>Edit Club</h1>
-
-    {{ include('admin/admin_club/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_club_index') }}">back to list</a>
-
+    <h1>Mettre à jour le Club</h1>
+     <div class="create-new-container">
+    <a href="{{ path('app_admin_club_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
+    {{ include('admin/admin_club/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 {% endblock %}

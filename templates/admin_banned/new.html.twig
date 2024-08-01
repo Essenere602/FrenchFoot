@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}New UserBanned{% endblock %}
+{% block title %}Nouveau banissement{% endblock %}
 
 {% block body %}
-    <h1>Create new UserBanned</h1>
+    <h1>Créer un banissement</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_banned_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
 
     {{ include('admin_banned/_form.html.twig') }}
-
-    <a href="{{ path('app_admin_banned_index') }}">back to list</a>
 {% endblock %}

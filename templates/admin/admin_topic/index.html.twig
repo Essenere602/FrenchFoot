@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 {% block title %}Topic index{% endblock %}
 
 {% block body %}
-    <h1>Topic index</h1>
-
+    <h1>Les sujets</h1>
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_topic_new') }}" class="create-new-link">Créer un nouveau sujet</a>
+        </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Creation_date</th>
-                <th>Num_views</th>
-                <th>Num_replies</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,11 +24,13 @@
                 <td>{{ topic.id }}</td>
                 <td>{{ topic.title }}</td>
                 <td>{{ topic.creationDate ? topic.creationDate|date('Y-m-d') : '' }}</td>
-                <td>{{ topic.numViews }}</td>
-                <td>{{ topic.numReplies }}</td>
                 <td>
-                    <a href="{{ path('app_admin_topic_show', {'id': topic.id}) }}">show</a>
-                    <a href="{{ path('app_admin_topic_edit', {'id': topic.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_topic_show', {'id': topic.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_topic_edit', {'id': topic.id}) }}">Modifier</a>
+                    <form action="{{ path('app_admin_topic_delete', {'id': topic.id}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ topic.id) }}">
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +40,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_topic_new') }}">Create new</a>
 {% endblock %}

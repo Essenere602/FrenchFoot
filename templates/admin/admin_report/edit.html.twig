@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+
 {% endblock %}
 {% block title %}Edit UserReport{% endblock %}
 
 {% block body %}
     <h1>Edit UserReport</h1>
-
-    {{ include('admin/admin_report/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_report_index') }}">back to list</a>
-
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_report_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
+    {{ include('admin/admin_report/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 {% endblock %}

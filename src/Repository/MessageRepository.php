@@ -66,4 +66,17 @@ class MessageRepository extends ServiceEntityRepository
             ->getQuery()
             ->execute();
     }
+    public function countUnreadMessagesForConversation(User $user, Conversation $conversation): int
+    {
+    return $this->createQueryBuilder('m')
+        ->select('COUNT(m.id)')
+        ->where('m.recipient = :user')
+        ->andWhere('m.conversation = :conversation')
+        ->andWhere('m.isRead = false')
+        ->setParameter('user', $user)
+        ->setParameter('conversation', $conversation)
+        ->getQuery()
+        ->getSingleScalarResult();
+    }
+
 }

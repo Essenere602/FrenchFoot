@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+
 {% endblock %}
-{% block title %}Edit UserBanned{% endblock %}
+{% block title %}Utilisateur Banni{% endblock %}
 
 {% block body %}
-    <h1>Edit UserBanned</h1>
-
-    {{ include('admin_banned/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_banned_index') }}">back to list</a>
-
+    <h1>Utilisiteur Banni</h1>
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_banned_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
+    {{ include('admin_banned/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 {% endblock %}

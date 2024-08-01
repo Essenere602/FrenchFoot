@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}New Post{% endblock %}
+{% block title %}Nouveau post{% endblock %}
 
 {% block body %}
-    <h1>Create new Post</h1>
-
+    <h1>Créer un nouveau post</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_post_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
     {{ include('admin/admin_post/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_post_index') }}">back to list</a>
 {% endblock %}

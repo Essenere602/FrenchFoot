@@ -2,14 +2,17 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
 {% block title %}Respond to Contact{% endblock %}
 
 {% block body %}
     <h1>Respond to Contact</h1>
-
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_contact_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button class="btn">Save Response</button>
+        <button class="">Supprimer</button>
     {{ form_end(form) }}
 {% endblock %}

@@ -1,48 +1,34 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/admin-index.css') }}">
+{% endblock %}
 
 {% block body %}
-    <div class="admin-menu-container">
+    <div class="admin-section">
+        <h1>Menu d'administration du site Footix</h1>
+        <span class="welcome-message">
+            Bienvenue, {{ app.user.username }}
+            {% if app.user.userProfile and app.user.userProfile.club and app.user.userProfile.club.logoClub %}
+                <img src="{{ asset(app.user.userProfile.club.logoClub) }}" alt="{{ app.user.userProfile.club.name }}" class="club-logo">
+            {% endif %}
+        </span>
+        <p>
+            Tu trouveras ici toutes les fonctionnalités liées à la gestion du site.
+            Réfères-toi au support d'utilisation que tu as reçu lors de ta désignation en tant qu'administrateur.
+        </p>
+        <div class="admin-menu-container">
             <ul class="admin-menu">
-                <a href="{{ path("app_admin_category_index") }}">CRUD Category</a>
-                <a href="{{ path("app_admin_topic_index") }}">CRUD Topic</a>
-                <a href="{{ path("app_admin_post_index") }}">CRUD Post</a>
-                <a href="{{ path("app_admin_contact_index") }}">CRUD Contact</a>
-                <a href="{{ path("app_admin_report_index") }}">CRUD Report</a>
-                <a href="{{ path("app_admin_club_index") }}">CRUD Club</a>
-                <a href="{{ path("app_admin_championnat_index") }}">CRUD Championnat</a>
-                <a href="{{ path("app_admin_card_index") }}">CRUD Card</a>
-                <a href="{{ path("app_admin_banned_index") }}">CRUD Bannissement</a>
+                <a href="{{ path("app_admin_category_index") }}">Gestion des categories</a>
+                <a href="{{ path("app_admin_topic_index") }}">Gestion des sujets</a>
+                <a href="{{ path("app_admin_post_index") }}">Gestion des posts</a>
+                <a href="{{ path("app_admin_contact_index") }}">Gestion des prises de contact</a>
+                <a href="{{ path("app_admin_report_index") }}">Gestion des signalements</a>
+                <a href="{{ path("app_admin_club_index") }}">Gestion des clubs</a>
+                <a href="{{ path("app_admin_championnat_index") }}">Gestion des championnats</a>
+                <a href="{{ path("app_admin_card_index") }}">Gestion des cartes</a>
+                <a href="{{ path("app_admin_banned_index") }}">Gestion des bannissements</a>
             </ul>
+        </div>
     </div>
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        .admin-menu-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Centrer verticalement */
-        }
-
-        .admin-menu  {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: center; /* Centrer les éléments de la liste */
-        }
-
-        .admin-menu {
-            margin-bottom: 10px;
-        }
-
-        .admin-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            display: block;
-            padding: 10px;
-        }
-    </style>
-{% endblock %}

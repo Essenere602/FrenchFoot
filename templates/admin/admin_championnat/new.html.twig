@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
 {% endblock %}
 {% block title %}New Championnat{% endblock %}
 
 {% block body %}
     <h1>Create new Championnat</h1>
-
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_championnat_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
     {{ include('admin/admin_championnat/_form.html.twig') }}
-
-    <a href="{{ path('app_admin_championnat_index') }}">back to list</a>
 {% endblock %}

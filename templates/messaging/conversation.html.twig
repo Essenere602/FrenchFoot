@@ -1,22 +1,27 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
 {% endblock %}
 
 {% block body %}
-    <h1>Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}</h1>
+    <div class="container">
+        <h1>Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}</h1>
 
-    <div class="messages">
-        {% for message in messages %}
-            <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
-                <p>{{ message.content }}</p>
-                <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
-            </div>
-        {% endfor %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
+                    <p>{{ message.content }}</p>
+                    <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
+                </div>
+            {% endfor %}
+        </div>
+
+        {{ form_start(form) }}
+            {{ form_label(form.content, 'Message') }}
+            {{ form_widget(form.content, {'attr': {'placeholder': 'Écrire un message...'}}) }}
+            <button type="submit">Envoyer</button>
+        {{ form_end(form) }}
     </div>
-
-    {{ form_start(form) }}
-        {{ form_row(form.content, {'attr': {'placeholder': 'Écrire un message...'}}) }}
-        <button type="submit">Envoyer</button>
-    {{ form_end(form) }}
 {% endblock %}
+

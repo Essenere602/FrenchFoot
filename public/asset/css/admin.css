@@ -1,5 +1,5 @@
 /* Styles de base pour le tableau */
-.table {
+/*.table {
     width: 80%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -36,7 +36,7 @@
 }
 
 /* Styles pour les liens */
-a {
+/*a {
     color: #131313;
     text-decoration: none;
     
@@ -47,7 +47,7 @@ a:hover {
 }
 
 /* Styles pour les boutons */
-.btn {
+/*.btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -75,8 +75,83 @@ a:hover {
 }
 
 /* Styles pour le titre */
-h1 {
+/*h1 {
     margin: 20px 0;
     font-size: 24px;
     color: #333;
+}
+*/
+/* Styles pour la page Club Index */
+h1 {
+    font-size: 24px;
+    color: #131313;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Styles pour le tableau */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background-color: #C8A764;
+    color: #fff;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #C8A764;
+}
+
+.table th {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table td a {
+    text-decoration: none;
+    color: #131313;
+    margin-right: 10px;
+}
+
+.table td a:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour le lien "Create new" */
+/* Styles pour le lien "Create new" */
+.create-new-container {
+    text-align: center; /* Centre horizontalement le contenu */
+    margin-bottom: 20px; /* Ajoute de l'espace sous le lien */
+}
+
+.create-new-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #C8A764;
+    color: #131313;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.create-new-link:hover {
+    background-color: #131313;
+    color: #C8A764;
+}
+.btn {
+    background: rgb(245, 84, 84);
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgb(245, 84, 84);
 }

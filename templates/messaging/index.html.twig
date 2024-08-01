@@ -1,28 +1,33 @@
 {% extends 'base.html.twig' %}
-
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/conversation.css') }}">
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>Mes Conversations</h1>
-        <ul>
-            {% for conversation in conversations %}
-                <li>
-                    <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
-                        Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+ 
 
         <div class="autocomplete-container">
             <h2>Nouvelle Conversation</h2>
             <input type="text" id="username-autocomplete" placeholder="Rechercher un utilisateur...">
             <div id="autocomplete-results"></div>
         </div>
+
+<h1>Mes Conversations</h1>
+
+<ul>
+    {% for conversation in conversations %}
+        {% set unreadMessages = unread_messages_for_conversation(conversation) %}
+        <li>
+            <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
+                {% if unreadMessages > 0 %}
+                    <span class="notification-dot"></span>
+                {% endif %}
+                Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
 
     </div>
 

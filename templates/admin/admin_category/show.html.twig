@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+{% endblock %}
 
-{% block title %}Category{% endblock %}
+{% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
-
+    <h1>Categorie</h1>
+    <div class="create-new-container">
+    <a href="{{ path('app_admin_category_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -17,10 +23,5 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_category_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_category_edit', {'id': category.id}) }}">edit</a>
-
     {{ include('admin/admin_category/_delete_form.html.twig') }}
 {% endblock %}

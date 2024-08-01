@@ -14,7 +14,7 @@ class UserReportType extends AbstractType
     {
         $builder
             ->add('reason', TextareaType::class, [
-                'label' => 'Reason for Reporting',
+                'label' => 'Raison du signalement :',
                 'attr' => ['rows' => 5]
             ]);
     }

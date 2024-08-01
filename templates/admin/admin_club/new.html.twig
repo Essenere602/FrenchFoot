@@ -2,17 +2,19 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}New Club{% endblock %}
+{% block title %}Nouveau club{% endblock %}
 
 {% block body %}
-    <h1>Create new Club</h1>
+    <h1>Créer un nouveau club</h1>
+    <div class="create-new-container">
+        <a href="{{ path('app_admin_club_index') }}" class="create-new-link">Retour à la liste</a>
+    </div>
 
     {{ form_start(form) }}
         {{ form_row(form.name) }}
         {{ form_row(form.logoFile) }}
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="submit" class="">Créer</button>
     {{ form_end(form) }}
-
-    <a href="{{ path('app_admin_club_index') }}">back to list</a>
 {% endblock %}
