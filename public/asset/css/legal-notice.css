@@ -1,0 +1,62 @@
+/* Mentions Légales Styles */
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    text-align: center;
+}
+
+.legal-container h1 {
+    font-size: 24px;
+    color: #C8A764;
+    margin-bottom: 30px;
+}
+
+.legal-container .section {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.legal-container h2 {
+    font-size: 20px;
+    color: #C8A764;
+    margin-bottom: 10px;
+}
+
+.legal-container p {
+    font-size: 16px;
+    color: #131313;
+    margin: 5px 0;
+}
+
+.legal-container a {
+    color: #C8A764;
+    text-decoration: none;
+}
+
+.legal-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+    .legal-container {
+        padding: 10px;
+    }
+
+    .legal-container h1 {
+        font-size: 22px;
+    }
+
+    .legal-container h2 {
+        font-size: 18px;
+    }
+
+    .legal-container p {
+        font-size: 14px;
+    }
+}

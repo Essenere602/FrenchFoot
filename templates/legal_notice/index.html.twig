@@ -1,8 +1,35 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/legal-notice.css') }}">
+{% endblock %}
 
 {% block title %}Mentions Légales{% endblock %}
 
 {% block body %}
-    <h1>Mentions légales</h1>
-    <p>Contenu des mentions légales...</p>
+    <div class="legal-container">
+        <h1>Mentions Légales</h1>
+        
+        <div class="section">
+            <h2>Responsable éditorial</h2>
+            <p>Rahamnia Samuel</p>
+            <p>Email: <a href="mailto:samuel.rahamnia@gmail.com">samuel.rahamnia@gmail.com</a></p>
+        </div>
+        
+        <div class="section">
+            <h2>Responsable du développement</h2>
+            <p>Rahamnia Samuel</p>
+        </div>
+        
+        <div class="section">
+            <h2>Hébergeur</h2>
+            <p>OVH</p>
+            <p>Adresse de l'hébergeur: 2 rue Kellermann, 59100 Roubaix, France</p>
+        </div>
+        
+        <div class="section">
+            <h2>Crédits photos</h2>
+            <p>Bannière: Unsplash</p>
+            <p>Illustration des forums: Pexels</p>
+        </div>
+    </div>
 {% endblock %}

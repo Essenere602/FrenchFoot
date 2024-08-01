@@ -8,13 +8,14 @@
         {% endblock %}
 
 {% block body %}
+<h1 class="page-title">Forum et Football</h1>
 <div class="main-container">
 <div class="card-container">
     {% for card in cards %}
         <div class="card">
             <img src="{{ asset(card.image) }}" alt="{{ card.title }}">
             <div class="card-content">
-                <h1 class="oswald">{{ card.title }} {{ card.codeFlag|raw }}</h1>
+                <h2 class="oswald">{{ card.title }} {{ card.codeFlag|raw }}</h2>
                 <p class="card-description">{{ card.description }}</p>
                 <a href="{{ card.link }}" class="card-link">En savoir plus</a>
             </div>

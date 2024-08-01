@@ -34,7 +34,7 @@
                     {% for team in standings.standings[0].table %}
                         <tr class="{% if team.position <= 4 %}champions-league{% elseif team.position == 5 %}europa-league{% elseif team.position == 6 %}conference-league{% elseif team.position > 17 %}relegation{% endif %}">
                             <td class="position">{{ team.position }}</td>
-                            <td class="team-logo"><img src="{{ asset(team.team.logo) }}" alt="Logo de {{ team.team.name }} " class="logo-img"></td>
+                            <td class="team-logo"><img src="{{ asset(team.team.crest) }}" alt="Logo de {{ team.team.name }} " class="logo-img"></td>
                             <td class="team-name">{{ team.team.name }}</td>
                             <td>{{ team.points }}</td>
                             <td>{{ team.playedGames }}</td>

@@ -1,8 +1,48 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello PrivacyPoliceController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/privacy-police.css') }}">
+{% endblock %}
+{% block title %}Politique de Confidentialité{% endblock %}
 
 {% block body %}
-    <h1>Politique de confidentialité</h1>
-    <p>Contenu de la politique de confidentialité...</p>
+    <div class="privacy-policy-container">
+        <h1>Politique de Confidentialité</h1>
+
+        <h2>Collecte des informations</h2>
+        <p>
+            Nous collectons des informations lorsque vous vous inscrivez sur notre site, vous vous connectez à votre compte, postez un message sur le forum, et / ou lorsque vous vous déconnectez. Les informations collectées incluent votre nom, votre adresse e-mail et autres informations personnelles que vous pourriez fournir. Vous pouvez nous contacter à tout moment pour toutes questions à ce sujet.
+        </p>
+
+        <h2>Utilisation des informations</h2>
+        <p>
+            Toutes les informations que nous recueillons auprès de vous peuvent être utilisées pour :
+            <ul>
+                <li>Personnaliser votre expérience et répondre à vos besoins individuels</li>
+                <li>Améliorer notre site Web</li>
+                <li>Améliorer le service client et vos besoins de prise en charge</li>
+                <li>Vous contacter par e-mail</li>
+                <li>Vous permettre de communiquer entre utilisateurs</li>
+            </ul>
+        </p>
+
+        <h2>Confidentialité des informations</h2>
+        <p>
+            Nous sommes les seuls propriétaires des informations collectées sur ce site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre entreprise pour n'importe quelle raison sans votre consentement.
+        </p>
+
+        <h2>Protection des informations</h2>
+        <p>
+            Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Nous utilisons un cryptage de pointe pour protéger les informations sensibles transmises en ligne. Nous protégeons également vos informations hors ligne. Seuls les employés qui ont besoin d'effectuer un travail spécifique (par exemple, vous contacter) ont accès aux informations personnelles identifiables. Les ordinateurs et serveurs utilisés pour stocker des informations personnelles identifiables sont conservés dans un environnement sécurisé.
+        </p>
+
+        <h2>Utilisation des cookies</h2>
+        <p>
+            Nous n'utilisons aucun cookie tiers, uniquement des cookies nécessaires au bon fonctionnement du site. Selon les lignes directrices de la CNIL, nous ne sommes pas tenus d'obtenir le consentement des utilisateurs pour les cookies de fonctionnement. Vous pouvez trouver plus d'informations à ce sujet sur le site de la <a href="https://www.cnil.fr/fr/cookies-et-traceurs-que-dit-la-loi" target="_blank">CNIL</a>.
+        </p>
+
+        <h2>Consentement</h2>
+        <p>
+            En utilisant notre site, vous consentez à notre politique de confidentialité.
+        </p>
+    </div>
 {% endblock %}

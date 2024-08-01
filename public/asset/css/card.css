@@ -105,6 +105,10 @@
     font-weight: 400;
     line-height: 120.926%; 
 } */
+.page-title {
+    text-align: center;
+    margin: 20px auto;
+  }
 .main-container {
     display: flex;
     justify-content: center; /* Centre horizontalement */

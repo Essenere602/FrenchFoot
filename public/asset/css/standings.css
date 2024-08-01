@@ -90,6 +90,11 @@ a {
 .legend .relegation { background-color: #ff00ff; }
 */
 /* Conteneur du classement */
+
+.page-title {
+  text-align: center;
+  margin: 20px auto;
+}
 .standings-section {
   max-width: 1200px;
   margin: 20px auto;
