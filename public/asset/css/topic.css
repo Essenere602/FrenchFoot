@@ -1,5 +1,6 @@
 /* Conteneur du forum */
 .container {
+    position: relative; /* Ajoute cette ligne */
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -61,6 +62,19 @@
     background-color: #131313;
     color: #C8A764;
 
+}
+
+.back-button {
+    position: absolute;
+    top: 20px; /* Ajustez selon vos besoins */
+    left: 20px; /* Ajustez selon vos besoins */
+    text-decoration: none;
+    font-size: 20px; /* Ajustez selon vos besoins */
+    color: #007bff; /* Ajustez selon vos besoins */
+}
+
+.back-button:hover {
+    text-decoration: underline;
 }
 
 /* Liste des sujets */

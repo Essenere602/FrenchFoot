@@ -3,14 +3,14 @@
         <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
 {% endblock %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Réinitialiser le mot de passe{% endblock %}
 
 {% block body %}
     <form method="post">
     {{ form_start(resetForm) }}
-    <h1 class="form-title">Reset your password</h1>
+    <h1 class="form-title">Réinitialiser le mot de passe</h1>
         {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
+        <button class="btn btn-primary">Réinitialiser le mot de passe</button>
     {{ form_end(resetForm) }}
     </form>
 {% endblock %}

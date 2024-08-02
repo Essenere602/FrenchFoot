@@ -100,3 +100,36 @@ form a.reset {
     transition: background-color 0.3s ease;
     margin: 10px auto; /* Ajoute de l'espace autour et centre le lien/bouton */
 }
+a {
+    text-decoration: none;
+    color: #131313;
+}
+/* Style pour le conteneur de la case à cocher et du texte */
+.agree-terms-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement le texte et la checkbox */
+    margin-bottom: 8px; /* Espacement sous la ligne de la case à cocher */
+}
+
+/* Style pour le texte de l'accord */
+.agree-terms-container label {
+    margin-right: 8px; /* Espace entre le texte et la checkbox */
+    margin-bottom: 0; /* Élimine l'espacement sous le texte */
+}
+
+/* Style pour la checkbox elle-même */
+.agree-terms-container input[type="checkbox"] {
+    margin-right: 8px; /* Ajoute un petit espace à droite de la checkbox */
+}
+
+/* Style pour le lien de la politique de confidentialité */
+.privacy-policy-link {
+    display: block; /* Affiche le lien sur une nouvelle ligne */
+    margin-top: 4px; /* Espacement au-dessus du lien */
+    color: #131313; /* Couleur du lien */
+    text-decoration: none; /* Supprime le soulignement du lien */
+}
+
+.privacy-policy-link:hover {
+    text-decoration: underline; /* Sous-ligne le lien au survol */
+}

@@ -24,20 +24,22 @@
 }
 
 .matches-section li {
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr; /* Trois colonnes avec une largeur fixe pour la colonne du score */
+  align-items: center;
   padding: 15px;
   border-bottom: 1px solid #C8A764;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .matches-section li:last-child {
   border-bottom: none;
 }
 
+/* Conteneur de chaque équipe */
 .matches-section .team {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .matches-section .team img {
@@ -57,7 +59,7 @@
   font-size: 18px;
   color: #131313;
   text-align: center;
-  flex: 1; /* Permet au score de prendre toute la place disponible */
+  /* Pas de flex: 1 ici car nous utilisons grid pour la disposition */
 }
 
 /* Pagination */
@@ -99,12 +101,16 @@
   }
 
   .matches-section li {
-      flex-direction: column;
-      align-items: center;
+      grid-template-columns: 1fr; /* En colonne unique sur petits écrans */
+      grid-template-areas:
+        "team-home"
+        "score"
+        "team-away";
+      align-items: start;
   }
 
   .matches-section .team {
-      margin-bottom: 10px;
+      justify-content: center;
   }
 
   .matches-section .score {

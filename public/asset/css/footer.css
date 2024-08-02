@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 0;
-    font-family: 'Arial', sans-serif;
     margin-top: 50px;
     bottom: 0;
 }
@@ -42,4 +41,35 @@
 
 .footer-nav a:hover svg {
     fill: #F5E5D8; /* Couleur de l'icône au survol */
+}
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 20px 0; /* Augmente le padding vertical pour donner plus d'espace */
+        height: auto; /* Permet au footer de s'ajuster automatiquement */
+    }
+
+    .footer-container {
+        padding: 0 10px; /* Réduit le padding horizontal pour éviter le débordement */
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column; /* Aligne les éléments en colonne */
+        align-items: center; /* Centre les éléments horizontalement */
+        padding: 0; /* Réduit le padding pour éviter le débordement */
+    }
+
+    .footer-nav a {
+        color: #C8A764; /* Couleur des liens */
+        text-decoration: none;
+        margin: 5px 0; /* Espacement vertical entre les liens */
+        font-size: 16px; /* Augmente la taille de la police pour meilleure lisibilité */
+    }
+
+    .footer-nav svg {
+        fill: #C8A764; /* Couleur de l'icône */
+        margin-left: 0; /* Supprime l'espace à gauche de l'icône pour éviter les débordements */
+        margin-top: 10px; /* Ajoute un espace au-dessus de l'icône pour séparer les liens */
+    }
 }

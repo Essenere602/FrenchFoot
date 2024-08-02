@@ -1,0 +1,45 @@
+{# templates/football/championnat_data/_matches.html.twig #}
+<div class="matches-section">
+    <h2>Matches</h2>
+    <ul>
+        {% if matches is defined %}
+            {% for match in matches %}
+                <li>
+                    <div class="team">
+                        <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}">
+                        <span class="team-name">{{ match.homeTeam.name }}</span>
+                    </div>
+                    <div class="score">
+                        {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
+                            {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
+                        {% else %}
+                            À Venir
+                        {% endif %}
+                    </div>
+                    <div class="team">
+                        <span class="team-name">{{ match.awayTeam.name }}</span>
+                        <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}">
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No matches available</li>
+        {% endif %}
+    </ul>
+
+    <div class="pagination">
+        {% if pagination.currentPageNumber > 1 %}
+            <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber - 1 }) }}" class="pagination-button">
+                <span>&lt; Journée {{ pagination.currentPageNumber - 1 }}</span>
+            </a>
+        {% endif %}
+
+        <span class="pagination-current">Journée {{ pagination.currentPageNumber }}</span>
+
+        {% if pagination.currentPageNumber < pagination.pageCount %}
+            <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber + 1 }) }}" class="pagination-button">
+                <span>Journée {{ pagination.currentPageNumber + 1 }} &gt;</span>
+            </a>
+        {% endif %}
+    </div>
+</div>

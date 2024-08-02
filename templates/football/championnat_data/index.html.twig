@@ -12,6 +12,9 @@
     <h1 class="page-title">{{ championnat.ligue }}</h1>
 
     <div class="standings-section">
+    <a href="http://127.0.0.1:8000/championnats" id="back-button" class="back-button">
+        &#8592; Retour
+    </a>
         <h2>Standings</h2>
         <table class="standings-table">
             <thead>
@@ -62,48 +65,58 @@
         <p><span class="legend-color relegation"></span> Relegation</p>
     </div>
 
-    <div class="matches-section">
-        <h2>Matches</h2>
-        <ul>
-            {% if matches is defined %}
-                {% for match in matches %}
-                    <li>
-                        <div class="team">
-                            <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}">
-                            <span class="team-name">{{ match.homeTeam.name }}</span>
-                        </div>
-                        <div class="score">
-                            {% if match.score.fullTime.homeTeam is defined and match.score.fullTime.awayTeam is defined %}
-                                {{ match.score.fullTime.homeTeam }} : {{ match.score.fullTime.awayTeam }}
-                            {% else %}
-                                Not <br> played yet
-                            {% endif %}
-                        </div>
-                        <div class="team">
-                            <span class="team-name">{{ match.awayTeam.name }}</span>
-                            <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}">
-                        </div>
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li>No matches available</li>
-            {% endif %}
-        </ul>
-
-        <div class="pagination">
-            {% if pagination.currentPageNumber > 1 %}
-                <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber - 1 }) }}" class="pagination-button">
-                    <span>&lt; Journée {{ pagination.currentPageNumber - 1 }}</span>
-                </a>
-            {% endif %}
-
-            <span class="pagination-current">Journée {{ pagination.currentPageNumber }}</span>
-
-            {% if pagination.currentPageNumber < pagination.pageCount %}
-                <a href="{{ path('championnat_data', { id: championnat.id, page: pagination.currentPageNumber + 1 }) }}" class="pagination-button">
-                    <span>Journée {{ pagination.currentPageNumber + 1 }} &gt;</span>
-                </a>
-            {% endif %}
-        </div>
+    <div id="matches-container">
+        {% include 'football/championnat_data/_matches.html.twig' %}
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function loadMatches(url, addToHistory = true) {
+            fetch(url, {
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("matches-container").innerHTML = html;
+                if (addToHistory) {
+                    history.pushState(null, "", url);
+                }
+                attachPaginationHandlers();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function attachPaginationHandlers() {
+            document.querySelectorAll(".pagination-button").forEach(function(button) {
+                button.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const url = this.getAttribute("href");
+                    loadMatches(url);
+                });
+            });
+        }
+
+        window.addEventListener("popstate", function(event) {
+            const url = window.location.href;
+            loadMatches(url, false); // Don't add to history when navigating back
+        });
+
+        attachPaginationHandlers();
+
+        document.getElementById("back-button").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "http://127.0.0.1:8000/championnats";
+        });
+
+        // Override browser back button behavior
+        window.onpopstate = function(event) {
+            window.location.href = "http://127.0.0.1:8000/championnats";
+        };
+    });
+</script>
 {% endblock %}

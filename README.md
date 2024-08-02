@@ -2,7 +2,7 @@
 Projet Certification
 =====================
 
- Style : Contenu suxérie. Back page partout pour UX. Contrôle du contenu des mails. Corriger beug "not played yet". Affiner détails pour version mobile/desktop.
+ Style : Contenu sérieux. Contrôle du contenu des mails. Affiner détails pour version mobile/desktop.
 
  Contrôle Zolive
 

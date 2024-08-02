@@ -18,7 +18,13 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="agree-terms-container">
+            {{ form_widget(registrationForm.agreeTerms) }}
+            <label for="">
+                {{ form_label(registrationForm.agreeTerms) }}
+            </label>
+        </div>    
+        <a href="{{ path('app_privacy_police') }}" class="privacy-policy-link" target="_blank">Politique de confidentialité</a>
         <button type="submit" class="btn">S'inscrire &#9917;</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

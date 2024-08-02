@@ -102,6 +102,7 @@ a {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ajoutez cette ligne */
 }
 
 /* Titre du classement */
@@ -161,7 +162,19 @@ a {
   justify-content: space-around;
   margin-top: 20px;
 }
+.back-button {
+  position: absolute;
+  top: 20px; /* Ajustez selon vos besoins */
+  left: 20px; /* Ajustez selon vos besoins */
+  text-decoration: none;
+  font-size: 20px; /* Ajustez selon vos besoins */
+  color: #007bff; /* Ajustez selon vos besoins */
+  z-index: 10; /* Assurez-vous qu'il est au-dessus des autres éléments */
+}
 
+.back-button:hover {
+  text-decoration: underline;
+}
 .legend p {
   display: flex;
   align-items: center;
