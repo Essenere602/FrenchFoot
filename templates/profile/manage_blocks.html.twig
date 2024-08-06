@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gérer les blocages</h1>
+
+    <form method="POST" action="{{ path('app_manage_blocks') }}">
+        <label for="block_username">Bloquer un utilisateur :</label>
+        <input type="text" id="block_username" name="block_username" placeholder="Chercher un utilisateur" required>
+        <div id="autocomplete-results"></div>
+        <button type="submit">Bloquer</button>
+    </form>
+
+    <h2>Utilisateurs bloqués</h2>
+    <ul>
+        {% for block in blocksInitiated %}
+            <li>
+                {{ block.getBlocked().getUsername() }}
+                <a href="{{ path('app_unblock_user', {'id': block.getId()}) }}">Débloquer</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        document.getElementById('block_username').addEventListener('input', function() {
+            let query = this.value;
+            fetch('{{ path('user_autocomplete') }}?q=' + query)
+                .then(response => response.json())
+                .then(data => {
+                    let results = document.getElementById('autocomplete-results');
+                    results.innerHTML = '';
+                    data.forEach(user => {
+                        let div = document.createElement('div');
+                        div.textContent = user.username;
+                        div.dataset.userId = user.id;
+                        div.addEventListener('click', function() {
+                            document.getElementById('block_username').value = this.textContent;
+                            results.innerHTML = '';
+                        });
+                        results.appendChild(div);
+                    });
+                });
+        });
+    </script>
+{% endblock %}

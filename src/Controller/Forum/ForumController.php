@@ -14,9 +14,11 @@ use App\Form\TopicType;
 use App\Form\UserReportType;
 use App\Repository\CardRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,11 +28,13 @@ class ForumController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
     private PaginatorInterface $paginator;
+    private Security $security;
 
-    public function __construct(EntityManagerInterface $entityManager, PaginatorInterface $paginator)
+    public function __construct(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Security $security)
     {
         $this->entityManager = $entityManager;
         $this->paginator = $paginator;
+        $this->security = $security;
     }
 
     #[Route('/forum', name: 'app_forum', methods: ['GET'])]
@@ -49,35 +53,48 @@ class ForumController extends AbstractController
     #[Route('/forum/category/{id}', name: 'forum_category_show', methods: ['GET', 'POST'])]
     public function showCategory(Request $request, Category $category): Response
     {
+        $currentUser = $this->getUser();
         $topics = $category->getTopics();
-
-        $topic = new Topic();
-        if ($this->getUser()) {
+        
+        if ($currentUser) {
+            // Récupérer les utilisateurs bloqués par l'utilisateur actuel
+            $blockedUsers = $this->entityManager->getRepository(User::class)->findBlockedUsers($currentUser);
+    
+            // Filtrer les sujets pour exclure ceux créés par des utilisateurs bloqués
+            $visibleTopics = array_filter($topics->toArray(), function (Topic $topic) use ($blockedUsers) {
+                foreach ($blockedUsers as $blockedUser) {
+                    if ($topic->getUser() === $blockedUser) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+    
+            // Créer un nouveau sujet
+            $topic = new Topic();
             $topic->setCategory($category);
-            $topic->setUser($this->getUser());
+            $topic->setUser($currentUser);
             $topic->setCreationDate(new \DateTime());
-
+    
             $form = $this->createForm(TopicType::class, $topic);
             $form->handleRequest($request);
-
+    
             if ($form->isSubmitted() && $form->isValid()) {
                 $this->entityManager->persist($topic);
                 $this->entityManager->flush();
-
+    
                 return $this->redirectToRoute('forum_topic_show', ['id' => $topic->getId()]);
             }
-
+    
             return $this->render('forum/category_show.html.twig', [
                 'category' => $category,
-                'topics' => $topics,
+                'topics' => $visibleTopics, // Utiliser les sujets filtrés
                 'form' => $form->createView(),
             ]);
         } else {
-            // Rediriger vers la page de connexion
             return $this->redirectToRoute('app_login');
         }
     }
-
     #[Route('/forum/category/{categoryId}/new-topic', name: 'forum_new_topic', methods: ['GET', 'POST'])]
     public function newTopic(Request $request, int $categoryId): Response
     {
@@ -108,7 +125,7 @@ class ForumController extends AbstractController
     }
 
     #[Route('/forum/topic/{id}', name: 'forum_topic_show', methods: ['GET', 'POST'])]
-    public function showTopic(Request $request, int $id): Response
+    public function showTopic(Request $request, int $id, PostRepository $postRepository): Response
     {
         $topic = $this->entityManager->getRepository(Topic::class)->find($id);
 
@@ -116,13 +133,14 @@ class ForumController extends AbstractController
             throw $this->createNotFoundException('Topic not found');
         }
 
+        $currentUser = $this->security->getUser();
         $page = $request->query->getInt('page', 1);
-        $posts = $this->entityManager->getRepository(Post::class)->findByTopicPaginated($id, $page);
+        $posts = $postRepository->findByTopicPaginated($currentUser, $id, $page);
 
         $post = new Post();
-        if ($this->getUser()) {
+        if ($currentUser) {
             $post->setTopic($topic);
-            $post->setUser($this->getUser());
+            $post->setUser($currentUser);
 
             $form = $this->createForm(PostType::class, $post);
             $form->handleRequest($request);
@@ -143,7 +161,6 @@ class ForumController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
     }
-
     #[Route('/forum/post/{id}/report', name: 'forum_post_report', methods: ['GET', 'POST'])]
     public function reportPost(Request $request, Post $post): Response
     {

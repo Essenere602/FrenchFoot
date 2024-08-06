@@ -8,14 +8,21 @@
     <div class="container">
         <h1>Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}</h1>
 
-        <div class="messages">
-            {% for message in messages %}
-                <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
-                    <p>{{ message.content }}</p>
-                    <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
-                </div>
-            {% endfor %}
+       <div class="messages">
+    {% for message in messages %}
+        <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
+            <p>{{ message.content }}</p>
+            <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
+            {% if message.sender == app.user %}
+                <form action="{{ path('app_message_delete', {id: message.id}) }}" method="post" style="display: inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+                    <button type="submit" class="btn btn-danger btn-sm">X</button>
+                </form>
+            {% endif %}
         </div>
+    {% endfor %}
+</div>
+
 
         {{ form_start(form) }}
             {{ form_label(form.content, 'Message') }}

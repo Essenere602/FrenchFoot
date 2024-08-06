@@ -5,6 +5,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use App\Entity\Block;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -42,6 +45,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 45, nullable: true)]
     private ?string $ipAddress = null;
+
+    #[ORM\OneToMany(mappedBy: 'blocker', targetEntity: Block::class, cascade: ['persist', 'remove'])]
+    private Collection $blocksInitiated;
+
+    #[ORM\OneToMany(mappedBy: 'blocked', targetEntity: Block::class, cascade: ['persist', 'remove'])]
+    private Collection $blocksReceived;
+
+    public function __construct()
+    {
+        $this->blocksInitiated = new ArrayCollection();
+        $this->blocksReceived = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -160,6 +175,63 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIpAddress(?string $ipAddress): self
     {
         $this->ipAddress = $ipAddress;
+        return $this;
+    }
+    /**
+     * @return Collection<int, Block>
+     */
+    public function getBlocksInitiated(): Collection
+    {
+        return $this->blocksInitiated;
+    }
+
+    public function addBlockInitiated(Block $block): self
+    {
+        if (!$this->blocksInitiated->contains($block)) {
+            $this->blocksInitiated->add($block);
+            $block->setBlocker($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlockInitiated(Block $block): self
+    {
+        if ($this->blocksInitiated->removeElement($block)) {
+            if ($block->getBlocker() === $this) {
+                $block->setBlocker(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Block>
+     */
+    public function getBlocksReceived(): Collection
+    {
+        return $this->blocksReceived;
+    }
+
+    public function addBlockReceived(Block $block): self
+    {
+        if (!$this->blocksReceived->contains($block)) {
+            $this->blocksReceived->add($block);
+            $block->setBlocked($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlockReceived(Block $block): self
+    {
+        if ($this->blocksReceived->removeElement($block)) {
+            if ($block->getBlocked() === $this) {
+                $block->setBlocked(null);
+            }
+        }
+
         return $this;
     }
 }

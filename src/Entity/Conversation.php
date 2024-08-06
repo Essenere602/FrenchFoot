@@ -58,6 +58,15 @@ class Conversation
         $this->user2 = $user2;
         return $this;
     }
+    public function getOtherUser(User $currentUser): ?User
+    {
+        if ($this->user1 === $currentUser) {
+            return $this->user2;
+        } elseif ($this->user2 === $currentUser) {
+            return $this->user1;
+        }
+        return null; // Retourne null si l'utilisateur n'est pas trouvé dans la conversation
+    }
 
     /**
      * @return Collection<int, Message>

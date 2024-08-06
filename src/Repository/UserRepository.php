@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Entity\Block;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -30,6 +31,16 @@ class UserRepository extends ServiceEntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();
+    }
+    public function findBlockedUsers(User $user): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->innerJoin('u.blocksReceived', 'b')
+            ->where('b.blocker = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
     }
 }
 

@@ -25,6 +25,10 @@
                 {% endif %}
                 Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}
             </a>
+            <form action="{{ path('app_message_delete_conversation', {id: conversation.id}) }}" method="post" style="display: inline;">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ conversation.id) }}">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
         </li>
     {% endfor %}
 </ul>
