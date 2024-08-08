@@ -102,6 +102,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
         return $this;
     }
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+        ]);
+    }
+
+    public function unserialize(string $serialized): void
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+        ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
 
     public function eraseCredentials(): void
     {

@@ -15,7 +15,7 @@
     <a href="http://127.0.0.1:8000/championnats" id="back-button" class="back-button">
         &#8592; Retour
     </a>
-        <h2>Standings</h2>
+        <h2>Classement</h2>
         <table class="standings-table">
             <thead>
                 <tr>
@@ -51,7 +51,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="11">No standings available</td>
+                        <td colspan="11">Aucun classement disponible</td>
                     </tr>
                 {% endif %}
             </tbody>
@@ -118,5 +118,21 @@
             window.location.href = "http://127.0.0.1:8000/championnats";
         };
     });
+    
+            document.addEventListener('DOMContentLoaded', () => {
+
+            const burger = document.querySelector('.burger');
+
+            const navLinks = document.querySelector('.nav-links');
+
+            burger.addEventListener('click', () => {
+
+            navLinks.classList.toggle('active');
+
+            burger.classList.toggle('toggle');
+                
+                        });
+            });
+        
 </script>
 {% endblock %}

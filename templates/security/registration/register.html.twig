@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
     {% endblock %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
@@ -19,9 +19,9 @@
             label: 'Password'
         }) }}
         <div class="agree-terms-container">
-            {{ form_widget(registrationForm.agreeTerms) }}
+            {{ form_widget(registrationForm.Consentement) }}
             <label for="">
-                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.Consentement) }}
             </label>
         </div>    
         <a href="{{ path('app_privacy_police') }}" class="privacy-policy-link" target="_blank">Politique de confidentialité</a>

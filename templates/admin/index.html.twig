@@ -16,6 +16,7 @@
             Tu trouveras ici toutes les fonctionnalités liées à la gestion du site.
             Réfères-toi au support d'utilisation que tu as reçu lors de ta désignation en tant qu'administrateur.
         </p>
+        {% if is_granted('ROLE_ADMIN') %}
         <div class="admin-menu-container">
             <ul class="admin-menu">
                 <a href="{{ path("app_admin_category_index") }}">Gestion des categories</a>
@@ -29,6 +30,7 @@
                 <a href="{{ path("app_admin_banned_index") }}">Gestion des bannissements</a>
             </ul>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
 

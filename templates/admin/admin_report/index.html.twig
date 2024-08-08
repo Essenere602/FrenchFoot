@@ -4,10 +4,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}UserReport Index{% endblock %}
+{% block title %}Gestion des signalements{% endblock %}
 
 {% block body %}
-    <h1>UserReport Index</h1>
+    <h1>Gestion des signalements</h1>
+    {% if is_granted('ROLE_ADMIN') %}
 
     <div class="create-new-container">
         <a href="{{ path('app_admin_report_new') }}" class="create-new-link">Créer un nouveau signalement</a>
@@ -18,9 +19,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Reason</th>
-                <th>Reported User</th>
-                <th>Reporting User</th>
+                <th>Raison</th>
+                <th>Utilisateur signaleur</th>
+                <th>Utilisateur signalé</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -50,9 +51,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">No records found</td>
+                <td colspan="5">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+        {% endif %}
 {% endblock %}

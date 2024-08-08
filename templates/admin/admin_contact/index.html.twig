@@ -3,10 +3,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Contact index{% endblock %}
+{% block title %}Gestion des contacts{% endblock %}
 
 {% block body %}
-    <h1>Contact index</h1>
+    <h1>Gestion des contacts</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_contact_new') }}" class="create-new-link">Créer un nouveau contact</a>
     </div>
@@ -14,11 +15,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Message</th>
                 <th>Msg_date</th>
                 <th>Email</th>
-                <th>Response</th>
+                <th>Réponse</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -43,9 +44,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">No records found</td>
+                <td colspan="7">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

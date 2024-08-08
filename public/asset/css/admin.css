@@ -88,6 +88,9 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
 }
+body {
+    overflow-x: hidden;
+}
 
 /* Styles pour le tableau */
 .table {

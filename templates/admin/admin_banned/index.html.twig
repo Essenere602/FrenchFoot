@@ -2,10 +2,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}UserBanned index{% endblock %}
+{% block title %}Gestion banissemment{% endblock %}
 
 {% block body %}
-    <h1>UserBanned index</h1>
+    <h1>Gestion banissemment</h1>
+    {% if is_granted('ROLE_ADMIN') %}
         <div class="create-new-container">
         <a href="{{ path('app_admin_banned_new') }}" class="create-new-link">Créer un nouveau banissement</a>
         </div>
@@ -15,7 +16,7 @@
                 <th>Id</th>
                 <th>Date de ban</th>
                 <th>Nombre de ban</th>
-                <th>Banissement définit</th>
+                <th>Banissement définitif</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,9 +38,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

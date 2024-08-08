@@ -2,10 +2,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Club index{% endblock %}
+{% block title %}Gestion des clubs{% endblock %}
 
 {% block body %}
-    <h1>Club index</h1>
+    <h1>Gestion des clubs</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_club_new') }}" class="create-new-link">Créer un nouveau club</a>
     </div>
@@ -35,9 +36,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

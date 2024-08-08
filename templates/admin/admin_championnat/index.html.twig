@@ -2,10 +2,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Championnat index{% endblock %}
+{% block title %}Gestion des championnats{% endblock %}
 
 {% block body %}
-    <h1>Championnat index</h1>
+    <h1>Gestion des championnats</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_championnat_new') }}" class="create-new-link">Créer un nouveau championnat</a>
     </div>
@@ -13,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Country</th>
+                <th>Pays</th>
                 <th>Ligue</th>
                 <th>Code_api</th>
                 <th>Actions</th>
@@ -37,9 +38,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

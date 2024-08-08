@@ -6,9 +6,10 @@
 {% block title %}Les catégories{% endblock %}
 
 {% block body %}
-    <h1>Catégories</h1>
+    <h1>Les Catégories</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
-        <a href="{{ path('app_admin_category_new') }}" class="create-new-link">Créer une nouvelle categorie</a>
+        <a href="{{ path('app_admin_category_new') }}" class="create-new-link">Créer une nouvelle catégorie</a>
     </div>
     <table class="table">
         <thead>
@@ -34,9 +35,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

@@ -24,27 +24,27 @@
         {% endif %}
 
         <h1 class="form-title">Connecte toi &#9917;</h1>
-        <label for="username">Username</label>
+        <label for="username">Pseudo</label>
         <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-        <label for="password">Password</label>
+        <label for="password">Mot de passe</label>
         <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
 
         <input type="hidden" name="_csrf_token"
                value="{{ csrf_token('authenticate') }}"
         >
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+        
+            {#Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html#}
 
             <div class="checkbox mb-3">
                 <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+                <label for="_remember_me">Se souvenir de moi</label>
             </div>
-        #}
+        
 
         <button type="submit">
-            Sign in
+            Se connecter
         </button>
         <a href="{{ path('app_forgot_password_request') }}" class="reset">Mot de Passe oublié ?</a>
     </form>

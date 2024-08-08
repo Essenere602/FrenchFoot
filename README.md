@@ -6,24 +6,22 @@ Projet Certification
  
 Fonctionnalitées : 
 
-    - Réfléchir a la gestion dynamique ou non de la bannière.
-    - Sécuriser accès admin {is granted} dans les vues.
     - Gestion des supression en cascade forum/report/ban.
     - Pseudo user dans le back office à la place de l'ID.
     - Mise à jour du mail dans le profil.
     - Affichage des posts et topics par ordre + récent à l'ancien.
-    - Réfléchir à intégrer ck editor pour rédiger les posts.
     - Gérer les retour dans le menu d'administration.
-    - Pouvoir répondre à un post.
     - Pouvoir éditer son propre topic.
+    - Pagination et back a placer ou nécessaire.
     
 Beugs (back/front) répertoriés : 
 
-    - Vérification du nom de chaque boutton.
     - Cohérence des Titres sur chaque page.
-    - Contenu 100 %fr. 
-    - Beug visuel decalage pseudo au clique sur profil. 
+    - Beug visuel decalage pseudo au clique sur profil dans la nav. 
     - Beug notification point rouge au retour de la conv sans devoir actualiser.
+    - Beug rechargement création topic et post.
+    - Pagination et back a placer ou nécessaire.
+    - chevauchement back btn et menu burger
 
 Style :
 
@@ -33,7 +31,7 @@ Style :
             - La croix de suppression de message.
             - Le boutton de suppression de conversation.
             - Scroll mp. 
-            - Controler tout.
+            - Controler tout, notamment le responsive 100%.
 
 Vérification : 
 
@@ -90,6 +88,9 @@ Fonctionnalitées non développées mais à venir :
     - Identifier un utilisateur dans un posts 
     - Ajouter un boutton MP via les post au clique sur un username 
     - Traduire le site 
+    - Pouvoir répondre à un post.
+    - Réfléchir à intégrer ck editor pour rédiger les posts.
+    - CRUD sur les posts et topics directement dans l'interface forum pour plus d'ux admin
 
 Dossier : 
 

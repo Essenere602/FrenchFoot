@@ -3,10 +3,11 @@
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
 
-{% block title %}Card index{% endblock %}
+{% block title %}Gestion des cartes{% endblock %}
 
 {% block body %}
     <h1>Cartes</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_card_new') }}" class="create-new-link">Créer une nouvelle carte</a>
     </div>
@@ -14,10 +15,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Link</th>
+                <th>Lien</th>
                 <th>Code Drapeau</th>
                 <th>Actions</th>
             </tr>
@@ -42,9 +43,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

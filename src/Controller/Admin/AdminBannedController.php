@@ -17,7 +17,7 @@ class AdminBannedController extends AbstractController
     #[Route('/', name: 'app_admin_banned_index', methods: ['GET'])]
     public function index(UserBannedRepository $userBannedRepository): Response
     {
-        return $this->render('admin_banned/index.html.twig', [
+        return $this->render('admin/admin_banned/index.html.twig', [
             'user_banneds' => $userBannedRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class AdminBannedController extends AbstractController
             return $this->redirectToRoute('app_admin_banned_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin_banned/new.html.twig', [
+        return $this->render('admin/admin_banned/new.html.twig', [
             'user_banned' => $userBanned,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class AdminBannedController extends AbstractController
     #[Route('/{id}', name: 'app_admin_banned_show', methods: ['GET'])]
     public function show(UserBanned $userBanned): Response
     {
-        return $this->render('admin_banned/show.html.twig', [
+        return $this->render('admin/admin_banned/show.html.twig', [
             'user_banned' => $userBanned,
         ]);
     }
@@ -62,7 +62,7 @@ class AdminBannedController extends AbstractController
             return $this->redirectToRoute('app_admin_banned_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin_banned/edit.html.twig', [
+        return $this->render('admin/admin_banned/edit.html.twig', [
             'user_banned' => $userBanned,
             'form' => $form,
         ]);

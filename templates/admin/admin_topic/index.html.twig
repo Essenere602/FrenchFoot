@@ -2,10 +2,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Topic index{% endblock %}
+{% block title %}Gestion des sujets{% endblock %}
 
 {% block body %}
     <h1>Les sujets</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_topic_new') }}" class="create-new-link">Créer un nouveau sujet</a>
         </div>
@@ -13,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Creation_date</th>
                 <th>Actions</th>
             </tr>
@@ -35,9 +36,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

@@ -169,7 +169,7 @@ a {
   text-decoration: none;
   font-size: 20px; /* Ajustez selon vos besoins */
   color: #007bff; /* Ajustez selon vos besoins */
-  z-index: 10; /* Assurez-vous qu'il est au-dessus des autres éléments */
+  z-index: 8; /* Assurez-vous qu'il est au-dessus des autres éléments */
 }
 
 .back-button:hover {

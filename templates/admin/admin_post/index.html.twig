@@ -2,10 +2,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Post index{% endblock %}
+{% block title %}Gestions des posts{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    <h1>Gestion des posts</h1>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_post_new') }}" class="create-new-link">Créer un nouveau post</a>
     </div>
@@ -13,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Label</th>
+                <th>Titre</th>
                 <th>Message</th>
                 <th>Actions</th>
             </tr>
@@ -35,9 +36,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

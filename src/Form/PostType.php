@@ -15,8 +15,8 @@ class PostType extends AbstractType
     {
         $builder
             ->add('label')
-            ->add('message')
-            ->add('save', SubmitType::class, ['label' => 'Create Post']);
+            ->add('message');
+            //->add('save', SubmitType::class, ['label' => 'Create Post']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

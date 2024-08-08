@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    {% endblock %}
 
 {% block body %}
-    <h1>Gérer les blocages</h1>
-
     <form method="POST" action="{{ path('app_manage_blocks') }}">
+        <h1>Gérer les blocages</h1>
         <label for="block_username">Bloquer un utilisateur :</label>
         <input type="text" id="block_username" name="block_username" placeholder="Chercher un utilisateur" required>
         <div id="autocomplete-results"></div>

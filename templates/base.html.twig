@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Footix{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('asset/style.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/navigation.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
@@ -10,19 +10,22 @@
         {% endblock %}
 
         {% block javascripts %}
-        <script>
+            <script>
             document.addEventListener('DOMContentLoaded', () => {
+
             const burger = document.querySelector('.burger');
+
             const navLinks = document.querySelector('.nav-links');
 
             burger.addEventListener('click', () => {
+
             navLinks.classList.toggle('active');
+
             burger.classList.toggle('toggle');
-    });
-});
-
-
-        </script>
+                
+                        });
+            });
+            </script>
         {% endblock %}
     </head>
     <body>
@@ -41,7 +44,7 @@
     {% block footer %}
             {% include "layout/menu_bottom.twig"   %}
     {% endblock %}
-            </footer>
-                </div>
+        </footer>
+</div>
     </body>
 </html>
