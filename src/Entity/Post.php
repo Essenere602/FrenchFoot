@@ -7,7 +7,9 @@ use App\Repository\PostRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Post
 {
     #[ORM\Id]
@@ -94,5 +96,13 @@ class Post
         $this->creation_date = $creation_date;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function onPrePersist()
+    {
+        if ($this->creation_date === null) {
+            $this->creation_date = new \DateTimeImmutable();
+        }
     }
 }

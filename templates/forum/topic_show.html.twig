@@ -39,7 +39,7 @@
                                 <img src="{{ asset(post.user.userProfile.club.logoClub) }}" alt="{{ post.user.userProfile.club.name }}" class="club-logo">
                             {% endif %}
                         </strong>
-                        <small class="post-date">{{ post.creationDate|date('d/m/Y H:i') }}</small>
+                    <small class="post-date">{{ post.creationDate ? post.creationDate|date('d/m/Y H:i') : 'Date non définie' }}</small>
                     </div>
                     <div class="post-actions">
                         {% if post.user != app.user %}

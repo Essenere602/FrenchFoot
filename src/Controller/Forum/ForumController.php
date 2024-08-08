@@ -55,12 +55,9 @@ class ForumController extends AbstractController
     {
         $currentUser = $this->getUser();
         $topics = $category->getTopics();
-        
-        if ($currentUser) {
-            // Récupérer les utilisateurs bloqués par l'utilisateur actuel
-            $blockedUsers = $this->entityManager->getRepository(User::class)->findBlockedUsers($currentUser);
     
-            // Filtrer les sujets pour exclure ceux créés par des utilisateurs bloqués
+        if ($currentUser) {
+            $blockedUsers = $this->entityManager->getRepository(User::class)->findBlockedUsers($currentUser);
             $visibleTopics = array_filter($topics->toArray(), function (Topic $topic) use ($blockedUsers) {
                 foreach ($blockedUsers as $blockedUser) {
                     if ($topic->getUser() === $blockedUser) {
@@ -70,7 +67,11 @@ class ForumController extends AbstractController
                 return true;
             });
     
-            // Créer un nouveau sujet
+            // Trier les sujets par date de création décroissante
+            usort($visibleTopics, function (Topic $a, Topic $b) {
+                return $b->getCreationDate() <=> $a->getCreationDate();
+            });
+    
             $topic = new Topic();
             $topic->setCategory($category);
             $topic->setUser($currentUser);
@@ -88,7 +89,7 @@ class ForumController extends AbstractController
     
             return $this->render('forum/category_show.html.twig', [
                 'category' => $category,
-                'topics' => $visibleTopics, // Utiliser les sujets filtrés
+                'topics' => $visibleTopics,
                 'form' => $form->createView(),
             ]);
         } else {
@@ -183,7 +184,6 @@ public function editTopic(Request $request, Topic $topic): Response
         'form' => $form->createView(),
     ]);
 }
-
     #[Route('/forum/post/{id}/report', name: 'forum_post_report', methods: ['GET', 'POST'])]
     public function reportPost(Request $request, Post $post): Response
     {

@@ -19,7 +19,7 @@ class Topic
     #[ORM\Column(length: 80)]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $creation_date = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]

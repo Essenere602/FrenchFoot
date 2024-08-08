@@ -30,7 +30,7 @@ class PostRepository extends ServiceEntityRepository
             $queryBuilder = $this->createQueryBuilder('p')
                 ->where('p.topic = :topic')
                 ->setParameter('topic', $topicId)
-                ->orderBy('p.id', 'DESC');
+                ->orderBy('p.creation_date', 'DESC');
         
             // Utiliser isGranted pour vérifier si l'utilisateur a le rôle d'administrateur
             if (!$this->security->isGranted('ROLE_ADMIN', $currentUser)) {
