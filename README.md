@@ -6,22 +6,21 @@ Projet Certification
  
 Fonctionnalitées : 
 
-    - Gestion des supression en cascade forum/report/ban.
-    - Pseudo user dans le back office à la place de l'ID.
-    - Mise à jour du mail dans le profil.
-    - Affichage des posts et topics par ordre + récent à l'ancien.
-    - Gérer les retour dans le menu d'administration.
-    - Pouvoir éditer son propre topic.
-    - Pagination et back a placer ou nécessaire.
+    - Gestion des supression en cascade forum/report/ban. 08/08-09/08
+    - Pseudo user dans le back office à la place de l'ID. 08/08-09/08
+    - Affichage des posts et topics par ordre + récent à l'ancien. 08/08-09/08
+    - Gérer les retour dans le menu d'administration. 08/08-09/08
+    - Pagination et back a placer ou nécessaire. 08/08-09/08
     
 Beugs (back/front) répertoriés : 
 
-    - Cohérence des Titres sur chaque page.
-    - Beug visuel decalage pseudo au clique sur profil dans la nav. 
-    - Beug notification point rouge au retour de la conv sans devoir actualiser.
-    - Beug rechargement création topic et post.
-    - Pagination et back a placer ou nécessaire.
-    - chevauchement back btn et menu burger
+    - Cohérence des Titres sur chaque page. 08/08-09/08
+    - Beug visuel decalage pseudo au clique sur profil dans la nav. ND
+    - Beug notification point rouge au retour de la conv sans devoir actualiser. 08/08-09/08
+    - Beug rechargement création topic et post. 08/08-09/08
+    - Pagination et back a placer ou nécessaire. 08/08-09/08
+    - chevauchement back btn et menu burge. 08/08-09/08
+    - Btn rounded
 
 Style :
 
@@ -31,6 +30,7 @@ Style :
             - La croix de suppression de message.
             - Le boutton de suppression de conversation.
             - Scroll mp. 
+            - Edition topic btn / Formulaire 
             - Controler tout, notamment le responsive 100%.
 
 Vérification : 
@@ -49,13 +49,6 @@ Phase de précision :
     - Commentaire de 100% des fichiers de code.
     - Vérifier le projet sur plusieurs plateforme et navigateur
     - Contrôle et gestion des beugs si besoin
-
-Base de données :
-
-    - Passer a 100% Anglais.
-    - Extraire le schéma final.
-    - Extraire le script final.
-    - Générer UML
 
 Performance: 
  

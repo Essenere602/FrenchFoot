@@ -161,6 +161,29 @@ class ForumController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
     }
+    #[Route('/forum/topic/{id}/edit', name: 'forum_topic_edit', methods: ['GET', 'POST'])]
+public function editTopic(Request $request, Topic $topic): Response
+{
+    $currentUser = $this->getUser();
+
+    if (!$currentUser || $topic->getUser() !== $currentUser) {
+        throw new AccessDeniedException('Vous n\'êtes pas autorisé à éditer ce sujet.');
+    }
+
+    $form = $this->createForm(TopicType::class, $topic);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $this->entityManager->flush();
+        return $this->redirectToRoute('forum_topic_show', ['id' => $topic->getId()]);
+    }
+
+    return $this->render('forum/edit_topic.html.twig', [
+        'topic' => $topic,
+        'form' => $form->createView(),
+    ]);
+}
+
     #[Route('/forum/post/{id}/report', name: 'forum_post_report', methods: ['GET', 'POST'])]
     public function reportPost(Request $request, Post $post): Response
     {

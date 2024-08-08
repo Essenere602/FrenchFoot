@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer le sujet - {{ topic.title }}{% endblock %}
+
+{% block body %}
+    <h1>Éditer le sujet : {{ topic.title }}</h1>
+
+    <div class="container">
+        {# <a href="{{ path('forum_category_show', {'id': topic.id}) }}" class="back-button">
+            &#8592; Retour au sujet
+        </a> #}
+
+        {{ form_start(form) }}
+        <h2>Modifier votre sujet</h2>
+        {{ form_row(form.title) }}
+        <button type="submit">Mettre à jour</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

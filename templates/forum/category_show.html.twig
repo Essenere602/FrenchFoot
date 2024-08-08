@@ -31,6 +31,9 @@
                     <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }} </a>
                     <small>Créé par {{ topic.user.username }} le {{ topic.creationDate|date('d/m/Y H:i') }}</small><br>
                     <small>Nombre de posts : {{ topic.posts|length }}</small>
+                    {% if app.user and app.user.id == topic.user.id %}
+                |   <a href="{{ path('forum_topic_edit', {'id': topic.id}) }}">Éditer</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

@@ -52,6 +52,7 @@
         <h1 class="form-title">Mettre à jour le profil</h1>
         {{ form_row(form.name) }}
         {{ form_row(form.lastname) }}
+        {{ form_row(form.email) }}  {# Ajout du champ email #}
         <div class="autocomplete">
             <label for="clubSearch">Club</label>
             <input type="text" id="clubSearch" name="clubSearch" placeholder="Nom du club" value="{{ user.userProfile.club ? user.userProfile.club.name : '' }}">
@@ -65,7 +66,7 @@
     <a href="{{ path('app_profile_change_password') }}" class="change-password">Changer le mot de passe</a>
     
     <!-- Lien vers la gestion des blocages -->
-    <a href="{{ path('app_manage_blocks') }}" class="manage-blocks">Gérer les blocages</a>
+    <a href="{{ path('app_manage_blocks') }}" class="manage-blocks change-password">Gérer les blocages</a>
 
 {% endblock %}
 {% block javascripts %}
