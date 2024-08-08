@@ -17,11 +17,9 @@ class UserBannedType extends AbstractType
             ->add('bannedDate', null, [
                 'widget' => 'single_text',
             ])
-            ->add('numberBan')
-            ->add('isPermanentlyBanned')
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'username',
             ])
         ;
     }

@@ -7,7 +7,6 @@ Projet Certification
 Fonctionnalitées : 
 
     - Gestion des supression en cascade forum/report/ban. 08/08-09/08
-    - Pseudo user dans le back office à la place de l'ID. 08/08-09/08
     - Gérer les retour dans le menu d'administration. 08/08-09/08
     - Pagination et back a placer ou nécessaire. 08/08-09/08
 
