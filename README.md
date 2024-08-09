@@ -8,7 +8,7 @@ Fonctionnalitées :
 
     - Gestion des supression en cascade forum/report/ban. 08/08-09/08
     - Gérer les retour dans le menu d'administration. 08/08-09/08
-    - Pagination et back a placer ou nécessaire. 08/08-09/08
+    - Pagination sur les tableau admin et back a placer ou nécessaire également. 08/08-09/08
 
 48h
     
@@ -19,7 +19,7 @@ Beugs (back/front) répertoriés :
     - Beug notification point rouge au retour de la conv sans devoir actualiser. 08/08-09/08
     - Beug rechargement création topic et post. 08/08-09/08
     - Pagination et back a placer ou nécessaire. 08/08-09/08
-    - chevauchement back btn et menu burge. 08/08-09/08
+    - chevauchement back btn et menu burger. 08/08-09/08
     - Btn rounded
 
 48H
@@ -100,6 +100,7 @@ Fonctionnalitées non développées mais à venir :
     - Pouvoir répondre à un post.
     - Réfléchir à intégrer ck editor pour rédiger les posts.
     - CRUD sur les posts et topics directement dans l'interface forum pour plus d'ux admin
+    - Liste perso des sujets sur lesquelles user a participé + notificationde réponse savoir ou l'user en est dans ces interactions sur le forum
 
 Dossier : 
 

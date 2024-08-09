@@ -51,13 +51,16 @@ class ForumController extends AbstractController
     }
 
     #[Route('/forum/category/{id}', name: 'forum_category_show', methods: ['GET', 'POST'])]
-    public function showCategory(Request $request, Category $category): Response
+    public function showCategory(Request $request, Category $category, PaginatorInterface $paginator): Response
     {
         $currentUser = $this->getUser();
         $topics = $category->getTopics();
     
         if ($currentUser) {
+            // Récupérer les utilisateurs bloqués
             $blockedUsers = $this->entityManager->getRepository(User::class)->findBlockedUsers($currentUser);
+    
+            // Filtrer les sujets pour exclure ceux des utilisateurs bloqués
             $visibleTopics = array_filter($topics->toArray(), function (Topic $topic) use ($blockedUsers) {
                 foreach ($blockedUsers as $blockedUser) {
                     if ($topic->getUser() === $blockedUser) {
@@ -72,6 +75,14 @@ class ForumController extends AbstractController
                 return $b->getCreationDate() <=> $a->getCreationDate();
             });
     
+            // Utiliser KNP Paginator pour paginer les sujets filtrés
+            $pagination = $paginator->paginate(
+                $visibleTopics, // Les sujets filtrés
+                $request->query->getInt('page', 1), // Le numéro de la page actuelle
+                10 // Nombre de sujets par page
+            );
+    
+            // Création d'un nouveau sujet
             $topic = new Topic();
             $topic->setCategory($category);
             $topic->setUser($currentUser);
@@ -89,14 +100,15 @@ class ForumController extends AbstractController
     
             return $this->render('forum/category_show.html.twig', [
                 'category' => $category,
-                'topics' => $visibleTopics,
+                'topics' => $pagination, // On passe ici la pagination plutôt que $visibleTopics
                 'form' => $form->createView(),
+                'visibleTopics' => $visibleTopics, // On passe également $visibleTopics si tu en as besoin ailleurs dans le template
             ]);
         } else {
             return $this->redirectToRoute('app_login');
         }
     }
-    #[Route('/forum/category/{categoryId}/new-topic', name: 'forum_new_topic', methods: ['GET', 'POST'])]
+        #[Route('/forum/category/{categoryId}/new-topic', name: 'forum_new_topic', methods: ['GET', 'POST'])]
     public function newTopic(Request $request, int $categoryId): Response
     {
         $category = $this->entityManager->getRepository(Category::class)->find($categoryId);

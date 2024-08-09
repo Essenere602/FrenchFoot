@@ -40,4 +40,17 @@ class TopicRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findByCategoryPaginated(int $categoryId, int $page, int $limit = 10)
+    {
+        $queryBuilder = $this->createQueryBuilder('t')
+            ->where('t.category = :category')
+            ->setParameter('category', $categoryId)
+            ->orderBy('t.creationDate', 'DESC');
+
+        return $this->paginator->paginate(
+            $queryBuilder->getQuery(),
+            $page,
+            $limit
+        );
+    }
 }

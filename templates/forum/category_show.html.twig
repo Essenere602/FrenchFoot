@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/topic.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
 {% endblock %}
 
 {% block title %}{{ category.label }}{% endblock %}
@@ -37,6 +38,9 @@
                 </li>
             {% endfor %}
         </ul>
+        <div class="pagination">
+        {{ knp_pagination_render(topics) }}
+    </div>
     </div>
 </div>
 
