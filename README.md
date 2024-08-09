@@ -3,10 +3,6 @@
 Projet Certification
 
 =====================
- 
-Fonctionnalitées : 
-
-    - Gestion des supression en cascade forum/report/ban. 08/08-09/08
   
 Beugs (back/front) répertoriés : 
 
@@ -84,6 +80,7 @@ Fonctionnalitées non développées mais à venir :
     - Réfléchir à intégrer ck editor pour rédiger les posts.
     - CRUD sur les posts et topics directement dans l'interface forum pour plus d'ux admin
     - Liste perso des sujets sur lesquelles user a participé + notificationde réponse savoir ou l'user en est dans ces interactions sur le forum
+    - selection multiple pour delete multiple back office 
 
 Dossier : 
 

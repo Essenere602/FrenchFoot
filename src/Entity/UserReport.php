@@ -16,9 +16,10 @@ class UserReport
     #[ORM\Column(type: 'text')]
     private ?string $reason = null;
 
-    #[ORM\ManyToOne(targetEntity: Post::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Post::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')] // Assurez-vous que 'nullable' est true ici
     private ?Post $post = null;
+
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -31,6 +32,8 @@ class UserReport
     #[ORM\Column(type: 'boolean')]
     private bool $archived = false;
 
+    #[ORM\Column(type: 'text', nullable: true)]  // Nouvelle colonne pour le contenu du post
+    private ?string $postContent = null;
 
     public function getId(): ?int
     {
@@ -84,6 +87,7 @@ class UserReport
 
         return $this;
     }
+
     public function isArchived(): bool
     {
         return $this->archived;
@@ -92,6 +96,18 @@ class UserReport
     public function setArchived(bool $archived): self
     {
         $this->archived = $archived;
+        return $this;
+    }
+
+    public function getPostContent(): ?string
+    {
+        return $this->postContent;
+    }
+
+    public function setPostContent(?string $postContent): self
+    {
+        $this->postContent = $postContent;
+
         return $this;
     }
 }

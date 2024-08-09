@@ -197,33 +197,34 @@ public function editTopic(Request $request, Topic $topic): Response
         'form' => $form->createView(),
     ]);
 }
-    #[Route('/forum/post/{id}/report', name: 'forum_post_report', methods: ['GET', 'POST'])]
-    public function reportPost(Request $request, Post $post): Response
-    {
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-
-        $report = new UserReport();
-        $report->setPost($post);
-        $report->setReportingUser($this->getUser());
-        $report->setReportedUser($post->getUser());
-
-        $form = $this->createForm(UserReportType::class, $report);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->entityManager->persist($report);
-            $this->entityManager->flush();
-
-            return $this->redirectToRoute('forum_topic_show', ['id' => $post->getTopic()->getId()]);
-        }
-
-        return $this->render('forum/report_post.html.twig', [
-            'post' => $post,
-            'form' => $form->createView(),
-        ]);
+#[Route('/forum/post/{id}/report', name: 'forum_post_report', methods: ['GET', 'POST'])]
+public function reportPost(Request $request, Post $post): Response
+{
+    if (!$this->getUser()) {
+        return $this->redirectToRoute('app_login');
     }
+
+    $report = new UserReport();
+    $report->setPost($post);
+    $report->setReportingUser($this->getUser());
+    $report->setReportedUser($post->getUser());
+    $report->setPostContent($post->getMessage());  // Sauvegarder le contenu du post
+
+    $form = $this->createForm(UserReportType::class, $report);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $this->entityManager->persist($report);
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('forum_topic_show', ['id' => $post->getTopic()->getId()]);
+    }
+
+    return $this->render('forum/report_post.html.twig', [
+        'post' => $post,
+        'form' => $form->createView(),
+    ]);
+}
 
     #[Route('/forum/post/{id}/edit', name: 'forum_post_edit', methods: ['GET', 'POST'])]
     public function editPost(Request $request, Post $post): Response

@@ -23,7 +23,7 @@ class Post
     #[ORM\Column(type: 'text')]
     private ?string $message = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Topic::class, inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Topic $topic = null;
 

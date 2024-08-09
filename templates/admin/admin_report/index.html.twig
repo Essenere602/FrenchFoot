@@ -26,6 +26,7 @@
                 <th>Raison</th>
                 <th>Utilisateur signaleur</th>
                 <th>Utilisateur signalé</th>
+                 <th>Contenu du Post</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{ user_report.reason }}</td>
                 <td>{{ user_report.reportedUser.username }}</td>
                 <td>{{ user_report.reportingUser.username }}</td>
+                <td>{{ user_report.postContent|slice(0, 50) }}{% if user_report.postContent|length > 50 %}...{% endif %}</td>
                 <td>
                     <a href="{{ path('app_admin_report_show', {'id': user_report.id}) }}">Voir</a>
                     <a href="{{ path('app_admin_report_edit', {'id': user_report.id}) }}">Modifier</a>
