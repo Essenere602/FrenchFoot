@@ -7,6 +7,7 @@ use App\Entity\Club;
 use App\Form\ClubType;
 use App\Repository\ClubRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,12 +18,20 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class AdminClubController extends AbstractController
 {
     #[Route('/', name: 'app_admin_club_index', methods: ['GET'])]
-    public function index(ClubRepository $clubRepository): Response
+    public function index(Request $request, ClubRepository $clubRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $clubRepository->createQueryBuilder('c');
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_club/index.html.twig', [
-            'clubs' => $clubRepository->findAll(),
+            'pagination' => $pagination,
         ]);
-    }
+    }    
 
     #[Route('/new', name: 'app_admin_club_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

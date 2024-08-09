@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,13 +15,21 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminPostController extends AbstractController
 {
     #[Route('/', name: 'app_admin_post_index', methods: ['GET'])]
-    public function index(PostRepository $postRepository): Response
+    public function index(Request $request, PostRepository $postRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $postRepository->createQueryBuilder('p');
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
-
     #[Route('/new', name: 'app_admin_post_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

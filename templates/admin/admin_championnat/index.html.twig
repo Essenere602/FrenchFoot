@@ -1,47 +1,56 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
+
 {% block title %}Gestion des championnats{% endblock %}
 
 {% block body %}
     <h1>Gestion des championnats</h1>
+
     {% if is_granted('ROLE_ADMIN') %}
-    <div class="create-new-container">
-        <a href="{{ path('app_admin_championnat_new') }}" class="create-new-link">Créer un nouveau championnat</a>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pays</th>
-                <th>Ligue</th>
-                <th>Code_api</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for championnat in championnats %}
-            <tr>
-                <td>{{ championnat.id }}</td>
-                <td>{{ championnat.country }}</td>
-                <td>{{ championnat.ligue }}</td>
-                <td>{{ championnat.codeApi }}</td>
-                <td>
-                    <a href="{{ path('app_admin_championnat_show', {'id': championnat.id}) }}">Voir</a>
-                    <a href="{{ path('app_admin_championnat_edit', {'id': championnat.id}) }}">Modifier</a>
-                    <form action="{{ path('app_admin_championnat_delete', {'id': championnat.id}) }}" method="post" style="display:inline;">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ championnat.id) }}">
-                            <button class="btn btn-danger" type="submit">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun résultat</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="create-new-container">
+            <a href="{{ path('app_admin_championnat_new') }}" class="create-new-link">Créer un nouveau championnat</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Pays</th>
+                    <th>Ligue</th>
+                    <th>Code API</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for championnat in pagination %}
+                    <tr>
+                        <td>{{ championnat.id }}</td>
+                        <td>{{ championnat.country }}</td>
+                        <td>{{ championnat.ligue }}</td>
+                        <td>{{ championnat.codeApi }}</td>
+                        <td>
+                            <a href="{{ path('app_admin_championnat_show', {'id': championnat.id}) }}">Voir</a>
+                            <a href="{{ path('app_admin_championnat_edit', {'id': championnat.id}) }}">Modifier</a>
+                            <form action="{{ path('app_admin_championnat_delete', {'id': championnat.id}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ championnat.id) }}">
+                                <button class="btn btn-danger" type="submit">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun résultat</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% endif %}
 {% endblock %}

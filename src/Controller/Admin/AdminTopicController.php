@@ -6,6 +6,7 @@ use App\Entity\Topic;
 use App\Form\TopicType;
 use App\Repository\TopicRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +16,21 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminTopicController extends AbstractController
 {
     #[Route('/', name: 'app_admin_topic_index', methods: ['GET'])]
-    public function index(TopicRepository $topicRepository): Response
+    public function index(Request $request, TopicRepository $topicRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $topicRepository->createQueryBuilder('t');
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_topic/index.html.twig', [
-            'topics' => $topicRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
-
     #[Route('/new', name: 'app_admin_topic_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

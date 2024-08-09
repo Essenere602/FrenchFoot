@@ -6,6 +6,7 @@ use App\Entity\Championnat;
 use App\Form\ChampionnatType;
 use App\Repository\ChampionnatRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +16,21 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminChampionnatController extends AbstractController
 {
     #[Route('/', name: 'app_admin_championnat_index', methods: ['GET'])]
-    public function index(ChampionnatRepository $championnatRepository): Response
+    public function index(Request $request, ChampionnatRepository $championnatRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $championnatRepository->createQueryBuilder('c');
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_championnat/index.html.twig', [
-            'championnats' => $championnatRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
-
     #[Route('/new', name: 'app_admin_championnat_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

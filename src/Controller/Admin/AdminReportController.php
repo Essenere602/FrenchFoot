@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 use App\Entity\UserBanned;
 use App\Entity\UserReport;
 use App\Form\UserReportType;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\UserReportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,13 +16,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminReportController extends AbstractController
 {
     #[Route('/', name: 'app_admin_report_index', methods: ['GET'])]
-    public function index(UserReportRepository $userReportRepository): Response
+    public function index(Request $request, UserReportRepository $userReportRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $userReportRepository->createQueryBuilder('ur')
+            ->where('ur.archived = false'); // Assurer que nous ne paginons que les rapports non archivés
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_report/index.html.twig', [
-            'user_reports' => $userReportRepository->findAllActiveReports(),
+            'pagination' => $pagination,
         ]);
     }
-
     #[Route('/new', name: 'app_admin_report_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

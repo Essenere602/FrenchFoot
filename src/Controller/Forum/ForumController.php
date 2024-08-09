@@ -145,7 +145,7 @@ class ForumController extends AbstractController
         if (!$topic) {
             throw $this->createNotFoundException('Topic not found');
         }
-
+        $category = $topic->getCategory(); // Récupérer la catégorie associée au sujet
         $currentUser = $this->security->getUser();
         $page = $request->query->getInt('page', 1);
         $posts = $postRepository->findByTopicPaginated($currentUser, $id, $page);
@@ -169,6 +169,7 @@ class ForumController extends AbstractController
                 'topic' => $topic,
                 'posts' => $posts,
                 'form' => $form->createView(),
+                'category' => $category, // Passer la catégorie à la vue
             ]);
         } else {
             return $this->redirectToRoute('app_login');

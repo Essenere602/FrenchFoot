@@ -1,47 +1,56 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
-{% block title %}Gestion banissemment{% endblock %}
+
+{% block title %}Gestion des banissements{% endblock %}
 
 {% block body %}
-    <h1>Gestion banissemment</h1>
+    <h1>Gestion des banissements</h1>
+    
     {% if is_granted('ROLE_ADMIN') %}
         <div class="create-new-container">
-        <a href="{{ path('app_admin_banned_new') }}" class="create-new-link">Créer un nouveau banissement</a>
+            <a href="{{ path('app_admin_banned_new') }}" class="create-new-link">Créer un nouveau banissement</a>
         </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date de ban</th>
-                <th>Nombre de ban</th>
-                <th>Banissement définitif</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user_banned in user_banneds %}
-            <tr>
-                <td>{{ user_banned.id }}</td>
-                <td>{{ user_banned.bannedDate ? user_banned.bannedDate|date('Y-m-d') : '' }}</td>
-                <td>{{ user_banned.numberBan }}</td>
-                <td>{{ user_banned.isPermanentlyBanned ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_banned_show', {'id': user_banned.id}) }}">Voir</a>
-                    <a href="{{ path('app_admin_banned_edit', {'id': user_banned.id}) }}">Modifier</a>
-                    <form action="{{ path('app_admin_banned_delete', {'id': user_banned.id}) }}" method="post" style="display:inline;">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user_banned.id) }}">
-                                    <button class="btn btn-danger" type="submit">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun résultat</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date de ban</th>
+                    <th>Nombre de ban</th>
+                    <th>Banissement définitif</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_banned in pagination %}
+                    <tr>
+                        <td>{{ user_banned.id }}</td>
+                        <td>{{ user_banned.bannedDate ? user_banned.bannedDate|date('Y-m-d') : '' }}</td>
+                        <td>{{ user_banned.numberBan }}</td>
+                        <td>{{ user_banned.isPermanentlyBanned ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <a href="{{ path('app_admin_banned_show', {'id': user_banned.id}) }}">Voir</a>
+                            <a href="{{ path('app_admin_banned_edit', {'id': user_banned.id}) }}">Modifier</a>
+                            <form action="{{ path('app_admin_banned_delete', {'id': user_banned.id}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user_banned.id) }}">
+                                <button class="btn btn-danger" type="submit">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun résultat</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% endif %}
 {% endblock %}

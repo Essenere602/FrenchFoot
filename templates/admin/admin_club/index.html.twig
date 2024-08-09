@@ -1,45 +1,59 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
 {% endblock %}
+
 {% block title %}Gestion des clubs{% endblock %}
 
 {% block body %}
     <h1>Gestion des clubs</h1>
     {% if is_granted('ROLE_ADMIN') %}
-    <div class="create-new-container">
-        <a href="{{ path('app_admin_club_new') }}" class="create-new-link">Créer un nouveau club</a>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Logo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for club in clubs %}
-            <tr>
-                <td>{{ club.id }}</td>
-                <td>{{ club.name }}</td>
-                <td>{{ club.logoClub }}</td>
-                <td>
-                    <a href="{{ path('app_admin_club_show', {'id': club.id}) }}">Voir</a>
-                    <a href="{{ path('app_admin_club_edit', {'id': club.id}) }}">Modifier</a>
-                    <form action="{{ path('app_admin_club_delete', {'id': club.id}) }}" method="post" style="display:inline;">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ club.id) }}">
-                        <button class="btn btn-danger" type="submit">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun résultat</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="create-new-container">
+            <a href="{{ path('app_admin_club_new') }}" class="create-new-link">Créer un nouveau club</a>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Logo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for club in pagination %}
+                    <tr>
+                        <td>{{ club.id }}</td>
+                        <td>{{ club.name }}</td>
+                        <td>
+                            {% if club.logoClub %}
+                                <img src="{{ asset(club.logoClub) }}" alt="{{ club.name }}" width="100">
+                            {% else %}
+                                Pas de logo
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('app_admin_club_show', {'id': club.id}) }}">Voir</a>
+                            <a href="{{ path('app_admin_club_edit', {'id': club.id}) }}">Modifier</a>
+                            <form action="{{ path('app_admin_club_delete', {'id': club.id}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ club.id) }}">
+                                <button class="btn btn-danger" type="submit">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun résultat</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% endif %}
 {% endblock %}

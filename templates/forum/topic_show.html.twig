@@ -11,6 +11,9 @@
 {% block body %}
 <h1 class="page-title">{{ topic.title }}</h1>
 <div class="container">
+    <a href="{{ path('forum_category_show', {'id': category.id}) }}" id="back-button" class="back-button">
+        &#8592; Retour 
+    </a>
     <!-- Conteneur pour centrer le bouton -->
     <div class="form-toggle-container">
         <!-- Bouton pour afficher/masquer le formulaire de création de post -->

@@ -6,6 +6,7 @@ use App\Entity\UserBanned;
 use App\Form\UserBannedType;
 use App\Repository\UserBannedRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,20 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminBannedController extends AbstractController
 {
     #[Route('/', name: 'app_admin_banned_index', methods: ['GET'])]
-    public function index(UserBannedRepository $userBannedRepository): Response
+    public function index(Request $request, UserBannedRepository $userBannedRepository, PaginatorInterface $paginator): Response
     {
+        // On récupère tous les banissements
+        $queryBuilder = $userBannedRepository->createQueryBuilder('ub');
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_banned/index.html.twig', [
-            'user_banneds' => $userBannedRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 

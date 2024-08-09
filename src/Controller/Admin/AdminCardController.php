@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Card;
 use App\Form\CardType;
 use App\Repository\CardRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +18,19 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminCardController extends AbstractController
 {
     #[Route('/', name: 'app_admin_card_index', methods: ['GET'])]
-    public function index(CardRepository $cardRepository): Response
+    public function index(Request $request, CardRepository $cardRepository, PaginatorInterface $paginator): Response
     {
+        $queryBuilder = $cardRepository->createQueryBuilder('c');
+
+        // Pagination
+        $pagination = $paginator->paginate(
+            $queryBuilder, // La requête de données
+            $request->query->getInt('page', 1), // Le numéro de la page actuelle
+            10 // Nombre d'éléments par page
+        );
+
         return $this->render('admin/admin_card/index.html.twig', [
-            'cards' => $cardRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 

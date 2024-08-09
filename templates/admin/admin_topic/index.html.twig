@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('asset/css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin.css') }}">
 {% endblock %}
+
 {% block title %}Gestion des sujets{% endblock %}
 
 {% block body %}
@@ -9,18 +12,18 @@
     {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
         <a href="{{ path('app_admin_topic_new') }}" class="create-new-link">Créer un nouveau sujet</a>
-        </div>
+    </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
-                <th>Creation_date</th>
+                <th>Date de création</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for topic in topics %}
+        {% for topic in pagination %}
             <tr>
                 <td>{{ topic.id }}</td>
                 <td>{{ topic.title }}</td>
@@ -29,17 +32,22 @@
                     <a href="{{ path('app_admin_topic_show', {'id': topic.id}) }}">Voir</a>
                     <a href="{{ path('app_admin_topic_edit', {'id': topic.id}) }}">Modifier</a>
                     <form action="{{ path('app_admin_topic_delete', {'id': topic.id}) }}" method="post" style="display:inline;">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ topic.id) }}">
-                            <button class="btn btn-danger" type="submit">Supprimer</button>
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ topic.id) }}">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
                     </form>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Aucun résultat</td>
+                <td colspan="4">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
     {% endif %}
 {% endblock %}

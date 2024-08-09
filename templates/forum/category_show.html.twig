@@ -11,7 +11,7 @@
 {% block body %}
 <h1 class="page-title">{{ category.label }}</h1>
  <div class="container">
-    <a href="#" id="back-button" class="back-button">
+    <a href="http://127.0.0.1:8000/forum" id="back-button" class="back-button">
         &#8592; Retour
     </a>
     <button id="toggle-form" class="btn btn-primary">+ Créer un nouveau sujet</button>
@@ -71,11 +71,11 @@
                 }
             });
         });
-        document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("back-button").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.history.back();
-        });
-    });
+        //document.addEventListener("DOMContentLoaded", function() {
+        //document.getElementById("back-button").addEventListener("click", function(event) {
+          //  event.preventDefault();
+          //  window.history.back();
+        //});
+    //});
     </script>
 {% endblock %}
