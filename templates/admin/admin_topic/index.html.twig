@@ -11,6 +11,9 @@
     <h1>Les sujets</h1>
     {% if is_granted('ROLE_ADMIN') %}
     <div class="create-new-container">
+    <a href="http://127.0.0.1:8000/admin" id="back-button" class="back-button">
+        &#8592; Retour
+        </a>
         <a href="{{ path('app_admin_topic_new') }}" class="create-new-link">Créer un nouveau sujet</a>
     </div>
     <table class="table">

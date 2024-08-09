@@ -7,11 +7,7 @@ Projet Certification
 Fonctionnalitées : 
 
     - Gestion des supression en cascade forum/report/ban. 08/08-09/08
-    - Gérer les retour dans le menu d'administration. 08/08-09/08
-    - Pagination sur les tableau admin et back a placer ou      nécessaire également. 08/08-09/08
-
-48h
-    
+  
 Beugs (back/front) répertoriés : 
 
     - Cohérence des Titres sur chaque page. 08/08-09/08
@@ -20,8 +16,6 @@ Beugs (back/front) répertoriés :
     - Beug rechargement création topic et post. 08/08-09/08
     - chevauchement back btn et menu burger. 08/08-09/08
     - Btn rounded
-
-48H
 
 Style :
 
@@ -34,8 +28,6 @@ Style :
             - Edition topic btn / Formulaire 
             - Controler tout, notamment le responsive 100%.
 
-48H
-
 Vérification : 
 
     - Vérifier tout le site visuelement d'un point de vu UX et UI.
@@ -43,7 +35,6 @@ Vérification :
     - Règle d'un controller pour 1 route / les bonnes méthodes dans les bons fichiers.
     - Re-Vérifier tout le site visuelement d'un point de vu UX et UI.
 
-96H 
 
 Phase de précision : 
 
@@ -55,13 +46,10 @@ Phase de précision :
     - Vérifier le projet sur plusieurs plateforme et navigateur
     - Contrôle et gestion des beugs si besoin
 
-1semaine
 
 Performance: 
  
     - Passer les photos et images en webp et svg partout
-
-24H
 
 Factorisation final : 
  
@@ -71,13 +59,10 @@ Factorisation final :
     - Organisation parfaite des dossiers 
     - Commentaire intégral sur chaque ligne de chaque fichiers.
 
-48H
-
 Contrôle SEO :
 
     - Se référer aux cours MCnumérique
 
-24H
 
 Contrôle Thibault + Mick 
 
@@ -85,7 +70,6 @@ Ajustement
 
 Déploiement 20/08/2024 Maximum
 
-8H
 
 Fonctionnalitées non développées mais à venir :
 
