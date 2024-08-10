@@ -89,7 +89,7 @@ form input[type="text"], form textarea {
     height: 150px; /* Ajuster cette valeur pour augmenter la hauteur */
 }
 
-form button {
+.send-btn {
     padding: 10px 20px;
     background-color: #C8A764;
     color: #fff;
@@ -98,8 +98,7 @@ form button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-form button:hover {
+.send-btn:hover {
     background-color: #131313;
     color: #C8A764;
 }

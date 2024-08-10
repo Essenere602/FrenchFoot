@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/messaging.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/conversation.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -11,13 +12,14 @@
        <div class="messages">
     {% for message in messages %}
         <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
+        <form action="{{ path('app_message_delete', {id: message.id}) }}" method="post" style="display: inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+                    <button type="submit" class="delete">X</button>
+                </form>
             <p>{{ message.content }}</p>
             <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
             {% if message.sender == app.user %}
-                <form action="{{ path('app_message_delete', {id: message.id}) }}" method="post" style="display: inline;">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
-                    <button type="submit" class="btn btn-danger btn-sm">X</button>
-                </form>
+                
             {% endif %}
         </div>
     {% endfor %}
@@ -27,7 +29,7 @@
         {{ form_start(form) }}
             {{ form_label(form.content, 'Message') }}
             {{ form_widget(form.content, {'attr': {'placeholder': 'Écrire un message...'}}) }}
-            <button type="submit">Envoyer</button>
+            <button class="send-btn" type="submit">Envoyer</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

@@ -29,7 +29,7 @@
             </a>
             <form action="{{ path('app_message_delete_conversation', {id: conversation.id}) }}" method="post" style="display: inline;">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ conversation.id) }}">
-                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <button type="submit" class="delete">X</button>
             </form>
         </li>
     {% endfor %}

@@ -29,13 +29,16 @@
         <ul class="topic-list">
             {% for topic in topics %}
                 <li>
-                    <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }} </a>
-                    <small>Créé par {{ topic.user.username }} le {{ topic.creationDate|date('d/m/Y H:i') }}</small><br>
-                    <small>Nombre de posts : {{ topic.posts|length }}</small>
-                    {% if app.user and app.user.id == topic.user.id %}
-                |   <a href="{{ path('forum_topic_edit', {'id': topic.id}) }}">Éditer</a>
-                    {% endif %}
-                </li>
+    <div class="topic-header">
+        <a href="{{ path('forum_topic_show', {'id': topic.id}) }}">{{ topic.title }}</a>
+        {% if app.user and app.user.id == topic.user.id %}
+            <a href="{{ path('forum_topic_edit', {'id': topic.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
+        {% endif %}
+    </div>
+    <small>Créé par {{ topic.user.username }} le {{ topic.creationDate|date('d/m/Y H:i') }}</small><br>
+    <small>Nombre de posts : {{ topic.posts|length }}</small>
+</li>
+
             {% endfor %}
         </ul>
         <div class="pagination">

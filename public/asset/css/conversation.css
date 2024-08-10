@@ -17,6 +17,25 @@
     text-align: center;
     margin-bottom: 20px;
   }
+  .delete-form {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.delete {
+    background: none;
+    border: none;
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    color: brown;
+}
+
   
   /* Liste des conversations */
   ul {

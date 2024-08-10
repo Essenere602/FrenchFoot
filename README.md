@@ -6,23 +6,17 @@ Projet Certification
   
 Beugs (back/front) répertoriés : 
 
-    - Cohérence des Titres sur chaque page. 08/08-09/08
-    - Beug visuel decalage pseudo au clique sur profil dans la nav. ND
-    - Beug notification point rouge au retour de la conv sans devoir actualiser. 08/08-09/08
-    - Beug rechargement création topic et post. 08/08-09/08
-    - chevauchement back btn et menu burger. 08/08-09/08
-    - Btn rounded
+    - Beug notification point rouge au retour de la conv sans devoir actualiser. 10/08
+    - Beug rechargement création topic et post. 10/08
+    - Btn rounded 10/08
+    - cohérence back btn
 
 Style :
 
     - Styliser les nouvelles Fonctionnalitées :
             
-            - Twig Blocage. 
-            - La croix de suppression de message.
-            - Le boutton de suppression de conversation.
-            - Scroll mp. 
-            - Edition topic btn / Formulaire 
-            - Controler tout, notamment le responsive 100%.
+            - Scroll mp. 10/08
+            - Controler tout, notamment le responsive 100%. max 15/08 
 
 Vérification : 
 

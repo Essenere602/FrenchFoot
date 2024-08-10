@@ -1,26 +1,29 @@
 {% extends 'base.html.twig' %}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/block-list.css') }}">
     {% endblock %}
 
 {% block body %}
     <form method="POST" action="{{ path('app_manage_blocks') }}">
-        <h1>Gérer les blocages</h1>
+        <h1 class="form-title">Gérer les blocages</h1>
         <label for="block_username">Bloquer un utilisateur :</label>
         <input type="text" id="block_username" name="block_username" placeholder="Chercher un utilisateur" required>
         <div id="autocomplete-results"></div>
         <button type="submit">Bloquer</button>
     </form>
 
-    <h2>Utilisateurs bloqués</h2>
-    <ul>
-        {% for block in blocksInitiated %}
-            <li>
-                {{ block.getBlocked().getUsername() }}
-                <a href="{{ path('app_unblock_user', {'id': block.getId()}) }}">Débloquer</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <h2 class="form-title">Utilisateurs bloqués</h2>
+    <div class="centered-list">
+        <ul>
+            {% for block in blocksInitiated %}
+                <li>
+                    {{ block.getBlocked().getUsername() }}
+                    <a href="{{ path('app_unblock_user', {'id': block.getId()}) }}">Débloquer</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
     <script>
         document.getElementById('block_username').addEventListener('input', function() {

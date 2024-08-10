@@ -104,7 +104,6 @@
 }
 
 .topic-list li a:hover {
-    color: #C8A764;
     text-decoration: underline;
 }
 
@@ -121,4 +120,53 @@
 
 .topic-list li small:last-of-type {
     color: #C8A764;
+}
+.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+}
+
+.btn-sm {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+/* Ajouter un style pour la classe .topic-header */
+.topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Styles pour le titre du topic */
+.topic-header a {
+    font-size: 20px;  /* Assurez-vous que cette taille correspond à celle souhaitée */
+    font-weight: bold;
+    color: #131313;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.topic-header .btn-warning {
+    background-color: #f0ad4e; /* Couleur de fond pour correspondre à celle utilisée dans les posts */
+    color: #fff; /* Couleur du texte */
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.topic-header .btn-warning:hover {
+    background-color: #ec971f; /* Effet hover similaire à celui dans les posts */
 }
