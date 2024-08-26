@@ -7,7 +7,9 @@
 
 {% block body %}
     <div class="container">
- 
+    <a href="http://127.0.0.1:8000" id="back-button" class="back-button">
+        &#8592; Retour
+    </a>
 
         <div class="autocomplete-container">
             <h2>Nouvelle Conversation</h2>
@@ -21,7 +23,7 @@
     {% for conversation in conversations %}
         {% set unreadMessages = unread_messages_for_conversation(conversation) %}
         <li>
-            <a href="{{ path('app_message_conversation', {id: conversation.id}) }}">
+            <a href="{{ path('app_message_conversation', {id: conversation.id}) }}" class="conversation-link" data-id="{{ conversation.id }}">
                 {% if unreadMessages > 0 %}
                     <span class="notification-dot"></span>
                 {% endif %}
@@ -73,5 +75,35 @@
                 resultsDiv.innerHTML = '';
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.conversation-link').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            const conversationId = this.dataset.id;
+            // Faites une requête AJAX pour marquer les messages comme lus
+            fetch('/messages/mark-as-read/' + conversationId, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': '{{ csrf_token("mark_as_read") }}' // Assurez-vous d'inclure un token CSRF valide
+                }
+            }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Supprimer le point rouge de la conversation
+                    this.querySelector('.notification-dot').style.display = 'none';
+
+                    // Vérifier s'il reste d'autres conversations avec des messages non lus
+                    if (document.querySelectorAll('.notification-dot').length === 0) {
+                        // Supprimer le point rouge du menu
+                        document.querySelector('.navbar .notification-dot').style.display = 'none';
+                    }
+                }
+            }).catch(error => console.error('Erreur lors de la mise à jour des messages:', error));
+        });
+    });
+});
+
     </script>
 {% endblock %}

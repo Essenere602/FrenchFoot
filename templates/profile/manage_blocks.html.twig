@@ -6,6 +6,9 @@
 
 {% block body %}
     <form method="POST" action="{{ path('app_manage_blocks') }}">
+    <a href="{{ path('app_profile')}}" id="back-button" class="back-button">
+        &#8592; Retour 
+    </a>
         <h1 class="form-title">Gérer les blocages</h1>
         <label for="block_username">Bloquer un utilisateur :</label>
         <input type="text" id="block_username" name="block_username" placeholder="Chercher un utilisateur" required>
@@ -26,24 +29,39 @@
     </div>
 
     <script>
-        document.getElementById('block_username').addEventListener('input', function() {
-            let query = this.value;
-            fetch('{{ path('user_autocomplete') }}?q=' + query)
-                .then(response => response.json())
-                .then(data => {
-                    let results = document.getElementById('autocomplete-results');
+document.getElementById('block_username').addEventListener('input', function() {
+    let query = this.value;
+    let results = document.getElementById('autocomplete-results');
+
+    // Réinitialiser les résultats si le champ est vide
+    if (query === '') {
+        results.innerHTML = '';
+        return;
+    }
+
+    fetch('{{ path('user_autocomplete') }}?q=' + query)
+        .then(response => response.json())
+        .then(data => {
+            results.innerHTML = '';
+            data.forEach(user => {
+                let div = document.createElement('div');
+                div.textContent = user.username;
+                div.dataset.userId = user.id;
+                div.classList.add('autocomplete-item'); // Ajout de la classe pour le style du curseur
+                div.addEventListener('click', function() {
+                    document.getElementById('block_username').value = this.textContent;
                     results.innerHTML = '';
-                    data.forEach(user => {
-                        let div = document.createElement('div');
-                        div.textContent = user.username;
-                        div.dataset.userId = user.id;
-                        div.addEventListener('click', function() {
-                            document.getElementById('block_username').value = this.textContent;
-                            results.innerHTML = '';
-                        });
-                        results.appendChild(div);
-                    });
                 });
+                results.appendChild(div);
+            });
         });
+});
+
+// Réinitialiser les résultats si le champ perd le focus et est vide
+document.getElementById('block_username').addEventListener('blur', function() {
+    if (this.value === '') {
+        document.getElementById('autocomplete-results').innerHTML = '';
+    }
+});
     </script>
 {% endblock %}

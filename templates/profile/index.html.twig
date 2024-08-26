@@ -44,6 +44,28 @@
         .autocomplete-item span {
             font-size: 16px;
         }
+        @media (max-width: 768px) {
+            .autocomplete {
+                width: 100%;
+            }
+            .autocomplete input {
+                width: 100%; /* Prend toute la largeur disponible */
+                font-size: 14px; /* Réduit la taille de la police pour une meilleure lisibilité */
+            }
+            .autocomplete .autocomplete-items {
+                max-height: 150px; /* Ajuste la hauteur pour mieux s'adapter aux petits écrans */
+            }
+            .autocomplete .autocomplete-item {
+                padding: 8px; /* Réduit légèrement l'espace autour des éléments */
+            }
+            .club-logo {
+                width: 30px; /* Réduit la taille du logo pour s'adapter à l'espace plus restreint */
+                margin-right: 8px;
+            }
+            .autocomplete-item span {
+                font-size: 14px; /* Réduit la taille du texte pour une meilleure adaptation */
+            }
+        }
     </style>
 {% endblock %}
 

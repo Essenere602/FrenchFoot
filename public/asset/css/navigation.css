@@ -142,6 +142,7 @@
       background: #131313;
       padding: 1rem;
       z-index: 100;
+      overflow-x: hidden; /* Empêche le débordement à droite */
   }
 
   .nav-links.active {
@@ -155,10 +156,15 @@
   .auth-links {
       position: static;
       flex-direction: column;
+      align-items: center; /* Centrer les éléments horizontalement */
       gap: 0.5rem;
+      width: 100%; /* Prendre toute la largeur disponible */
   }
+
   .btn-rounded {
-    background: #131313;
+      background: #131313;
+      width: auto; /* Ajuste la largeur automatiquement */
+      text-align: center; /* Centrer le texte */
   }
 }
 /* Animation du menu burger */

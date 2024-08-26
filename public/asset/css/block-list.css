@@ -33,3 +33,20 @@
     color: brown;
     text-decoration: underline;
 }
+#autocomplete-results {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    background-color: #fff;
+    z-index: 99;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer; /* Le curseur devient une main */
+}
+
+.autocomplete-item:hover {
+    background-color: #e9e9e9;
+}

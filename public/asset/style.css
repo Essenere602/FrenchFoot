@@ -7,6 +7,7 @@ body {
   color: #2e3136;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 .oswald {
   font-family: "Oswald", sans-serif;
@@ -39,4 +40,8 @@ footer {
   color: #fff;
   text-align: center;
   width: 100%;
+}
+.back-button {
+  text-decoration: none;
+  color: #131313;
 }

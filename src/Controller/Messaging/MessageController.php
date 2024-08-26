@@ -198,4 +198,19 @@ class MessageController extends AbstractController
     
         return $this->redirectToRoute('app_message_conversation', ['id' => $message->getConversation()->getId()]);
     }
+
+    #[Route('/messages/mark-as-read/{id}', name: 'app_message_mark_as_read', methods: ['POST'])]
+public function markAsRead(Conversation $conversation, MessageRepository $messageRepository): Response
+{
+    $user = $this->getUser();
+
+    if ($conversation->getUser1() !== $user && $conversation->getUser2() !== $user) {
+        return $this->json(['success' => false, 'message' => 'Accès refusé'], Response::HTTP_FORBIDDEN);
+    }
+
+    $messageRepository->markMessagesAsReadForConversation($user, $conversation);
+
+    return $this->json(['success' => true]);
+}
+
 }

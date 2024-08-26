@@ -6,12 +6,6 @@ Projet Certification
   
 Beugs (back/front) répertoriés : 
 
-    - Beug notification point rouge au retour de la conv sans devoir actualiser
-    - affichage autocomplete responsive profil
-    - affichage autocomplete vierge back blocage
-    - back btn messagerie
-    - Cohérence back btn
-    - nav burger a revoir
     - responsivité tableau admin
     - responsivité pagination admin
     - check pagination topic and post 
@@ -20,8 +14,9 @@ Beugs (back/front) répertoriés :
 Style :
 
     - Styliser les nouvelles Fonctionnalitées :
-            
-            - Controler tout, notamment le responsive 100%. max 15/08 
+    
+            - Journée match / top, bottom messagerie / pagination
+            - Controler tout, notamment le responsive 100%, ajustement, optimisation code + img etc, factorisation, commentaire 
 
 Vérification : 
 

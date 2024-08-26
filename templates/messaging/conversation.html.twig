@@ -7,6 +7,9 @@
 
 {% block body %}
     <div class="container">
+    <a href="{{ path('app_messages') }}" id="back-button" class="back-button">
+        &#8592; Retour
+    </a>
         <h1>Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}</h1>
     <div class="scroll-up">
         <button class="scroll-button" id="scroll-up-btn">⬆️</button>
