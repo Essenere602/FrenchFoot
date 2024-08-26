@@ -7,19 +7,20 @@
 
 {% block body %}
     <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">
-                {% if error.messageKey is defined %}
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
-                {% else %}
-                    {{ error }}
-                {% endif %}
-            </div>
+{% if error %}
+    <div class="alert alert-danger">
+        {% if error.messageKey == 'Invalid credentials.' %}
+            Identifiant ou mot de passe incorrect.
+        {% elseif error.messageKey is defined %}
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        {% else %}
+            {{ error }}
         {% endif %}
-
+    </div>
+{% endif %}
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté : {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
         {% endif %}
 

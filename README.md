@@ -10,8 +10,6 @@ Beugs (back/front) répertoriés :
     
 Reste à faire :
 
-    - Back btn href edit post/topic
-    - Controler tout par l'utilisation (responsive, beug etc)
     - Ajustement et optimisation de code et des formats d'images
     - Factorisation précise (Une route Un controller, Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
     - Commentaire 
