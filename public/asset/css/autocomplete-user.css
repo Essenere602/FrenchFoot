@@ -1,0 +1,41 @@
+/* Conteneur pour l'autocomplétion */
+.autocomplete-container {
+    position: relative; /* Positionne le conteneur de manière relative pour que les éléments enfants positionnés absolument soient par rapport à ce conteneur */
+    margin-bottom: 20px; /* Ajoute une marge inférieure de 20px pour espacer le conteneur des éléments suivants */
+}
+
+/* Style pour le champ de saisie d'autocomplétion */
+#username-autocomplete {
+    width: 97%; /* Définit la largeur du champ de saisie à 97% de son conteneur parent */
+    padding: 10px; /* Ajoute un espacement interne de 10px pour rendre le champ plus confortable à utiliser */
+    font-size: 16px; /* Définit la taille de la police à 16px pour le texte à l'intérieur du champ */
+    border: 1px solid #C8A764; /* Ajoute une bordure de 1px de couleur dorée autour du champ de saisie */
+    border-radius: 4px; /* Arrondit légèrement les coins de la bordure pour un effet adouci */
+    box-shadow: 0 2px 4px rgba(20, 17, 17, 0.1); /* Ajoute une légère ombre portée pour donner de la profondeur au champ */
+    margin: auto; /* Centre le champ de saisie horizontalement dans son conteneur parent */
+}
+
+/* Conteneur pour les résultats d'autocomplétion */
+#autocomplete-results {
+    position: absolute; /* Positionne les résultats par rapport à leur conteneur parent, souvent juste en dessous du champ de saisie */
+    width: 100%; /* Assure que la largeur des résultats correspond à celle du champ de saisie */
+    max-height: 200px; /* Définit une hauteur maximale de 200px pour éviter que la liste ne devienne trop longue */
+    overflow-y: auto; /* Ajoute un défilement vertical si le contenu dépasse la hauteur maximale */
+    background-color: #fff; /* Définit le fond des résultats en blanc pour qu'ils soient bien lisibles */
+    border-radius: 4px; /* Arrondit les coins du conteneur des résultats pour harmoniser avec le champ de saisie */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre plus marquée pour donner l'impression que la liste flotte au-dessus de la page */
+    z-index: 1000; /* Positionne les résultats au-dessus des autres éléments de la page pour garantir leur visibilité */
+}
+
+/* Style pour chaque élément de la liste des résultats */
+#autocomplete-results div {
+    padding: 10px; /* Ajoute un espacement interne de 10px pour rendre chaque élément facilement cliquable */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que les éléments sont interactifs */
+    transition: background-color 0.3s ease; /* Ajoute une transition douce pour le changement de couleur de fond lors du survol */
+}
+
+/* Style pour les éléments de la liste lors du survol */
+#autocomplete-results div:hover {
+    background-color: #C8A764; /* Change la couleur de fond en doré lorsque l'utilisateur survole un élément */
+    color: #fff; /* Change la couleur du texte en blanc pour qu'il soit lisible sur le fond doré */
+}

@@ -67,44 +67,6 @@
     color: #C8A764;
   }
   
-  /* Conteneur de l'autocomplete */
-  .autocomplete-container {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  #username-autocomplete {
-    width: 97%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #C8A764;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(20, 17, 17, 0.1);
-    margin: auto;
-  }
-  
-  #autocomplete-results {
-    position: absolute;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  #autocomplete-results div {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  #autocomplete-results div:hover {
-    background-color: #C8A764;
-    color: #fff;
-  }
-  
   /* Responsivité pour les petits écrans */
   @media screen and (max-width: 768px) {
     .container {

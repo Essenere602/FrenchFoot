@@ -8,10 +8,16 @@ Beugs (back/front) répertoriés :
 
     - Beug limitation API
     
-            - Controler tout par l'utilisation (responsive, beug etc)
-            - Ajustement et optimisation de code et des formats d'images
-            - Factorisation précise (Une route Un controller, Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
-            - Commentaire 
+Reste à faire :
+
+    - Back btn href edit post/topic
+    - Controler tout par l'utilisation (responsive, beug etc)
+    - Ajustement et optimisation de code et des formats d'images
+    - Factorisation précise (Une route Un controller, Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
+    - Commentaire 
+    - Dossier
+    => Fin Max Lundi 02/09
+    
 
 Vérification : 
 
@@ -19,6 +25,7 @@ Vérification :
     - Refactorisation complète global et précise PHP/JS/CSS Etc.
     - Règle d'un controller pour 1 route / les bonnes méthodes dans les bons fichiers.
     - Re-Vérifier tout le site visuelement d'un point de vu UX et UI.
+     => Fin Max Lundi 02/09
 
 
 Phase de précision : 
@@ -30,11 +37,13 @@ Phase de précision :
     - Commentaire de 100% des fichiers de code.
     - Vérifier le projet sur plusieurs plateforme et navigateur
     - Contrôle et gestion des beugs si besoin
+    => Fin Max Lundi 02/09
 
 
 Performance: 
  
     - Passer les photos et images en webp et svg partout
+    => Fin Max Lundi 02/09
 
 Factorisation final : 
  
@@ -43,17 +52,20 @@ Factorisation final :
     - 1 route 1 controller
     - Organisation parfaite des dossiers 
     - Commentaire intégral sur chaque ligne de chaque fichiers.
+    => Fin Max Lundi 02/09
 
 Contrôle SEO :
 
     - Se référer aux cours MCnumérique
-
+    => Fin Max Lundi 02/09
 
 Contrôle Thibault + Mick 
+    =>  Max Mardi 03/09
 
 Ajustement
+    => Fin Max Lundi 02/09
 
-Déploiement 20/08/2024 Maximum
+Déploiement Max Mardi 10/09
 
 Dossier : 
 

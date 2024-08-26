@@ -10,9 +10,13 @@
 {% block body %}
     <div class="forum-edit-post">
         {{ form_start(form) }}
-            <h1 class="page-title">Éditer Post</h1>
+        <a href="http://127.0.0.1:8000/forum" id="back-button" class="back-button">
+        &#8592; Retour
+    </a>
+            <h1 class="form-title">Éditer Post</h1>
         {{ form_row(form.label) }}
         {{ form_row(form.message) }}
+                <button type="submit">Mettre à jour</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

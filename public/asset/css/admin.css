@@ -1,206 +1,123 @@
-/* Styles de base pour le tableau */
-/*.table {
-    width: 80%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 16px;
-    text-align: left;
-    margin: 0 auto;
-}
-
-.table thead {
-    background-color: #f4f4f4;
-}
-
-.table th, .table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-.table th {
-    background-color: #131313;
-    color: #C8A764;
-}
-
-.table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.table tr:hover {
-    background-color: #ddd;
-}
-
-.table img {
-    max-width: 100px;
-    height: auto;
-}
-
-/* Styles pour les liens */
-/*a {
-    color: #131313;
-    text-decoration: none;
-    
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Styles pour les boutons */
-/*.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: red;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #e51635;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-
-/* Styles pour le titre */
-/*h1 {
-    margin: 20px 0;
-    font-size: 24px;
-    color: #333;
-}
-*/
 /* Styles pour la page Club Index */
 h1 {
-    font-size: 24px;
-    color: #131313;
-    text-align: center;
-    margin-bottom: 30px;
+    font-size: 24px; /* Définit la taille de la police pour le titre */
+    color: #131313; /* Définit la couleur du texte pour le titre */
+    text-align: center; /* Centre le texte du titre */
+    margin-bottom: 30px; /* Ajoute une marge inférieure de 30px au titre */
 }
 
 body {
-    overflow-x: hidden; /* Pour éviter les barres de défilement horizontales */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal de la page */
+    font-family: Arial, sans-serif; /* Définit la police par défaut pour la page */
+    margin: 0; /* Supprime les marges par défaut du corps de la page */
+    padding: 0; /* Supprime les espacements internes par défaut du corps de la page */
 }
 
 /* Conteneur pour le tableau */
 .table-container {
-    overflow-x: auto; /* Permet le défilement horizontal */
-    margin: 0 auto; /* Centre le conteneur horizontalement */
-    padding: 0 10px; /* Ajoute un peu de padding horizontal */
+    overflow-x: auto; /* Permet le défilement horizontal si le tableau est trop large */
+    margin: 0 auto; /* Centre le conteneur du tableau horizontalement */
+    padding: 0 10px; /* Ajoute un espacement interne horizontal de 10px */
 }
 
 /* Styles pour le tableau */
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 600px; /* Assure une largeur minimale pour le tableau */
+    width: 100%; /* Définit la largeur du tableau à 100% du conteneur parent */
+    border-collapse: collapse; /* Fusionne les bordures des cellules adjacentes */
+    background-color: #fff; /* Définit la couleur de fond du tableau à blanc */
+    border-radius: 8px; /* Arrondit les coins du tableau */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour du tableau */
+    min-width: 600px; /* Définit une largeur minimale pour le tableau */
 }
 
 .table thead {
-    background-color: #C8A764;
-    color: #fff;
+    background-color: #C8A764; /* Définit la couleur de fond pour l'en-tête du tableau */
+    color: #fff; /* Définit la couleur du texte pour l'en-tête du tableau */
 }
 
 .table th,
 .table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #C8A764;
+    padding: 12px; /* Ajoute un espacement interne de 12px dans les cellules du tableau */
+    text-align: left; /* Aligne le texte à gauche dans les cellules */
+    border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure aux cellules */
 }
 
 .table th {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 18px; /* Définit la taille de la police pour les en-têtes des colonnes */
+    font-weight: bold; /* Définit le texte des en-têtes en gras */
 }
 
 .table td a {
-    text-decoration: none;
-    color: #131313;
-    margin-right: 10px;
+    text-decoration: none; /* Supprime la décoration de texte (soulignement) pour les liens */
+    color: #131313; /* Définit la couleur du texte des liens */
+    margin-right: 10px; /* Ajoute une marge droite de 10px aux liens */
 }
 
 .table td a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Ajoute un soulignement au texte des liens lors du survol */
 }
 
 /* Styles pour le lien "Create new" */
 .create-new-container {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: center; /* Centre le texte du conteneur "Create new" */
+    margin-bottom: 20px; /* Ajoute une marge inférieure de 20px au conteneur */
 }
 
 .create-new-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #C8A764;
-    color: #131313;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-weight: bold;
+    display: inline-block; /* Affiche le lien comme un bloc en ligne */
+    padding: 10px 20px; /* Ajoute un espacement interne de 10px verticalement et 20px horizontalement */
+    background-color: #C8A764; /* Définit la couleur de fond du lien */
+    color: #131313; /* Définit la couleur du texte du lien */
+    text-decoration: none; /* Supprime la décoration de texte pour le lien */
+    border-radius: 5px; /* Arrondit les coins du lien */
+    transition: background-color 0.3s; /* Ajoute une transition de couleur de fond sur 0.3 secondes */
+    font-weight: bold; /* Définit le texte en gras */
 }
 
 .create-new-link:hover {
-    background-color: #131313;
-    color: #C8A764;
+    background-color: #131313; /* Change la couleur de fond lors du survol */
+    color: #C8A764; /* Change la couleur du texte lors du survol */
 }
 
 .btn {
-    background: rgb(245, 84, 84);
-    color: #fff; /* Assurez-vous que le texte est visible sur le fond coloré */
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid rgb(245, 84, 84);
-    padding: 6px 12px;
-    font-size: 14px;
+    background: rgb(245, 84, 84); /* Définit la couleur de fond du bouton */
+    color: #fff; /* Définit la couleur du texte du bouton */
+    cursor: pointer; /* Change le curseur en pointeur lors du survol du bouton */
+    border-radius: 4px; /* Arrondit les coins du bouton */
+    border: 1px solid rgb(245, 84, 84); /* Ajoute une bordure de 1px autour du bouton de la même couleur que le fond */
+    padding: 6px 12px; /* Ajoute un espacement interne de 6px verticalement et 12px horizontalement */
+    font-size: 14px; /* Définit la taille de la police pour le texte du bouton */
 }
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
     h1 {
-        font-size: 20px;
-        margin-bottom: 20px;
+        font-size: 20px; /* Réduit la taille de la police pour le titre sur les petits écrans */
+        margin-bottom: 20px; /* Réduit la marge inférieure du titre sur les petits écrans */
     }
 
     .table th,
     .table td {
-        padding: 8px;
-        font-size: 14px;
+        padding: 8px; /* Réduit l'espacement interne des cellules du tableau sur les petits écrans */
+        font-size: 14px; /* Réduit la taille de la police dans les cellules sur les petits écrans */
     }
 
     .table thead {
-        font-size: 16px;
+        font-size: 16px; /* Réduit la taille de la police pour l'en-tête du tableau sur les petits écrans */
     }
 
     .create-new-link {
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 8px 16px; /* Réduit l'espacement interne du lien sur les petits écrans */
+        font-size: 14px; /* Réduit la taille de la police du lien sur les petits écrans */
     }
 
     .create-new-container {
-        margin-bottom: 15px;
+        margin-bottom: 15px; /* Réduit la marge inférieure du conteneur sur les petits écrans */
     }
 
     .btn {
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 8px 16px; /* Augmente légèrement l'espacement interne du bouton sur les petits écrans */
+        font-size: 14px; /* Maintient la taille de la police du bouton sur les petits écrans */
     }
 }
 
@@ -211,16 +128,16 @@ body {
     }
 
     .table th, .table td {
-        padding: 6px;
+        padding: 6px; /* Réduit encore l'espacement interne des cellules sur les très petits écrans */
     }
 
     .create-new-link, .btn {
-        padding: 6px 12px;
-        font-size: 12px;
+        padding: 6px 12px; /* Réduit l'espacement interne des boutons et liens sur les très petits écrans */
+        font-size: 12px; /* Réduit la taille de la police pour les boutons et liens sur les très petits écrans */
     }
 
     h1 {
-        font-size: 18px;
-        margin-bottom: 15px;
+        font-size: 18px; /* Réduit la taille de la police pour le titre sur les très petits écrans */
+        margin-bottom: 15px; /* Réduit la marge inférieure du titre sur les très petits écrans */
     }
 }
