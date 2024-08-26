@@ -106,14 +106,16 @@
 
 .btn-rounded {
   background-color: #fcf7ed;
-  padding: 0.5rem 1rem;
+  width: 120px;
   border-radius: 20px;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  height: 20px;
+  height: 30px;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .welcome-message {
   display: flex;
   align-items: center;
@@ -139,7 +141,7 @@
       left: 0;
       background: #131313;
       padding: 1rem;
-      z-index: 10;
+      z-index: 100;
   }
 
   .nav-links.active {
@@ -159,7 +161,6 @@
     background: #131313;
   }
 }
-
 /* Animation du menu burger */
 .burger.toggle .line1 {
   transform: rotate(-45deg) translate(-5px, 6px);

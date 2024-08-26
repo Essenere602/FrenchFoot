@@ -65,74 +65,61 @@
         <p><span class="legend-color relegation"></span> Relegation</p>
     </div>
 
-    <div id="matches-container">
-        {% include 'football/championnat_data/_matches.html.twig' %}
+    <div class="matchday-selector">
+        <form method="get" action="{{ path('championnat_data', {id: championnat.id}) }}">
+            <label for="matchday">Sélectionner une journée :</label>
+            <select id="matchday" name="matchday" onchange="this.form.submit()">
+                {% for i in 1..38 %}
+                    <option value="{{ i }}" {% if selectedMatchday == i %}selected{% endif %}>
+                        Journée {{ i }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
     </div>
 
-{% endblock %}
+    <div class="matches-section">
+        <h2>Matches</h2>
+        <ul>
+            {% if matches is defined and matches|length > 0 %}
+                {% for match in matches %}
+                    <li>
+                        <div class="team">
+                            <img src="{{ asset(match.homeTeam.crest) }}" alt="Logo de {{ match.homeTeam.name }}">
+                            <span class="team-name">{{ match.homeTeam.name }}</span>
+                        </div>
+                        <div class="score">
+    {% if match.status == 'FINISHED' %}
+        {{ match.score.fullTime.home|default('N/A') }} : {{ match.score.fullTime.away|default('N/A') }}
+    {% elseif match.status == 'IN_PLAY' or match.status == 'PAUSED' %}
+        {{ match.score.fullTime.home|default('N/A') }} : {{ match.score.fullTime.away|default('N/A') }}
+<span class="live-indicator">•</span>    {% else %}
+        À Venir
+    {% endif %}
+</div>
 
-{% block javascripts %}
+                        <div class="team">
+                            <span class="team-name">{{ match.awayTeam.name }}</span>
+                            <img src="{{ asset(match.awayTeam.crest) }}" alt="{{ match.awayTeam.name }}">
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>Aucun match disponible</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+{% block javascript %}
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        function loadMatches(url, addToHistory = true) {
-            fetch(url, {
-                headers: {
-                    "X-Requested-With": "XMLHttpRequest"
-                }
-            })
+    setInterval(function() {
+        fetch(window.location.href)
             .then(response => response.text())
             .then(html => {
-                document.getElementById("matches-container").innerHTML = html;
-                if (addToHistory) {
-                    history.pushState(null, "", url);
-                }
-                attachPaginationHandlers();
-            })
-            .catch(error => console.error('Error:', error));
-        }
-
-        function attachPaginationHandlers() {
-            document.querySelectorAll(".pagination-button").forEach(function(button) {
-                button.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    const url = this.getAttribute("href");
-                    loadMatches(url);
-                });
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                document.querySelector('.matches-section').innerHTML = doc.querySelector('.matches-section').innerHTML;
             });
-        }
-
-        window.addEventListener("popstate", function(event) {
-            const url = window.location.href;
-            loadMatches(url, false); // Don't add to history when navigating back
-        });
-
-        attachPaginationHandlers();
-
-        document.getElementById("back-button").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "http://127.0.0.1:8000/championnats";
-        });
-
-        // Override browser back button behavior
-        window.onpopstate = function(event) {
-            window.location.href = "http://127.0.0.1:8000/championnats";
-        };
-    });
-    
-            document.addEventListener('DOMContentLoaded', () => {
-
-            const burger = document.querySelector('.burger');
-
-            const navLinks = document.querySelector('.nav-links');
-
-            burger.addEventListener('click', () => {
-
-            navLinks.classList.toggle('active');
-
-            burger.classList.toggle('toggle');
-                
-                        });
-            });
-        
+    }, 30000); // Mise à jour toutes les 30 secondes
 </script>
 {% endblock %}

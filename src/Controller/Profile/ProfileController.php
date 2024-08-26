@@ -60,24 +60,33 @@ class ProfileController extends AbstractController
 
 
     
-    #[Route('/profile/clubs/search', name: 'profile_club_search', methods: ['GET'])]
-    public function searchClubs(Request $request, ClubRepository $clubRepository): JsonResponse
+// Déclaration d'une route pour cette méthode. Elle est accessible via l'URL '/profile/clubs/search', 
+// elle est nommée 'profile_club_search' et elle répond uniquement aux requêtes HTTP GET.
+#[Route('/profile/clubs/search', name: 'profile_club_search', methods: ['GET'])]
+public function searchClubs(Request $request, ClubRepository $clubRepository): JsonResponse
+
     {
-        $query = $request->query->get('q', '');
+    // Récupère la valeur du paramètre de requête 'q' (recherche) ou une chaîne vide si ce paramètre n'est pas présent
+    $query = $request->query->get('q', '');
 
-        $clubs = $clubRepository->searchClubsByName($query);
+    // Utilise le repository des clubs pour rechercher des clubs en fonction de la requête
+    $clubs = $clubRepository->searchClubsByName($query);
 
-        $results = [];
-        foreach ($clubs as $club) {
-            $results[] = [
-                'id' => $club->getId(),
-                'name' => $club->getName(),
-                'logo' => $club->getLogoClub(),
-            ];
-        }
+    // Initialise un tableau vide pour stocker les résultats de la recherche
+    $results = [];
+    
+    // Parcourt chaque club trouvé dans la recherche
+    foreach ($clubs as $club) {
+        // Ajoute les détails du club dans le tableau des résultats
+        $results[] = [
+            'id' => $club->getId(),             // Récupère l'identifiant du club
+            'name' => $club->getName(),         // Récupère le nom du club
+            'logo' => $club->getLogoClub(),     // Récupère le logo du club
+        ];
+    }
 
-        return $this->json($results);
-
-
-}
+    // Retourne les résultats sous forme de réponse JSON
+    return $this->json($results);
+    }
+    
 }

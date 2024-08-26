@@ -125,3 +125,18 @@
       margin: 5px 0;
   }
 }
+.live-indicator {
+  color: green;
+  font-weight: bold;
+    font-size: 1.5em; /* Ajustez la taille selon vos besoins */
+    line-height: 0; /* Pour bien centrer le point verticalement */
+    margin-left: 5px;
+    animation: blink 1s linear infinite;
+  }
+
+
+@keyframes blink {
+  30% {
+      opacity: 0;
+  }
+}

@@ -6,16 +6,21 @@ Projet Certification
   
 Beugs (back/front) répertoriés : 
 
-    - Beug notification point rouge au retour de la conv sans devoir actualiser. 10/08
-    - Beug rechargement création topic et post. 10/08
-    - Btn rounded 10/08
-    - cohérence back btn
-
+    - Beug notification point rouge au retour de la conv sans devoir actualiser
+    - affichage autocomplete responsive profil
+    - affichage autocomplete vierge back blocage
+    - back btn messagerie
+    - Cohérence back btn
+    - nav burger a revoir
+    - responsivité tableau admin
+    - responsivité pagination admin
+    - check pagination topic and post 
+    - Beug limitation API
+    
 Style :
 
     - Styliser les nouvelles Fonctionnalitées :
             
-            - Scroll mp. 10/08
             - Controler tout, notamment le responsive 100%. max 15/08 
 
 Vérification : 
@@ -59,22 +64,6 @@ Contrôle Thibault + Mick
 Ajustement
 
 Déploiement 20/08/2024 Maximum
-
-
-Fonctionnalitées non développées mais à venir :
-
-    - Plus de championnats. 
-    - Plus de détails sur les matches (composition, cartons, buteurs etc). 
-    - Ajouter le football féminin. 
-    - Regex pour éviter post et sujet borderline. 
-    - Identifier un utilisateur dans un posts 
-    - Ajouter un boutton MP via les post au clique sur un username 
-    - Traduire le site 
-    - Pouvoir répondre à un post.
-    - Réfléchir à intégrer ck editor pour rédiger les posts.
-    - CRUD sur les posts et topics directement dans l'interface forum pour plus d'ux admin
-    - Liste perso des sujets sur lesquelles user a participé + notificationde réponse savoir ou l'user en est dans ces interactions sur le forum
-    - selection multiple pour delete multiple back office 
 
 Dossier : 
 

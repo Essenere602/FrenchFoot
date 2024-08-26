@@ -53,12 +53,21 @@
         {{ form_row(form.name) }}
         {{ form_row(form.lastname) }}
         {{ form_row(form.email) }}  {# Ajout du champ email #}
-        <div class="autocomplete">
-            <label for="clubSearch">Club</label>
-            <input type="text" id="clubSearch" name="clubSearch" placeholder="Nom du club" value="{{ user.userProfile.club ? user.userProfile.club.name : '' }}">
-            <input type="hidden" id="clubId" name="clubId" value="{{ user.userProfile.club ? user.userProfile.club.id : '' }}">
-            <div class="autocomplete-items" id="clubSearchResults"></div>
-        </div>
+<!-- Conteneur principal pour le champ de recherche et les résultats de l'auto-complétion -->
+<div class="autocomplete">
+    <!-- Étiquette pour le champ de recherche, associée à l'élément avec l'ID 'clubSearch' -->
+    <label for="clubSearch">Club</label>
+    
+    <!-- Champ de texte pour entrer le nom du club avec des valeurs dynamiques basées sur les données de l'utilisateur -->
+    <input type="text" id="clubSearch" name="clubSearch" placeholder="Nom du club" value="{{ user.userProfile.club ? user.userProfile.club.name : '' }}">
+    
+    <!-- Champ caché pour stocker l'ID du club sélectionné, également basé sur les données de l'utilisateur -->
+    <input type="hidden" id="clubId" name="clubId" value="{{ user.userProfile.club ? user.userProfile.club.id : '' }}">
+    
+    <!-- Zone pour afficher les résultats de l'auto-complétion -->
+    <div class="autocomplete-items" id="clubSearchResults"></div>
+</div>
+
         {{ form_row(form.birth_date) }}
         {{ form_row(form.save) }}
     {{ form_end(form) }}
@@ -72,61 +81,72 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const clubSearchInput = document.getElementById('clubSearch');
-            const clubIdInput = document.getElementById('clubId');
-            const clubSearchResults = document.getElementById('clubSearchResults');
 
-            clubSearchInput.addEventListener('input', function() {
-                const query = this.value.trim();
-
-                fetch(`/profile/clubs/search?q=${encodeURIComponent(query)}`)
-                    .then(response => response.json())
-                    .then(data => {
+// Ajoute un écouteur d'événement pour le moment où le document HTML est complètement chargé et analysé
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionne l'élément avec l'identifiant 'clubSearch' et le stocke dans la variable 'clubSearchInput'
+    const clubSearchInput = document.getElementById('clubSearch');
+    // Sélectionne l'élément avec l'identifiant 'clubId' et le stocke dans la variable 'clubIdInput'
+    const clubIdInput = document.getElementById('clubId');
+    // Sélectionne l'élément avec l'identifiant 'clubSearchResults' et le stocke dans la variable 'clubSearchResults'
+    const clubSearchResults = document.getElementById('clubSearchResults');
+    // Ajoute un écouteur d'événement pour les entrées dans l'élément 'clubSearchInput'
+    clubSearchInput.addEventListener('input', function() {
+        // Récupère la valeur de l'entrée de recherche, en enlevant les espaces de début et de fin
+        const query = this.value.trim();
+        // Effectue une requête fetch vers l'URL pour rechercher des clubs avec la requête encodée
+        fetch(`/profile/clubs/search?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())  // Convertit la réponse en JSON
+            .then(data => {
+                // Vide le contenu actuel de 'clubSearchResults'
+                clubSearchResults.innerHTML = '';
+                // Parcourt chaque club dans les données reçues
+                data.forEach(club => {
+                    // Crée un nouvel élément 'div' pour chaque club
+                    const item = document.createElement('div');
+                    item.classList.add('autocomplete-item');  // Ajoute la classe CSS 'autocomplete-item'
+                    // Crée un nouvel élément 'span' pour le nom du club
+                    const clubName = document.createElement('span');
+                    clubName.textContent = club.name;  // Définit le texte du 'span' au nom du club
+                    // Crée un nouvel élément 'img' pour le logo du club
+                    const logo = document.createElement('img');
+                    logo.src = club.logo;  // Définit la source de l'image au logo du club
+                    logo.classList.add('club-logo');  // Ajoute la classe CSS 'club-logo'
+                    // Ajoute le logo et le nom du club à l'élément 'item'
+                    item.appendChild(logo);
+                    item.appendChild(clubName);
+                    // Ajoute un écouteur d'événement pour les clics sur l'élément 'item'
+                    item.addEventListener('click', function() {
+                        // Remplit les champs de recherche et d'identifiant avec les informations du club sélectionné
+                        clubSearchInput.value = club.name;
+                        clubIdInput.value = club.id;
+                        // Vide les résultats de recherche
                         clubSearchResults.innerHTML = '';
-                        data.forEach(club => {
-                            const item = document.createElement('div');
-                            item.classList.add('autocomplete-item');
-
-                            const clubName = document.createElement('span');
-                            clubName.textContent = club.name;
-
-                            const logo = document.createElement('img');
-                            logo.src = club.logo;
-                            logo.classList.add('club-logo');
-
-                            item.appendChild(logo);
-                            item.appendChild(clubName);
-
-                            item.addEventListener('click', function() {
-                                clubSearchInput.value = club.name;
-                                clubIdInput.value = club.id;
-                                clubSearchResults.innerHTML = '';
-                            });
-
-                            clubSearchResults.appendChild(item);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching clubs:', error);
                     });
+                    // Ajoute l'élément 'item' à la liste des résultats de recherche
+                    clubSearchResults.appendChild(item);
+                });
+            })
+            .catch(error => {
+                // Affiche une erreur dans la console en cas de problème avec la requête
+                console.error('Error fetching clubs:', error);
             });
+    });
+    // Réinitialise la liste de résultats si le champ de recherche est vidé
+    clubSearchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Backspace' || event.key === 'Delete') {
+            if (clubSearchInput.value === '') {
+                clubSearchResults.innerHTML = '';
+            }
+        }
+    });
+    // Réinitialise la liste de résultats si le champ de recherche perd le focus
+    clubSearchInput.addEventListener('blur', function() {
+        if (clubSearchInput.value === '') {
+            clubSearchResults.innerHTML = '';
+        }
+    });
+});
 
-            // Réinitialiser la liste si le champ de recherche est vide
-            clubSearchInput.addEventListener('keyup', function(event) {
-                if (event.key === 'Backspace' || event.key === 'Delete') {
-                    if (clubSearchInput.value === '') {
-                        clubSearchResults.innerHTML = '';
-                    }
-                }
-            });
-
-            // Réinitialiser la liste si le champ de recherche perd le focus
-            clubSearchInput.addEventListener('blur', function() {
-                if (clubSearchInput.value === '') {
-                    clubSearchResults.innerHTML = '';
-                }
-            });
-        });
     </script>
 {% endblock %}

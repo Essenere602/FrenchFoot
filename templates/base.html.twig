@@ -10,22 +10,24 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script>
-            document.addEventListener('DOMContentLoaded', () => {
+<script>
 
-            const burger = document.querySelector('.burger');
+// Ajoute un écouteur d'événement pour le moment où le document HTML est complètement chargé et analysé
+document.addEventListener('DOMContentLoaded', () => {
+    // Sélectionne l'élément avec la classe 'burger' et le stocke dans la variable 'burger'
+    const burger = document.querySelector('.burger');
+    // Sélectionne l'élément avec la classe 'nav-links' et le stocke dans la variable 'navLinks'
+    const navLinks = document.querySelector('.nav-links');
+    // Ajoute un écouteur d'événement pour les clics sur l'élément 'burger'
+    burger.addEventListener('click', () => {
+        // Bascule la classe 'active' sur l'élément 'navLinks' (ajoute ou enlève la classe)
+        navLinks.classList.toggle('active');
+        // Bascule la classe 'toggle' sur l'élément 'burger' (ajoute ou enlève la classe)
+        burger.classList.toggle('toggle');
+        });
+});
 
-            const navLinks = document.querySelector('.nav-links');
-
-            burger.addEventListener('click', () => {
-
-            navLinks.classList.toggle('active');
-
-            burger.classList.toggle('toggle');
-                
-                        });
-            });
-            </script>
+</script>
         {% endblock %}
     </head>
     <body>
