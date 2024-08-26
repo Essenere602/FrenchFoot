@@ -12,50 +12,52 @@
     
     {% if is_granted('ROLE_ADMIN') %}
         <div class="create-new-container">
-        <a href="http://127.0.0.1:8000/admin" id="back-button" class="back-button">
-        &#8592; Retour
-        </a>
+            <a href="http://127.0.0.1:8000/admin" id="back-button" class="back-button">
+                &#8592; Retour
+            </a>
             <a href="{{ path('app_admin_contact_new') }}" class="create-new-link">Créer un nouveau contact</a>
         </div>
         
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Message</th>
-                    <th>Date</th>
-                    <th>Email</th>
-                    <th>Réponse</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for contact in pagination %}
+        <div class="table-container"> <!-- Conteneur de défilement horizontal -->
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ contact.id }}</td>
-                        <td>{{ contact.title }}</td>
-                        <td>{{ contact.message }}</td>
-                        <td>{{ contact.msgDate ? contact.msgDate|date('Y-m-d') : '' }}</td>
-                        <td>{{ contact.email }}</td>
-                        <td>{{ contact.response }}</td>
-                        <td>
-                            <a href="{{ path('app_admin_contact_response', {'id': contact.id}) }}">Répondre</a>
-                            <a href="{{ path('app_admin_contact_show', {'id': contact.id}) }}">Voir</a>
-                            <a href="{{ path('app_admin_contact_edit', {'id': contact.id}) }}">Modifier</a>
-                            <form action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" method="post" style="display:inline;">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
-                                <button class="btn btn-danger" type="submit">Supprimer</button>
-                            </form>
-                        </td>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Email</th>
+                        <th>Réponse</th>
+                        <th>Actions</th>
                     </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="7">Aucun résultat</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for contact in pagination %}
+                        <tr>
+                            <td>{{ contact.id }}</td>
+                            <td>{{ contact.title }}</td>
+                            <td>{{ contact.message }}</td>
+                            <td>{{ contact.msgDate ? contact.msgDate|date('Y-m-d') : '' }}</td>
+                            <td>{{ contact.email }}</td>
+                            <td>{{ contact.response }}</td>
+                            <td>
+                                <a href="{{ path('app_admin_contact_response', {'id': contact.id}) }}">Répondre</a>
+                                <a href="{{ path('app_admin_contact_show', {'id': contact.id}) }}">Voir</a>
+                                <a href="{{ path('app_admin_contact_edit', {'id': contact.id}) }}">Modifier</a>
+                                <form action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" method="post" style="display:inline;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Aucun résultat</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             {{ knp_pagination_render(pagination) }}

@@ -17,7 +17,7 @@
         </a>
             <a href="{{ path('app_admin_post_new') }}" class="create-new-link">Créer un nouveau post</a>
         </div>
-
+        <div class="table-container"> <!-- Conteneur de défilement horizontal -->     
         <table class="table">
             <thead>
                 <tr>
@@ -49,7 +49,7 @@
                 {% endfor %}
             </tbody>
         </table>
-
+        </div>
         <div class="pagination">
             {{ knp_pagination_render(pagination) }}
         </div>

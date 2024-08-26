@@ -88,19 +88,29 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
 }
+
 body {
-    overflow-x: hidden;
+    overflow-x: hidden; /* Pour éviter les barres de défilement horizontales */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur pour le tableau */
+.table-container {
+    overflow-x: auto; /* Permet le défilement horizontal */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    padding: 0 10px; /* Ajoute un peu de padding horizontal */
 }
 
 /* Styles pour le tableau */
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 auto;
-    max-width: 1200px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 600px; /* Assure une largeur minimale pour le tableau */
 }
 
 .table thead {
@@ -131,10 +141,9 @@ body {
 }
 
 /* Styles pour le lien "Create new" */
-/* Styles pour le lien "Create new" */
 .create-new-container {
-    text-align: center; /* Centre horizontalement le contenu */
-    margin-bottom: 20px; /* Ajoute de l'espace sous le lien */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .create-new-link {
@@ -152,9 +161,66 @@ body {
     background-color: #131313;
     color: #C8A764;
 }
+
 .btn {
     background: rgb(245, 84, 84);
+    color: #fff; /* Assurez-vous que le texte est visible sur le fond coloré */
     cursor: pointer;
     border-radius: 4px;
     border: 1px solid rgb(245, 84, 84);
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .table thead {
+        font-size: 16px;
+    }
+
+    .create-new-link {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .create-new-container {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Styles pour les très petits écrans (mobile en portrait) */
+@media screen and (max-width: 480px) {
+    .table {
+        font-size: 12px; /* Réduit la taille de la police dans les cellules pour les très petits écrans */
+    }
+
+    .table th, .table td {
+        padding: 6px;
+    }
+
+    .create-new-link, .btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
 }

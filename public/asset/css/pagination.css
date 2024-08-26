@@ -1,33 +1,64 @@
+/* Importation des variables de style */
 @import 'variables.css';
 
+/* Styles généraux pour la pagination */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
+    margin: 1.5rem 0; /* Espacement vertical réduit */
+    flex-wrap: wrap; /* Permet l'ajustement automatique des éléments */
 }
+
+/* Styles pour les éléments de pagination */
 .pagination a,
 .pagination span {
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    color: #2e3136;
+    display: inline-block;
+    margin: 0 0.25rem; /* Espacement réduit entre les boutons */
+    padding: 0.25rem 0.5rem; /* Padding compact */
+    border-radius: 4px; /* Coins légèrement arrondis */
+    color: #131313; /* Couleur du texte */
     text-decoration: none;
-    border: 1px solid gainsboro;
-    transition: background-color 0.3s ease;
+    border: 1px solid #C8A764; /* Bordure accordée au thème */
+    background-color: #fcf7ed; /* Couleur de fond claire */
+    font-size: 14px; /* Taille de la police adaptée aux petits écrans */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Styles pour les liens au survol */
 .pagination a:hover,
-.pagination span:hover {
-    background-color: #2e3136;
-    color: #fff;
+.pagination a:focus {
+    background-color: #C8A764; /* Couleur de fond au survol */
+    color: #fff; /* Couleur du texte au survol */
+    outline: none; /* Supprime le contour par défaut du focus */
 }
+
+/* Styles pour la page active */
 .pagination .current {
-    background-color: #2e3136;
-    color: #fff;
+    background-color: #C8A764; /* Couleur de fond pour la page active */
+    color: #fff; /* Couleur du texte pour la page active */
+    pointer-events: none; /* Empêche le clic sur la page active */
+    border: 1px solid #C8A764; /* Bordure assortie à la couleur de fond */
 }
-  
-.page-title {
-    text-align: center;
-    margin: 2rem 0;
+
+/* Styles pour les éléments désactivés */
+.pagination .disabled {
+    color: #666; /* Couleur du texte pour les éléments désactivés */
+    cursor: not-allowed; /* Changement du curseur pour les éléments désactivés */
+    border-color: transparent; /* Supprime la bordure pour les éléments désactivés */
+    background-color: #f5f5f5; /* Couleur de fond pour les éléments désactivés */
 }
-  
+
+/* Réactivité pour les petits écrans */
+@media (max-width: 768px) {
+    .pagination a,
+    .pagination span {
+        padding: 0.3rem 0.6rem; /* Padding légèrement ajusté pour les petits écrans */
+        font-size: 12px; /* Réduit la taille de la police */
+        margin: 0 0.2rem; /* Réduit l'espacement entre les boutons */
+    }
+
+    .pagination {
+        margin: 1rem 0; /* Espacement vertical ajusté pour les petits écrans */
+    }
+}

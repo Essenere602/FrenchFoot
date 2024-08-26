@@ -64,8 +64,9 @@
         <p><span class="legend-color conference-league"></span> UEFA Conference League Qualifiers</p>
         <p><span class="legend-color relegation"></span> Relegation</p>
     </div>
-
-    <div class="matchday-selector">
+    <div class="matches-section">
+        <h2>Matches</h2>
+        <div class="matchday-selector">
         <form method="get" action="{{ path('championnat_data', {id: championnat.id}) }}">
             <label for="matchday">Sélectionner une journée :</label>
             <select id="matchday" name="matchday" onchange="this.form.submit()">
@@ -77,9 +78,6 @@
             </select>
         </form>
     </div>
-
-    <div class="matches-section">
-        <h2>Matches</h2>
         <ul>
             {% if matches is defined and matches|length > 0 %}
                 {% for match in matches %}

@@ -16,7 +16,41 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+/* Conteneur des messages avec boutons de défilement */
+.messages-container {
+    position: relative;
+}
 
+/* Bouton de défilement vers le haut */
+.scroll-up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* Style des boutons de défilement */
+.scroll-button {
+    background-color: #C8A764;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-button:hover {
+    background-color: #131313;
+    color: #C8A764;
+}
 /* Conteneur des messages */
 .messages {
     padding: 20px;

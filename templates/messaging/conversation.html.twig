@@ -7,31 +7,33 @@
 
 {% block body %}
     <div class="container">
-    <a href="{{ path('app_messages') }}" id="back-button" class="back-button">
-        &#8592; Retour
-    </a>
+        <a href="{{ path('app_messages') }}" id="back-button" class="back-button">
+            &#8592; Retour
+        </a>
         <h1>Conversation avec {{ conversation.user1 == app.user ? conversation.user2.username : conversation.user1.username }}</h1>
-    <div class="scroll-up">
-        <button class="scroll-button" id="scroll-up-btn">⬆️</button>
-    </div>
-       <div class="messages">
-        {% for message in messages %}
-            <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
-                <form action="{{ path('app_message_delete', {id: message.id}) }}" method="post" style="display: inline;">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
-                    <button type="submit" class="delete">X</button>
-                </form>
-            <p>{{ message.content }}</p>
-            <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
-            {% if message.sender == app.user %}
-                
-            {% endif %}
+        
+        <div class="messages-container">
+            <div class="scroll-up">
+                <button class="scroll-button" id="scroll-up-btn">⬆️</button>
+            </div>
+
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.sender == app.user ? 'sent' : 'received' }}">
+                        <form action="{{ path('app_message_delete', {id: message.id}) }}" method="post" style="display: inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+                            <button type="submit" class="delete">X</button>
+                        </form>
+                        <p>{{ message.content }}</p>
+                        <small class="message-date">{{ message.sentAt|date('d/m/Y H:i') }}</small>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="scroll-down">
+                <button class="scroll-button" id="scroll-down-btn">⬇️</button>
+            </div>
         </div>
-    {% endfor %}
-</div>
-<div class="scroll-down">
-    <button class="scroll-button" id="scroll-down-btn">⬇️</button>
-</div>
 
         {{ form_start(form) }}
             {{ form_label(form.content, 'Message') }}
@@ -48,7 +50,7 @@
             const scrollUpBtn = document.getElementById('scroll-up-btn');
             const scrollDownBtn = document.getElementById('scroll-down-btn');
 
-            const scrollAmount = 100; // Le nombre de pixels à faire défiler par clic
+            const scrollAmount = 200;
 
             scrollUpBtn.addEventListener('click', function() {
                 messagesContainer.scrollBy({

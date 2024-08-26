@@ -93,6 +93,57 @@
   border: 1px solid #C8A764;
   border-radius: 4px;
 }
+/* Styles pour le conteneur du sélecteur de journée */
+/* Styles pour le conteneur du sélecteur de journée */
+.matchday-selector {
+  margin: 20px auto; /* Ajoute de l'espace autour du sélecteur */
+  text-align: center; /* Centre le contenu du sélecteur */
+  padding: 10px; /* Ajoute du padding pour plus de confort */
+  background-color: #fcf7ed; /* Couleur de fond légère pour le conteneur */
+  border-radius: 8px; /* Coins arrondis pour le conteneur */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour du conteneur */
+}
+
+/* Styles pour le label du sélecteur de journée */
+.matchday-selector label {
+  display: block; /* Affiche le label sur une ligne distincte */
+  margin-bottom: 8px; /* Ajoute un espace sous le label */
+  font-size: 16px; /* Taille de la police pour le label */
+  color: #131313; /* Couleur du texte */
+  font-weight: bold; /* Met le label en gras pour plus de visibilité */
+}
+
+/* Styles pour le sélecteur */
+.matchday-selector select {
+  padding: 8px 12px; /* Padding interne pour le sélecteur */
+  border: 1px solid #C8A764; /* Bordure colorée pour correspondre au thème */
+  border-radius: 4px; /* Coins arrondis pour le sélecteur */
+  background-color: #fff; /* Couleur de fond du sélecteur */
+  color: #131313; /* Couleur du texte dans le sélecteur */
+  font-size: 16px; /* Taille de la police pour le texte dans le sélecteur */
+  font-family: 'Arial', sans-serif; /* Police pour le texte */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Effets de transition pour la bordure et l'ombre */
+}
+
+/* Styles pour le sélecteur au survol et lorsqu'il est actif */
+.matchday-selector select:focus {
+  border-color: #131313; /* Changement de la couleur de la bordure au focus */
+  outline: none; /* Supprime le contour par défaut */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère au focus pour effet de profondeur */
+}
+
+/* Styles pour les options dans le sélecteur */
+.matchday-selector option {
+  padding: 10px; /* Padding interne pour les options */
+  background-color: #fff; /* Couleur de fond des options */
+  color: #131313; /* Couleur du texte dans les options */
+}
+
+/* Styles pour le sélecteur au survol des options */
+.matchday-selector option:hover {
+  background-color: #C8A764; /* Couleur de fond au survol des options */
+  color: #fff; /* Couleur du texte au survol des options */
+}
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {

@@ -6,17 +6,12 @@ Projet Certification
   
 Beugs (back/front) répertoriés : 
 
-    - responsivité tableau admin
-    - responsivité pagination admin
-    - check pagination topic and post 
     - Beug limitation API
     
-Style :
-
-    - Styliser les nouvelles Fonctionnalitées :
-    
-            - Journée match / top, bottom messagerie / pagination
-            - Controler tout, notamment le responsive 100%, ajustement, optimisation code + img etc, factorisation, commentaire 
+            - Controler tout par l'utilisation (responsive, beug etc)
+            - Ajustement et optimisation de code et des formats d'images
+            - Factorisation précise (Une route Un controller, Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
+            - Commentaire 
 
 Vérification : 
 
