@@ -7,11 +7,18 @@ Projet Certification
 Beugs (back/front) répertoriés : 
 
     - Beug limitation API
+    - Blocage 
+    - Menu burger dans messagerie non fonctionnel voir JS (à tester partout)
+    - Login et restriction
+    - Delete img du dossier media quand la carte est supprimée 
+    - Optimisation format img
+    - Tri et suppression de tout ce que je n'utilise plus
+    - Police de caractere a mieux gérer
     
 Reste à faire :
 
     - Ajustement et optimisation de code et des formats d'images
-    - Factorisation précise (Une route Un controller, Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
+    - Factorisation précise (Repo ce qui doit aller en repo, pas de css dans le twig ni de js etc)
     - Commentaire 
     - Dossier
     => Fin Max Lundi 02/09

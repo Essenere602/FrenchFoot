@@ -8,7 +8,6 @@ h1 {
 
 body {
     overflow-x: hidden; /* Empêche le défilement horizontal de la page */
-    font-family: Arial, sans-serif; /* Définit la police par défaut pour la page */
     margin: 0; /* Supprime les marges par défaut du corps de la page */
     padding: 0; /* Supprime les espacements internes par défaut du corps de la page */
 }

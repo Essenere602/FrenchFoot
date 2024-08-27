@@ -1,135 +1,158 @@
+/* Style pour les formulaires de suppression */
 form.delete-form {
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    display: inline;
+    max-width: none; /* Supprime toute restriction de largeur maximale */
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime le padding */
+    background-color: transparent; /* Fond transparent */
+    box-shadow: none; /* Supprime l'ombre portée */
+    border-radius: 0; /* Supprime les coins arrondis */
+    display: inline; /* Affiche le formulaire en ligne avec d'autres éléments */
 }
 
+/* Style pour les boutons dans les formulaires de suppression */
 form.delete-form button {
-    padding: 0;
-    background-color: transparent;
-    color: #C8A764;
-    border: none;
-    cursor: pointer;
-    transition: none;
-    display: inline;
-    margin: 0;
+    padding: 0; /* Supprime le padding */
+    background-color: transparent; /* Fond transparent */
+    color: #C8A764; /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    cursor: pointer; /* Affiche le curseur en main */
+    transition: none; /* Supprime les transitions */
+    display: inline; /* Affiche le bouton en ligne avec d'autres éléments */
+    margin: 0; /* Supprime les marges */
 }
 
+/* Style pour le survol des boutons dans les formulaires de suppression */
 form.delete-form button:hover {
-    background-color: transparent;
-    color: #131313;
+    background-color: transparent; /* Fond transparent au survol */
+    color: #131313; /* Couleur du texte au survol */
 }
 
-
+/* Style pour le titre des formulaires */
 .form-title {
-    color: #C8A764;
-    display: flex;
-    justify-content: center;
-    }
+    color: #C8A764; /* Couleur du texte */
+    display: flex; /* Utilise Flexbox pour le layout */
+    justify-content: center; /* Centre le titre horizontalement */
+}
+
+/* Style général pour les formulaires */
 form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    }
+    max-width: 600px; /* Largeur maximale du formulaire */
+    margin: 20px auto; /* Marge automatique pour centrer le formulaire horizontalement avec un espace de 20px en haut et en bas */
+    padding: 20px; /* Padding intérieur du formulaire */
+    background-color: #ffffff; /* Couleur de fond du formulaire */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre portée légère */
+    border-radius: 8px; /* Coins arrondis */
+}
+
+/* Style pour les labels des champs du formulaire */
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333333;
-    }
+    display: block; /* Affiche le label en tant que bloc */
+    margin-bottom: 8px; /* Espace sous le label */
+    color: #333333; /* Couleur du texte */
+}
+
+/* Style pour les champs de texte, email, date, mot de passe et textarea */
 input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
 textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    background: #fcf7ed;}
-textarea {
-    resize: vertical;
+    width: 100%; /* Largeur totale du champ */
+    padding: 8px; /* Padding intérieur du champ */
+    margin-bottom: 16px; /* Espace sous le champ */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+    border: 1px solid #cccccc; /* Bordure grise claire */
+    border-radius: 4px; /* Coins arrondis */
+    background: #fcf7ed; /* Couleur de fond très claire */
 }
+
+/* Style spécifique pour le textarea */
+textarea {
+    resize: vertical; /* Permet le redimensionnement vertical uniquement */
+}
+
+/* Style pour le bouton du formulaire */
 form button {
-    padding: 0.75rem 1.5rem;
-    background-color: #C8A764;
-    color: #131313;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
+    padding: 0.75rem 1.5rem; /* Padding intérieur du bouton */
+    background-color: #C8A764; /* Couleur de fond du bouton */
+    color: #131313; /* Couleur du texte du bouton */
+    border: none; /* Supprime la bordure */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Affiche le curseur en main */
+    transition: background-color 0.3s ease; /* Transition douce pour la couleur de fond */
+    display: block; /* Affiche le bouton en tant que bloc */
     margin: 0 auto; /* Centre le bouton horizontalement */
 }
+
+/* Style pour le survol du bouton du formulaire */
 form button:hover {
-    background-color: #131313;
-    color: #C8A764;
-} 
-/* Styles pour les boutons et le lien */
+    background-color: #131313; /* Couleur de fond au survol */
+    color: #C8A764; /* Couleur du texte au survol */
+}
+
+/* Style pour les liens de réinitialisation dans le formulaire */
 form a.reset {
-    display: block; /* Les éléments seront sur des lignes distinctes */
+    display: block; /* Affiche le lien en tant que bloc */
     width: fit-content; /* Ajuste la largeur du lien au contenu */
-    padding: 0.75rem 1.5rem;
-    border: none;
-    color: #131313;
-    border-radius: 8px;
-    text-align: center; /* Centre le texte à l'intérieur du bouton/lien */
-    text-decoration: none; /* Enlève le soulignement du lien */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px auto; /* Ajoute de l'espace autour et centre le lien/bouton */
+    padding: 0.75rem 1.5rem; /* Padding intérieur du lien */
+    border: none; /* Supprime la bordure */
+    color: #131313; /* Couleur du texte */
+    border-radius: 8px; /* Coins arrondis */
+    text-align: center; /* Centre le texte à l'intérieur du lien */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    cursor: pointer; /* Affiche le curseur en main */
+    transition: background-color 0.3s ease; /* Transition douce pour la couleur de fond */
+    margin: 10px auto; /* Espace autour et centre le lien horizontalement */
 }
+
+/* Style pour les liens de changement de mot de passe */
 .change-password {
-    display: block; /* Les éléments seront sur des lignes distinctes */
+    display: block; /* Affiche le lien en tant que bloc */
     width: fit-content; /* Ajuste la largeur du lien au contenu */
-    padding: 0.75rem 1.5rem;
-    border: none;
-    color: #131313;
-    border-radius: 8px;
-    text-align: center; /* Centre le texte à l'intérieur du bouton/lien */
-    text-decoration: none; /* Enlève le soulignement du lien */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px auto; /* Ajoute de l'espace autour et centre le lien/bouton */
+    padding: 0.75rem 1.5rem; /* Padding intérieur du lien */
+    border: none; /* Supprime la bordure */
+    color: #131313; /* Couleur du texte */
+    border-radius: 8px; /* Coins arrondis */
+    text-align: center; /* Centre le texte à l'intérieur du lien */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    cursor: pointer; /* Affiche le curseur en main */
+    transition: background-color 0.3s ease; /* Transition douce pour la couleur de fond */
+    margin: 10px auto; /* Espace autour et centre le lien horizontalement */
 }
+
+/* Style général pour les liens */
 a {
-    text-decoration: none;
-    color: #131313;
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: #131313; /* Couleur du texte des liens */
 }
+
 /* Style pour le conteneur de la case à cocher et du texte */
 .agree-terms-container {
-    display: flex;
-    align-items: center; /* Aligne verticalement le texte et la checkbox */
-    margin-bottom: 8px; /* Espacement sous la ligne de la case à cocher */
+    display: flex; /* Utilise Flexbox pour le layout */
+    align-items: center; /* Aligne les éléments verticalement */
+    margin-bottom: 8px; /* Espace sous le conteneur */
 }
 
-/* Style pour le texte de l'accord */
+/* Style pour le texte de l'accord dans le conteneur */
 .agree-terms-container label {
     margin-right: 8px; /* Espace entre le texte et la checkbox */
-    margin-bottom: 0; /* Élimine l'espacement sous le texte */
+    margin-bottom: 0; /* Supprime l'espacement sous le texte */
 }
 
-/* Style pour la checkbox elle-même */
+/* Style pour la checkbox dans le conteneur */
 .agree-terms-container input[type="checkbox"] {
-    margin-right: 8px; /* Ajoute un petit espace à droite de la checkbox */
+    margin-right: 8px; /* Espace à droite de la checkbox */
 }
 
 /* Style pour le lien de la politique de confidentialité */
 .privacy-policy-link {
     display: block; /* Affiche le lien sur une nouvelle ligne */
-    margin-top: 4px; /* Espacement au-dessus du lien */
-    color: #131313; /* Couleur du lien */
+    margin-top: 4px; /* Espace au-dessus du lien */
+    color: #131313; /* Couleur du texte du lien */
     text-decoration: none; /* Supprime le soulignement du lien */
 }
 
+/* Style pour le survol du lien de la politique de confidentialité */
 .privacy-policy-link:hover {
     text-decoration: underline; /* Sous-ligne le lien au survol */
 }

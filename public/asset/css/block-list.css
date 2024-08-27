@@ -1,52 +1,62 @@
+/* Style pour un conteneur de liste centré */
 .centered-list {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    flex-direction: column; /* Aligne les éléments enfants en colonne */
     align-items: center; /* Centre les éléments horizontalement */
-    margin-top: 20px;
+    margin-top: 20px; /* Ajoute un espace au-dessus du conteneur */
 }
 
+/* Style pour les titres dans la liste centrée */
 .centered-list h2 {
-    text-align: center;
-    color: #C8A764;
-    margin-bottom: 20px;
+    text-align: center; /* Centre le texte horizontalement */
+    color: #C8A764; /* Définit la couleur du texte */
+    margin-bottom: 20px; /* Ajoute un espace en dessous du titre */
 }
 
+/* Style pour les listes non ordonnées dans la liste centrée */
 .centered-list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    list-style-type: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime la marge par défaut */
 }
 
+/* Style pour les éléments de liste dans la liste centrée */
 .centered-list li {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: 10px; /* Ajoute un espace en dessous de chaque élément */
+    font-size: 16px; /* Définit la taille de la police */
 }
 
+/* Style pour les liens dans la liste centrée */
 .centered-list a {
-    color: red;
-    text-decoration: none;
-    margin-left: 10px;
-    font-weight: bold;
+    color: red; /* Définit la couleur du texte du lien */
+    text-decoration: none; /* Supprime le soulignement par défaut des liens */
+    margin-left: 10px; /* Ajoute un espace à gauche du lien */
+    font-weight: bold; /* Met le texte du lien en gras */
 }
 
+/* Style pour les liens lorsqu'ils sont survolés */
 .centered-list a:hover {
-    color: brown;
-    text-decoration: underline;
+    color: brown; /* Change la couleur du texte lors du survol */
+    text-decoration: underline; /* Ajoute un soulignement lors du survol */
 }
+
+/* Style pour le conteneur des résultats de l'autocomplétion */
 #autocomplete-results {
-    position: relative;
-    border: 1px solid #d4d4d4;
-    background-color: #fff;
-    z-index: 99;
-    max-height: 200px;
-    overflow-y: auto;
+    position: relative; /* Positionne le conteneur relativement à son conteneur parent */
+    border: 1px solid #d4d4d4; /* Définit une bordure grise claire autour du conteneur */
+    background-color: #fff; /* Définit la couleur de fond du conteneur */
+    z-index: 99; /* Définit un niveau de superposition pour le conteneur */
+    max-height: 200px; /* Définit une hauteur maximale pour le conteneur */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse */
 }
 
+/* Style pour les éléments d'autocomplétion */
 .autocomplete-item {
-    padding: 10px;
-    cursor: pointer; /* Le curseur devient une main */
+    padding: 10px; /* Ajoute un padding à l'intérieur de chaque élément */
+    cursor: pointer; /* Change le curseur en main lors du survol */
 }
 
+/* Style pour les éléments d'autocomplétion lors du survol */
 .autocomplete-item:hover {
-    background-color: #e9e9e9;
+    background-color: #e9e9e9; /* Change la couleur de fond lors du survol */
 }

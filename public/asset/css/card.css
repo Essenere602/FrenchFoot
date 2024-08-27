@@ -1,190 +1,100 @@
-/* .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.card {
-    position: relative;
-    width: 400px;
-    height: 500px;
-    margin: 20px;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 1;
-}
-
-.card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: #fff;
-    padding-bottom: 20px;
-    z-index: 2;
-    text-align: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-.card h1 {
-    font-size: 24px;
-    margin: 0 0 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.card-description {
-    font-size: 16px;
-    margin: 0 0 10px;
-    color: #828281;
-}
-
-.card-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #C8A764;
-    color: #131313;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-} */
-
-/* .card {
-    width: 270px;
-    height: 302px;
-    flex-shrink: 0;
-    border: 2px solid #1C1D22;
-    background: #EDEDED;
-}
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.card img {
-    width: 218px;
-    height: 178px;
-    flex-shrink: 0;
-}
-.card-link {
-    display: flex;
-    width: 114px;
-    height: 27px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 5px;
-    background: #C8A764;
-}
-.card h1 {
-    color: #201A0F;
-    text-align: center;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120.926%;
-}
-.card-description {
-    color: #464644;
-    text-align: center;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120.926%; 
-} */
+/* Style pour le titre de la page */
 .page-title {
-    text-align: center;
-    margin: 20px auto;
-  }
+    text-align: center; /* Centre le texte horizontalement */
+    margin: 20px auto; /* Ajoute une marge de 20px au-dessus et en dessous, centre horizontalement */
+}
+
+/* Style pour le conteneur principal */
 .main-container {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    padding: 20px; /* Optionnel : ajoute de l'espace autour du contenu */
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    justify-content: center; /* Centre horizontalement le contenu */
+    align-items: center; /* Centre verticalement le contenu */
+    padding: 20px; /* Ajoute un espace de 20px autour du contenu */
 }
+
+/* Style pour le conteneur des cartes */
 .card-container {
-    display: grid;
+    display: grid; /* Utilise une grille pour disposer les cartes */
     grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
-    gap: 150px; /* Espace entre les cartes */
-    padding: 20px;  
+    gap: 150px; /* Espace de 150px entre les cartes */
+    padding: 20px; /* Ajoute un padding de 20px autour du conteneur */
 }
 
+/* Style pour chaque carte */
 .card {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    background-color: #fff; /* Définit la couleur de fond de la carte */
+    border-radius: 10px; /* Arrondit les coins de la carte */
+    overflow: hidden; /* Cache le débordement de contenu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour de la carte */
+    max-width: 300px; /* Définit une largeur maximale de 300px */
+    width: 100%; /* La largeur de la carte occupe 100% du conteneur */
+    display: flex; /* Utilise Flexbox pour la mise en page interne */
+    flex-direction: column; /* Aligne les éléments enfants en colonne */
+    margin-bottom: 20px; /* Ajoute une marge inférieure de 20px */
 }
 
+/* Style pour l'image de la carte */
 .card img {
-    width: 100%;
-    height: 200px;
-    border-bottom: 1px solid #717070;
-    object-fit: contain;
+    width: 100%; /* L'image occupe toute la largeur de la carte */
+    height: 200px; /* Définit une hauteur fixe pour l'image */
+    border-bottom: 1px solid #717070; /* Ajoute une bordure inférieure grise */
+    object-fit: contain; /* Ajuste l'image pour qu'elle soit entièrement visible */
 }
 
+/* Style pour le contenu de la carte */
 .card-content {
-    background: #fcf7ed;
-    padding: 20px;
-    color: #131313;
-    text-align: center;
-    flex-grow: 1;
+    background: #fcf7ed; /* Définit une couleur de fond claire */
+    padding: 20px; /* Ajoute un padding de 20px à l'intérieur du contenu */
+    color: #131313; /* Définit la couleur du texte */
+    text-align: center; /* Centre le texte horizontalement */
+    flex-grow: 1; /* Permet au contenu de s'étendre pour remplir l'espace disponible */
 }
 
+/* Style pour le titre à l'intérieur de la carte */
 .card h1 {
-    margin: 0;
-    font-size: 1.5em;
+    margin: 0; /* Supprime les marges par défaut */
+    font-size: 1.5em; /* Définit une taille de police de 1.5em */
 }
 
+/* Style pour la description à l'intérieur de la carte */
 .card-description {
-    margin: 10px 0;
-    font-size: 1em;
+    margin: 10px 0; /* Ajoute une marge de 10px en haut et en bas */
+    font-size: 1em; /* Définit la taille de police */
 }
 
+/* Style pour les liens à l'intérieur de la carte */
 .card-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #C8A764;
-    color: #131313;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    display: inline-block; /* Affiche le lien comme un bloc en ligne */
+    margin-top: 10px; /* Ajoute une marge supérieure de 10px */
+    padding: 10px 20px; /* Ajoute un padding de 10px en haut et en bas, et 20px à gauche et à droite */
+    background-color: #C8A764; /* Définit une couleur de fond dorée */
+    color: #131313; /* Définit la couleur du texte */
+    text-decoration: none; /* Supprime le soulignement par défaut des liens */
+    border-radius: 5px; /* Arrondit les coins du bouton */
+    transition: background-color 0.3s; /* Ajoute une transition douce pour le changement de couleur de fond */
 }
 
+/* Style pour le lien lors du survol */
 .card-link:hover {
-    background-color: #131313;
-    color: #C8A764;
+    background-color: #131313; /* Change la couleur de fond lors du survol */
+    color: #C8A764; /* Change la couleur du texte lors du survol */
 }
+
+/* Styles pour les écrans ayant une largeur maximale de 768px (mobiles) */
 @media (max-width: 768px) {
+    /* Style pour le conteneur des cartes */
     .card-container {
-        grid-template-columns: 1fr; /* Une colonne unique */
-        gap: 20px; /* Réduit l'espace entre les cartes pour les petits écrans */
-        padding: 10px; /* Réduit le padding pour les petits écrans */
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 20px; /* Réduit l'espace entre les cartes */
+        padding: 10px; /* Réduit le padding autour du conteneur */
     }
 
+    /* Style pour l'image de la carte */
     .card img {
         height: auto; /* Ajuste la hauteur de l'image pour qu'elle soit proportionnelle */
     }
 
+    /* Style pour chaque carte */
     .card {
         margin: 0; /* Supprime la marge inférieure */
     }

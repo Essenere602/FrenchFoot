@@ -1,182 +1,190 @@
 /* Conteneur du forum */
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Limite la largeur maximale du conteneur à 1200 pixels */
+    margin: 20px auto; /* Ajoute une marge de 20 pixels en haut et en bas, centré horizontalement */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce autour du conteneur */
 }
 
 /* Titre de la page */
 .page-title {
-    text-align: center;
-    font-size: 28px;
-    color: #131313;
-    margin-bottom: 30px;
+    text-align: center; /* Centre le texte horizontalement */
+    font-size: 28px; /* Définit la taille de la police du titre à 28 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    margin-bottom: 30px; /* Ajoute un espace de 30 pixels en dessous du titre */
 }
 
 /* Conteneur pour centrer le bouton */
 .form-toggle-container {
-    text-align: center;
-    margin-bottom: 20px; /* Espacement entre le bouton et le formulaire ou la liste */
+    text-align: center; /* Centre le contenu horizontalement */
+    margin-bottom: 20px; /* Ajoute un espace de 20 pixels en dessous du conteneur */
 }
 
 /* Bouton pour afficher/masquer le formulaire */
 .btn-toggle-form {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #131313;
-    background-color: #C8A764;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    display: block; /* Affiche le bouton en tant qu'élément de bloc */
+    margin: 20px auto; /* Ajoute une marge de 20 pixels en haut et en bas, centré horizontalement */
+    padding: 10px 20px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, 20 pixels à gauche et à droite */
+    font-size: 16px; /* Définit la taille de la police du bouton à 16 pixels */
+    color: #131313; /* Définit la couleur du texte du bouton en gris très foncé */
+    background-color: #C8A764; /* Définit la couleur de fond du bouton en doré */
+    border: none; /* Supprime la bordure du bouton */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
 }
 
 .btn-toggle-form:hover {
-    background-color: #131313;
-    color: #C8A764;
-
+    background-color: #131313; /* Change la couleur de fond du bouton au survol */
+    color: #C8A764; /* Change la couleur du texte du bouton au survol */
 }
 
 /* Conteneur du formulaire */
 .forum-topic.form-topic-create {
-    max-width: 800px; /* Largeur maximale du formulaire */
-    margin: 0 auto; /* Centrer horizontalement */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Centrer le formulaire à l'intérieur du conteneur */
+    max-width: 800px; /* Limite la largeur maximale du formulaire à 800 pixels */
+    margin: 0 auto; /* Centre le formulaire horizontalement */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du formulaire avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce autour du formulaire */
+    text-align: center; /* Centre le contenu à l'intérieur du formulaire */
 }
 
+/* Titre du formulaire */
 .form-title {
-    font-size: 24px;
-    color: #131313;
-    margin-bottom: 15px;
+    font-size: 24px; /* Définit la taille de la police du titre du formulaire à 24 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    margin-bottom: 15px; /* Ajoute un espace de 15 pixels en dessous du titre */
 }
 
 /* Bouton de soumission du formulaire */
 .submit-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #C8A764;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+    display: inline-block; /* Affiche le bouton en tant qu'élément en ligne avec des propriétés de bloc */
+    padding: 10px 20px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, 20 pixels à gauche et à droite */
+    font-size: 16px; /* Définit la taille de la police du bouton à 16 pixels */
+    color: #fff; /* Définit la couleur du texte du bouton en blanc */
+    background-color: #C8A764; /* Définit la couleur de fond du bouton en doré */
+    border: none; /* Supprime la bordure du bouton */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
+    margin-top: 10px; /* Ajoute un espace de 10 pixels au-dessus du bouton */
 }
 
 .submit-button:hover {
-    background-color: #131313;
-    color: #C8A764;
+    background-color: #131313; /* Change la couleur de fond du bouton au survol */
+    color: #C8A764; /* Change la couleur du texte du bouton au survol */
 }
 
 /* Liste des posts */
 .posts-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime l'espace intérieur */
+    margin: 0; /* Supprime les marges */
 }
 
+/* Style d'un post du forum */
 .forum-post {
-    padding: 15px;
-    border-bottom: 1px solid #C8A764;
-    margin-bottom: 10px; /* Ajouter un espace entre les posts */
+    padding: 15px; /* Ajoute un espace intérieur de 15 pixels */
+    border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure dorée */
+    margin-bottom: 10px; /* Ajoute un espace de 10 pixels en dessous du post */
 }
 
 .forum-post:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Supprime la bordure inférieure du dernier post */
 }
 
 /* En-tête du post */
 .post-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    display: flex; /* Utilise Flexbox pour organiser les éléments horizontalement */
+    justify-content: space-between; /* Éspace les éléments de manière égale */
+    align-items: center; /* Aligne les éléments verticalement au centre */
+    margin-bottom: 10px; /* Ajoute un espace de 10 pixels en dessous de l'en-tête */
 }
 
+/* Nom d'utilisateur du post */
 .post-username {
-    font-size: 20px;
-    font-weight: bold;
-    color: #131313;
+    font-size: 20px; /* Définit la taille de la police à 20 pixels */
+    font-weight: bold; /* Rend le texte en gras */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
 }
 
+/* Logo du club */
 .club-logo {
-    height: 24px;
-    margin-left: 5px;
+    height: 24px; /* Définit la hauteur du logo à 24 pixels */
+    margin-left: 5px; /* Ajoute un espace de 5 pixels à gauche du logo */
 }
 
+/* Date du post */
 .post-date {
-    font-size: 14px;
-    color: #666;
+    font-size: 14px; /* Définit la taille de la police à 14 pixels */
+    color: #666; /* Définit la couleur du texte en gris moyen */
 }
 
 /* Contenu du post */
 .post-content {
-    font-size: 20px;
-    font-weight: 500;
-    color: #131313;
-    margin-left: 20px;
-    border-left: 3px solid #C8A764;
-    padding-left: 10px;
+    font-size: 20px; /* Définit la taille de la police à 20 pixels */
+    font-weight: 500; /* Définit le poids de la police à 500 */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    margin-left: 20px; /* Ajoute un espace de 20 pixels à gauche du contenu */
+    border-left: 3px solid #C8A764; /* Ajoute une bordure gauche dorée de 3 pixels */
+    padding-left: 10px; /* Ajoute un espace intérieur de 10 pixels à gauche */
 }
 
-/* Boutons d'action */
+/* Boutons d'action dans les posts */
 .post-actions {
-    display: flex;
-    gap: 10px;
+    display: flex; /* Utilise Flexbox pour organiser les boutons horizontalement */
+    gap: 10px; /* Ajoute un espace de 10 pixels entre les boutons */
 }
 
+/* Style des boutons d'action */
 .btn {
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
+    text-decoration: none; /* Supprime la décoration par défaut du texte (soulignement) */
+    padding: 5px 10px; /* Ajoute un espace intérieur de 5 pixels en haut et en bas, 10 pixels à gauche et à droite */
+    border-radius: 5px; /* Arrondit les coins des boutons avec un rayon de 5 pixels */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    font-size: 14px; /* Définit la taille de la police à 14 pixels */
+    font-weight: bold; /* Rend le texte en gras */
 }
 
+/* Style des boutons dangereux (suppression, etc.) */
 .btn-danger {
-    background-color: #d9534f;
+    background-color: #d9534f; /* Définit la couleur de fond en rouge */
 }
 
+/* Style des boutons d'avertissement (alerte, etc.) */
 .btn-warning {
-    background-color: #f0ad4e;
+    background-color: #f0ad4e; /* Définit la couleur de fond en orange */
 }
 
+/* Style des petits boutons */
 .btn-sm {
-    font-size: 12px;
-    padding: 4px 8px;
+    font-size: 12px; /* Définit la taille de la police à 12 pixels */
+    padding: 4px 8px; /* Ajoute un espace intérieur de 4 pixels en haut et en bas, 8 pixels à gauche et à droite */
 }
- 
+
 /* Bouton de suppression */
 .delete-button {
-    background: none;
-    border: none;
-    color: #C8A764;
-    cursor: pointer;
-    padding: 0;
-    font: inherit;
+    background: none; /* Supprime la couleur de fond */
+    border: none; /* Supprime la bordure */
+    color: #C8A764; /* Définit la couleur du texte en doré */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
+    padding: 0; /* Supprime l'espace intérieur */
+    font: inherit; /* Utilise la police du texte environnant */
 }
 
 .delete-button:hover {
-    color: #131313;
-    text-decoration: underline;
+    color: #131313; /* Change la couleur du texte au survol */
+    text-decoration: underline; /* Ajoute un soulignement au texte au survol */
 }
 
 /* Formulaire de suppression */
 .delete-form {
-    display: inline;
+    display: inline; /* Affiche le formulaire en ligne */
 }
 
 /* Pagination */
 .pagination {
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 20px; /* Ajoute un espace de 20 pixels au-dessus de la pagination */
+    text-align: center; /* Centre le texte horizontalement */
 }

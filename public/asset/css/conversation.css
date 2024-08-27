@@ -1,81 +1,82 @@
 /* Conteneur général */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-  }
-  
-  /* Titre de la section */
-  .container h1,
-  .container h2 {
-    font-size: 24px;
-    color: #C8A764;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .delete-form {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  max-width: 800px; /* Définit la largeur maximale du conteneur */
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+  padding: 20px; /* Ajoute un espacement intérieur de 20px */
+  background-color: #fff; /* Définit la couleur de fond du conteneur */
+  border-radius: 8px; /* Arrondit les coins du conteneur */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile au conteneur */
+  margin-top: 50px; /* Ajoute un espacement de 50px au-dessus du conteneur */
 }
 
+/* Titre de la section */
+.container h1,
+.container h2 {
+  font-size: 24px; /* Définit la taille de la police des titres */
+  color: #C8A764; /* Définit la couleur des titres */
+  text-align: center; /* Centre le texte des titres */
+  margin-bottom: 20px; /* Ajoute un espacement de 20px en bas des titres */
+}
+
+/* Formulaire de suppression */
+.delete-form {
+  position: absolute; /* Positionne le formulaire de manière absolue */
+  top: 10px; /* Place le formulaire à 10px du haut */
+  left: 10px; /* Place le formulaire à 10px de la gauche */
+}
+
+/* Bouton de suppression */
 .delete {
-    background: none;
-    border: none;
-    color: red;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+  background: none; /* Supprime la couleur de fond du bouton */
+  border: none; /* Supprime la bordure du bouton */
+  color: red; /* Définit la couleur du texte du bouton */
+  font-weight: bold; /* Rend le texte du bouton en gras */
+  font-size: 16px; /* Définit la taille de la police du bouton */
+  cursor: pointer; /* Change le curseur en main lors du survol */
 }
 
 .delete:hover {
-    color: brown;
+  color: brown; /* Change la couleur du texte du bouton au survol */
 }
 
-  
-  /* Liste des conversations */
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Liste des conversations */
+ul {
+  list-style: none; /* Supprime les puces des listes */
+  padding: 0; /* Supprime le padding par défaut */
+  margin: 0; /* Supprime la marge par défaut */
+}
+
+ul li {
+  padding: 15px; /* Ajoute un espacement intérieur de 15px */
+  border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure de 1px */
+  display: flex; /* Utilise Flexbox pour la mise en page des éléments */
+  align-items: center; /* Centre verticalement les éléments dans la ligne */
+  justify-content: space-between; /* Distribue l'espace horizontalement entre les éléments */
+}
+
+ul li:last-child {
+  border-bottom: none; /* Supprime la bordure inférieure du dernier élément */
+}
+
+ul li a {
+  text-decoration: none; /* Supprime le soulignement des liens */
+  color: #131313; /* Définit la couleur du texte des liens */
+  font-size: 18px; /* Définit la taille de la police des liens */
+  transition: color 0.3s ease; /* Ajoute une transition douce pour le changement de couleur */
+}
+
+ul li a:hover {
+  color: #C8A764; /* Change la couleur du texte des liens au survol */
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+  .container {
+      padding: 10px; /* Réduit le padding du conteneur pour les petits écrans */
   }
-  
+
   ul li {
-    padding: 15px;
-    border-bottom: 1px solid #C8A764;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+      flex-direction: column; /* Empile les éléments verticalement pour les petits écrans */
+      align-items: flex-start; /* Aligne les éléments au début (gauche) */
   }
-  
-  ul li:last-child {
-    border-bottom: none;
-  }
-  
-  ul li a {
-    text-decoration: none;
-    color: #131313;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
-  
-  ul li a:hover {
-    color: #C8A764;
-  }
-  
-  /* Responsivité pour les petits écrans */
-  @media screen and (max-width: 768px) {
-    .container {
-      padding: 10px;
-    }
-  
-    ul li {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-  
+}

@@ -1,62 +1,68 @@
-/* Mentions Légales Styles */
+/* Styles pour le conteneur des mentions légales */
 .legal-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-    text-align: center;
+    max-width: 800px; /* Limite la largeur du conteneur à 800 pixels */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels autour du contenu */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour du conteneur */
+    margin-top: 50px; /* Ajoute un espace au-dessus du conteneur de 50 pixels */
+    text-align: center; /* Centre le texte à l'intérieur du conteneur */
 }
 
+/* Style pour le titre principal dans le conteneur des mentions légales */
 .legal-container h1 {
-    font-size: 24px;
-    color: #C8A764;
-    margin-bottom: 30px;
+    font-size: 24px; /* Définit la taille de la police du titre à 24 pixels */
+    color: #C8A764; /* Définit la couleur du texte en doré */
+    margin-bottom: 30px; /* Ajoute un espace en dessous du titre de 30 pixels */
 }
 
+/* Style pour les sections dans le conteneur des mentions légales */
 .legal-container .section {
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 20px; /* Ajoute un espace en dessous de chaque section de 20 pixels */
+    text-align: left; /* Aligne le texte à gauche à l'intérieur des sections */
 }
 
+/* Style pour les sous-titres dans le conteneur des mentions légales */
 .legal-container h2 {
-    font-size: 20px;
-    color: #C8A764;
-    margin-bottom: 10px;
+    font-size: 20px; /* Définit la taille de la police des sous-titres à 20 pixels */
+    color: #C8A764; /* Définit la couleur du texte en doré */
+    margin-bottom: 10px; /* Ajoute un espace en dessous des sous-titres de 10 pixels */
 }
 
+/* Style pour les paragraphes dans le conteneur des mentions légales */
 .legal-container p {
-    font-size: 16px;
-    color: #131313;
-    margin: 5px 0;
+    font-size: 16px; /* Définit la taille de la police des paragraphes à 16 pixels */
+    color: #131313; /* Définit la couleur du texte en gris foncé */
+    margin: 5px 0; /* Ajoute un espace de 5 pixels en haut et en bas des paragraphes */
 }
 
+/* Style pour les liens dans le conteneur des mentions légales */
 .legal-container a {
-    color: #C8A764;
-    text-decoration: none;
+    color: #C8A764; /* Définit la couleur des liens en doré */
+    text-decoration: none; /* Supprime la décoration du texte (soulignement) des liens */
 }
 
+/* Style pour les liens au survol dans le conteneur des mentions légales */
 .legal-container a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Sous-ligne les liens au survol */
 }
 
-/* Responsivité pour les petits écrans */
+/* Styles pour les petits écrans */
 @media screen and (max-width: 768px) {
     .legal-container {
-        padding: 10px;
+        padding: 10px; /* Réduit le padding intérieur à 10 pixels pour les petits écrans */
     }
 
     .legal-container h1 {
-        font-size: 22px;
+        font-size: 22px; /* Réduit la taille de la police du titre principal à 22 pixels */
     }
 
     .legal-container h2 {
-        font-size: 18px;
+        font-size: 18px; /* Réduit la taille de la police des sous-titres à 18 pixels */
     }
 
     .legal-container p {
-        font-size: 14px;
+        font-size: 14px; /* Réduit la taille de la police des paragraphes à 14 pixels */
     }
 }

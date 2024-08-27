@@ -1,47 +1,52 @@
+/* Importation de la police "Oswald" depuis Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 body {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  color: #2e3136;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  font-family: "Oswald", sans-serif; /* Définit la police "Oswald" comme police par défaut pour tout le corps du document */
+  font-optical-sizing: auto; /* Ajuste automatiquement la taille des glyphes en fonction de leur taille de rendu */
+  font-weight: 500; /* Définit un poids de police par défaut de 500 (semi-bold) */
+  font-style: normal; /* Définit le style de police en normal (pas d'italique ou oblique) */
+  color: #2e3136; /* Définit la couleur du texte en gris foncé */
+  margin: 0; /* Supprime les marges par défaut autour du corps */
+  padding: 0; /* Supprime les espacements intérieurs par défaut autour du corps */
+  overflow-x: hidden; /* Empêche le défilement horizontal de la page */
 }
+
 .oswald {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
+  font-family: "Oswald", sans-serif; /* Applique la police "Oswald" à tous les éléments avec cette classe */
+  font-optical-sizing: auto; /* Ajuste automatiquement la taille des glyphes */
+  font-weight: 500; /* Définit un poids de police de 500 */
+  font-style: normal; /* Définit le style de police en normal */
 }
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
+  font-family: "Oswald", sans-serif; /* Applique la police "Oswald" à tous les titres h1 à h6 */
+  font-optical-sizing: auto; /* Ajuste automatiquement la taille des glyphes */
+  font-weight: 500; /* Définit un poids de police de 500 pour les titres */
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
+  height: 100%; /* Définit la hauteur de l'élément html et body à 100% de la fenêtre du navigateur */
+  margin: 0; /* Supprime les marges par défaut */
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: flex; /* Utilise Flexbox pour organiser les éléments enfants */
+  flex-direction: column; /* Organise les éléments enfants en colonne */
+  min-height: 100vh; /* Définit une hauteur minimale de la page à 100% de la hauteur de la fenêtre (full viewport height) */
 }
 
 main {
-  flex: 1;
+  flex: 1; /* Permet à l'élément main de prendre toute la place restante dans le conteneur parent en Flexbox */
 }
 
 footer {
-  color: #fff;
-  text-align: center;
-  width: 100%;
+  color: #fff; /* Définit la couleur du texte du pied de page en blanc */
+  text-align: center; /* Centre le texte horizontalement dans le pied de page */
+  width: 100%; /* Fait en sorte que le pied de page prenne toute la largeur disponible */
 }
+
 .back-button {
-  text-decoration: none;
-  color: #131313;
+  text-decoration: none; /* Supprime la décoration de texte par défaut (par exemple, le soulignement pour les liens) */
+  color: #131313; /* Définit la couleur du texte du bouton de retour en gris très foncé */
 }

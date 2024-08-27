@@ -1,213 +1,127 @@
-/*body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #131313;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-ul li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid gainsboro;
-}
-a {
-  color: #2e3136;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.standings-title {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 24px;
-}
-
-.standings-container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.standings-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.standings-table thead {
-  background-color: #131313;
-  color: #C8A764;
-}
-
-.standings-table th, .standings-table td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #444444;
-}
-
-.standings-table th {
-  color: #C8A764;
-}
-
-.team-logo {
-  text-align: center;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-}
-
-.team-name {
-  text-align: left;
-  padding-left: 20px;
-  position: relative;
-}
-
-.legend {
-  margin: 20px auto;
-  width: 80%;
-  color: #121212;
-}
-
-.legend p {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-.legend-color {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.champions-league .position { background-color: #0000ff; color: #121212; }
-.europa-league .position { background-color: #ff0000; color: #121212; }
-.conference-league .position { background-color: #00ff00; color: #121212; }
-.relegation .position { background-color: #ff00ff; color: #121212; }
-.legend .champions-league { background-color: #0000ff; }
-.legend .europa-league { background-color: #ff0000; }
-.legend .conference-league { background-color: #00ff00; }
-.legend .relegation { background-color: #ff00ff; }
-*/
-/* Conteneur du classement */
-
+/* Conteneur pour le classement */
 .page-title {
-  text-align: center;
-  margin: 20px auto;
-}
-.standings-section {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /* Ajoutez cette ligne */
+  text-align: center; /* Centre le titre horizontalement */
+  margin: 20px auto; /* Ajoute un espace de 20 pixels en haut et en bas, et centre le titre horizontalement */
 }
 
-/* Titre du classement */
+/* Section du classement */
+.standings-section {
+  max-width: 1200px; /* Limite la largeur maximale de la section à 1200 pixels */
+  margin: 20px auto; /* Ajoute un espace de 20 pixels en haut et en bas, et centre horizontalement */
+  padding: 20px; /* Ajoute un espace intérieur de 20 pixels */
+  background-color: #fff; /* Définit la couleur de fond en blanc */
+  border-radius: 8px; /* Arrondit les coins de la section avec un rayon de 8 pixels */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce autour de la section */
+  position: relative; /* Position relative pour le positionnement d'éléments internes si nécessaire */
+}
+
+/* Titre de la section du classement */
 .standings-section h2 {
-  font-size: 24px;
-  color: #131313;
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 24px; /* Définit la taille de la police du titre à 24 pixels */
+  color: #131313; /* Définit la couleur du texte en gris très foncé */
+  text-align: center; /* Centre le texte horizontalement */
+  margin-bottom: 20px; /* Ajoute un espace de 20 pixels en dessous du titre */
 }
 
 /* Table du classement */
 .standings-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+  width: 100%; /* La table prend toute la largeur disponible */
+  border-collapse: collapse; /* Supprime les espaces entre les bordures des cellules */
+  margin-bottom: 20px; /* Ajoute un espace de 20 pixels en dessous de la table */
 }
 
 .standings-table th, .standings-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #C8A764;
+  padding: 10px; /* Ajoute un espace intérieur de 10 pixels aux cellules */
+  text-align: left; /* Aligne le texte à gauche dans les cellules */
+  border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure de 1 pixel de couleur dorée aux cellules */
 }
 
 .standings-table th {
-  background-color: #f9f9f9;
-  color: #131313;
-  font-weight: bold;
+  background-color: #f9f9f9; /* Définit la couleur de fond des en-têtes de colonne en gris très clair */
+  color: #131313; /* Définit la couleur du texte des en-têtes en gris très foncé */
+  font-weight: bold; /* Met le texte des en-têtes en gras */
 }
 
 .standings-table td {
-  color: #131313;
+  color: #131313; /* Définit la couleur du texte des cellules en gris très foncé */
 }
 
 .standings-table .team-logo img {
-  width: 30px;
-  height: auto;
+  width: 30px; /* Définit la largeur de l'image du logo de l'équipe à 30 pixels */
+  height: auto; /* Conserve les proportions de l'image */
 }
 
+/* Styles de fond pour les positions spécifiques */
 .standings-table .champions-league {
-  background-color: #d4edda;
+  background-color: #d4edda; /* Définit la couleur de fond des lignes de la Ligue des champions en vert très clair */
 }
 
 .standings-table .europa-league {
-  background-color: #fff3cd;
+  background-color: #fff3cd; /* Définit la couleur de fond des lignes de la Ligue Europa en jaune pâle */
 }
 
 .standings-table .conference-league {
-  background-color: #d1ecf1;
+  background-color: #d1ecf1; /* Définit la couleur de fond des lignes de la Ligue de Conférence en bleu clair */
 }
 
 .standings-table .relegation {
-  background-color: #f8d7da;
+  background-color: #f8d7da; /* Définit la couleur de fond des lignes de relégation en rose pâle */
 }
 
+/* Légende pour les positions */
 .legend {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  display: flex; /* Affiche les éléments de la légende en flex */
+  justify-content: space-around; /* Espacement égal entre les éléments de la légende */
+  margin-top: 20px; /* Ajoute un espace de 20 pixels au-dessus de la légende */
 }
 
-.back-button:hover {
-  text-decoration: underline;
-}
 .legend p {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  font-size: 14px;
+  display: flex; /* Affiche le texte de la légende en flex */
+  align-items: center; /* Aligne verticalement les éléments au centre */
+  margin: 0; /* Supprime les marges par défaut autour des paragraphes */
+  font-size: 14px; /* Définit la taille de la police à 14 pixels */
 }
 
 .legend .legend-color {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin-right: 5px;
+  display: inline-block; /* Affiche le bloc de couleur en ligne avec le texte */
+  width: 15px; /* Définit la largeur du bloc de couleur à 15 pixels */
+  height: 15px; /* Définit la hauteur du bloc de couleur à 15 pixels */
+  margin-right: 5px; /* Ajoute un espace de 5 pixels à droite du bloc de couleur */
 }
 
 .legend .champions-league {
-  background-color: #d4edda;
+  background-color: #d4edda; /* Définit la couleur de fond du bloc de la Ligue des champions en vert très clair */
 }
 
 .legend .europa-league {
-  background-color: #fff3cd;
+  background-color: #fff3cd; /* Définit la couleur de fond du bloc de la Ligue Europa en jaune pâle */
 }
 
 .legend .conference-league {
-  background-color: #d1ecf1;
+  background-color: #d1ecf1; /* Définit la couleur de fond du bloc de la Ligue de Conférence en bleu clair */
 }
 
 .legend .relegation {
-  background-color: #f8d7da;
+  background-color: #f8d7da; /* Définit la couleur de fond du bloc de relégation en rose pâle */
+}
+
+/* Style pour le bouton de retour */
+.back-button:hover {
+  text-decoration: underline; /* Ajoute un soulignement au texte du bouton au survol */
 }
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
   .standings-section {
-      padding: 10px;
+      padding: 10px; /* Réduit l'espace intérieur de la section à 10 pixels pour les petits écrans */
   }
 
   .standings-table th, .standings-table td {
-      padding: 5px;
+      padding: 5px; /* Réduit l'espace intérieur des cellules à 5 pixels */
   }
 
   .legend {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: column; /* Affiche les éléments de la légende en colonne sur les petits écrans */
+      align-items: flex-start; /* Aligne les éléments de la légende à gauche */
   }
 }

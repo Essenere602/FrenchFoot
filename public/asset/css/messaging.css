@@ -1,158 +1,171 @@
 /* Conteneur général */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    max-width: 800px; /* Définit une largeur maximale de 800 pixels pour le conteneur */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels autour du contenu */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour du conteneur */
+    margin-top: 50px; /* Ajoute un espace de 50 pixels au-dessus du conteneur */
 }
 
 /* Titre de la conversation */
 h1 {
-    font-size: 24px;
-    color: #131313;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 24px; /* Définit la taille de la police du titre à 24 pixels */
+    color: #131313; /* Définit la couleur du texte en gris foncé */
+    text-align: center; /* Centre le texte horizontalement */
+    margin-bottom: 20px; /* Ajoute un espace de 20 pixels sous le titre */
 }
+
 /* Conteneur des messages avec boutons de défilement */
 .messages-container {
-    position: relative;
+    position: relative; /* Définit la position comme relative pour permettre le positionnement absolu des boutons de défilement */
 }
 
 /* Bouton de défilement vers le haut */
 .scroll-up {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
+    position: absolute; /* Positionne le bouton de façon absolue */
+    top: 0; /* Place le bouton en haut du conteneur */
+    left: 0; /* Place le bouton à gauche du conteneur */
+    z-index: 10; /* Assure que le bouton se superpose aux autres éléments */
 }
 
+/* Bouton de défilement vers le bas */
 .scroll-down {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 10;
+    position: absolute; /* Positionne le bouton de façon absolue */
+    bottom: 0; /* Place le bouton en bas du conteneur */
+    right: 0; /* Place le bouton à droite du conteneur */
+    z-index: 10; /* Assure que le bouton se superpose aux autres éléments */
 }
 
 /* Style des boutons de défilement */
 .scroll-button {
-    background-color: #C8A764;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #C8A764; /* Définit la couleur de fond des boutons en doré */
+    border: none; /* Supprime la bordure par défaut des boutons */
+    border-radius: 4px; /* Arrondit les coins des boutons avec un rayon de 4 pixels */
+    padding: 10px; /* Ajoute un espace intérieur de 10 pixels autour du texte des boutons */
+    color: white; /* Définit la couleur du texte en blanc */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que le bouton est cliquable */
+    transition: background-color 0.3s ease; /* Ajoute une transition douce pour la couleur de fond au survol */
 }
 
+/* Style des boutons de défilement au survol */
 .scroll-button:hover {
-    background-color: #131313;
-    color: #C8A764;
+    background-color: #131313; /* Change la couleur de fond en gris foncé au survol */
+    color: #C8A764; /* Change la couleur du texte en doré au survol */
 }
+
 /* Conteneur des messages */
 .messages {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-    max-height: 500px;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels autour du contenu des messages */
+    background-color: #f9f9f9; /* Définit une couleur de fond très claire pour les messages */
+    border-radius: 8px; /* Arrondit les coins du conteneur des messages avec un rayon de 8 pixels */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05); /* Ajoute une ombre interne légère */
+    margin-bottom: 20px; /* Ajoute un espace de 20 pixels sous le conteneur des messages */
+    max-height: 500px; /* Définit une hauteur maximale de 500 pixels */
+    overflow-y: hidden; /* Cache le contenu qui dépasse verticalement */
+    display: flex; /* Utilise Flexbox pour organiser les messages */
+    flex-direction: column; /* Dispose les messages en colonne */
 }
 
 /* Style des messages */
 .message {
-    padding: 10px 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    position: relative;
-    max-width: 45%; /* Réduire à 45% pour un peu d'espace */
+    padding: 10px 15px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 15 pixels à gauche et à droite */
+    margin: 10px 0; /* Ajoute un espace de 10 pixels au-dessus et en dessous de chaque message */
+    border-radius: 8px; /* Arrondit les coins des messages avec un rayon de 8 pixels */
+    position: relative; /* Définit la position comme relative pour le positionnement des éléments internes */
+    max-width: 45%; /* Définit une largeur maximale de 45% pour chaque message */
 }
 
+/* Style du texte dans les messages */
 .message p {
-    margin: 0;
-    font-size: 16px;
+    margin: 0; /* Supprime la marge par défaut des paragraphes */
+    font-size: 16px; /* Définit la taille de la police du texte à 16 pixels */
 }
 
+/* Style des messages envoyés */
 .message.sent {
-    background-color: #d4edda;
-    color: #131313;
-    margin-left: auto;
-    text-align: right;
+    background-color: #d4edda; /* Définit une couleur de fond verte pâle pour les messages envoyés */
+    color: #131313; /* Définit la couleur du texte en gris foncé */
+    margin-left: auto; /* Aligne les messages envoyés à droite */
+    text-align: right; /* Aligne le texte à droite */
 }
 
+/* Style des messages reçus */
 .message.received {
-    background-color: #e0e0e0;
-    color: #131313;
+    background-color: #e0e0e0; /* Définit une couleur de fond gris clair pour les messages reçus */
+    color: #131313; /* Définit la couleur du texte en gris foncé */
 }
 
+/* Style de la date des messages */
 .message-date {
-    font-size: 12px;
-    color: #999;
-    margin-top: 5px;
-    display: block;
+    font-size: 12px; /* Définit la taille de la police de la date à 12 pixels */
+    color: #999; /* Définit la couleur du texte de la date en gris clair */
+    margin-top: 5px; /* Ajoute un espace de 5 pixels au-dessus de la date */
+    display: block; /* Affiche la date sur une ligne distincte */
 }
 
 /* Formulaire d'envoi de message */
 form {
-    display: flex;
+    display: flex; /* Utilise Flexbox pour organiser les éléments du formulaire */
     flex-direction: column; /* Permet d'empiler le label, la zone de saisie et le bouton */
-    align-items: center;
-    gap: 10px;
+    align-items: center; /* Centre les éléments horizontalement */
+    gap: 10px; /* Ajoute un espace de 10 pixels entre les éléments */
 }
 
+/* Style des labels du formulaire */
 form label {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: 18px; /* Définit la taille de la police des labels à 18 pixels */
+    font-weight: bold; /* Met les labels en gras */
+    text-align: center; /* Centre le texte des labels */
+    margin-bottom: 10px; /* Ajoute un espace de 10 pixels sous chaque label */
 }
 
+/* Style des champs de saisie et des zones de texte */
 form input[type="text"], form textarea {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #C8A764;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    resize: none; /* Empêche le redimensionnement */
-    width: 80%; /* Définit la largeur à 80% */
-    height: 150px; /* Ajuster cette valeur pour augmenter la hauteur */
+    flex: 1; /* Permet aux champs de saisie et aux zones de texte de remplir l'espace disponible */
+    padding: 10px; /* Ajoute un espace intérieur de 10 pixels autour du texte */
+    border: 1px solid #C8A764; /* Ajoute une bordure de 1 pixel de couleur dorée */
+    border-radius: 4px; /* Arrondit les coins des champs de saisie et des zones de texte avec un rayon de 4 pixels */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour des champs */
+    resize: none; /* Empêche le redimensionnement des zones de texte */
+    width: 80%; /* Définit la largeur à 80% du conteneur */
+    height: 150px; /* Définit la hauteur des zones de texte à 150 pixels */
 }
 
+/* Style du bouton d'envoi */
 .send-btn {
-    padding: 10px 20px;
-    background-color: #C8A764;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 20 pixels à gauche et à droite */
+    background-color: #C8A764; /* Définit la couleur de fond du bouton en doré */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    border: none; /* Supprime la bordure par défaut du bouton */
+    border-radius: 4px; /* Arrondit les coins du bouton avec un rayon de 4 pixels */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que le bouton est cliquable */
+    transition: background-color 0.3s ease; /* Ajoute une transition douce pour la couleur de fond au survol */
 }
+
+/* Style du bouton d'envoi au survol */
 .send-btn:hover {
-    background-color: #131313;
-    color: #C8A764;
+    background-color: #131313; /* Change la couleur de fond en gris foncé au survol */
+    color: #C8A764; /* Change la couleur du texte en doré au survol */
 }
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
     .messages {
-        padding: 10px;
+        padding: 10px; /* Réduit le padding intérieur à 10 pixels pour les petits écrans */
     }
 
     .message {
-        max-width: 45%; /* Réduire à 45% pour un peu d'espace */
+        max-width: 45%; /* Réduit la largeur maximale des messages à 45% */
     }
 
     form {
-        flex-direction: column;
+        flex-direction: column; /* Assure que le formulaire est empilé verticalement */
     }
 
     form input[type="text"], form textarea {
-        width: 100%; /* Pour les petits écrans, utiliser toute la largeur */
-        margin-bottom: 10px;
+        width: 100%; /* Définit la largeur des champs de saisie et des zones de texte à 100% pour les petits écrans */
+        margin-bottom: 10px; /* Ajoute un espace de 10 pixels sous les champs */
     }
 }

@@ -1,193 +1,195 @@
 /* Conteneur des matches */
 .matches-section {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px; /* Définit une largeur maximale de 1200 pixels pour le conteneur */
+  margin: 20px auto; /* Ajoute une marge de 20 pixels en haut et en bas, et centre horizontalement */
+  padding: 20px; /* Ajoute un espace intérieur de 20 pixels autour du contenu */
+  background-color: #fff; /* Définit la couleur de fond en blanc */
+  border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour du conteneur */
 }
 
 /* Titre des matches */
 .matches-section h2 {
-  font-size: 24px;
-  color: #131313;
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 24px; /* Définit la taille de la police du titre à 24 pixels */
+  color: #131313; /* Définit la couleur du texte en gris foncé */
+  text-align: center; /* Centre le texte horizontalement */
+  margin-bottom: 20px; /* Ajoute un espace de 20 pixels sous le titre */
 }
 
 /* Liste des matches */
 .matches-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none; /* Supprime les puces des listes */
+  padding: 0; /* Supprime le padding par défaut des listes */
+  margin: 0; /* Supprime la marge par défaut des listes */
 }
 
 .matches-section li {
-  display: grid;
-  grid-template-columns: 1fr 150px 1fr; /* Trois colonnes avec une largeur fixe pour la colonne du score */
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #C8A764;
+  display: grid; /* Utilise une grille pour organiser les éléments */
+  grid-template-columns: 1fr 150px 1fr; /* Définit trois colonnes : une flexible, une fixe de 150px pour le score, et une flexible */
+  align-items: center; /* Aligne verticalement les éléments au centre */
+  padding: 15px; /* Ajoute un espace intérieur de 15 pixels autour du contenu des éléments de liste */
+  border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure de 1 pixel de couleur dorée */
 }
 
 .matches-section li:last-child {
-  border-bottom: none;
+  border-bottom: none; /* Supprime la bordure inférieure du dernier élément de la liste */
 }
 
 /* Conteneur de chaque équipe */
 .matches-section .team {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* Utilise Flexbox pour organiser les éléments à l'intérieur */
+  align-items: center; /* Aligne verticalement les éléments au centre */
+  justify-content: center; /* Centre les éléments horizontalement */
 }
 
 .matches-section .team img {
-  width: 30px; /* Ajustez la taille des logos */
-  height: auto;
-  margin-right: 10px;
+  width: 30px; /* Définit la largeur des images (logos des équipes) à 30 pixels */
+  height: auto; /* Ajuste la hauteur automatiquement pour garder les proportions */
+  margin-right: 10px; /* Ajoute un espace de 10 pixels à droite de chaque image */
 }
 
 .matches-section .team-name {
-  font-size: 18px;
-  color: #131313;
-  white-space: nowrap;
+  font-size: 18px; /* Définit la taille de la police des noms des équipes à 18 pixels */
+  color: #131313; /* Définit la couleur du texte en gris foncé */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
 }
 
 /* Alignement du score */
 .matches-section .score {
-  font-size: 18px;
-  color: #131313;
-  text-align: center;
+  font-size: 18px; /* Définit la taille de la police du score à 18 pixels */
+  color: #131313; /* Définit la couleur du texte en gris foncé */
+  text-align: center; /* Centre le texte horizontalement */
   /* Pas de flex: 1 ici car nous utilisons grid pour la disposition */
 }
 
 /* Pagination */
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  display: flex; /* Utilise Flexbox pour organiser les éléments de pagination */
+  justify-content: center; /* Centre les éléments horizontalement */
+  align-items: center; /* Centre les éléments verticalement */
+  margin-top: 20px; /* Ajoute un espace de 20 pixels au-dessus de la pagination */
 }
 
 .pagination-button {
-  padding: 10px 15px;
-  margin: 0 5px;
-  background-color: #C8A764;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 10px 15px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 15 pixels à gauche et à droite */
+  margin: 0 5px; /* Ajoute une marge de 5 pixels à gauche et à droite des boutons */
+  background-color: #C8A764; /* Définit la couleur de fond des boutons en doré */
+  color: #fff; /* Définit la couleur du texte des boutons en blanc */
+  text-decoration: none; /* Supprime le soulignement des liens */
+  border-radius: 4px; /* Arrondit les coins des boutons avec un rayon de 4 pixels */
+  transition: background-color 0.3s ease; /* Ajoute une transition douce pour la couleur de fond au survol */
 }
 
 .pagination-button:hover {
-  background-color: #131313;
-  color: #C8A764;
+  background-color: #131313; /* Change la couleur de fond en gris foncé au survol */
+  color: #C8A764; /* Change la couleur du texte en doré au survol */
 }
 
 .pagination-current {
-  padding: 10px 15px;
-  margin: 0 5px;
-  background-color: #fff;
-  color: #131313;
-  border: 1px solid #C8A764;
-  border-radius: 4px;
+  padding: 10px 15px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 15 pixels à gauche et à droite */
+  margin: 0 5px; /* Ajoute une marge de 5 pixels à gauche et à droite de l'élément courant */
+  background-color: #fff; /* Définit la couleur de fond en blanc pour l'élément courant */
+  color: #131313; /* Définit la couleur du texte en gris foncé */
+  border: 1px solid #C8A764; /* Ajoute une bordure de 1 pixel de couleur dorée autour de l'élément courant */
+  border-radius: 4px; /* Arrondit les coins avec un rayon de 4 pixels */
 }
-/* Styles pour le conteneur du sélecteur de journée */
+
 /* Styles pour le conteneur du sélecteur de journée */
 .matchday-selector {
-  margin: 20px auto; /* Ajoute de l'espace autour du sélecteur */
-  text-align: center; /* Centre le contenu du sélecteur */
-  padding: 10px; /* Ajoute du padding pour plus de confort */
-  background-color: #fcf7ed; /* Couleur de fond légère pour le conteneur */
-  border-radius: 8px; /* Coins arrondis pour le conteneur */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour du conteneur */
+  margin: 20px auto; /* Ajoute une marge de 20 pixels en haut et en bas, et centre horizontalement */
+  text-align: center; /* Centre le contenu du sélecteur horizontalement */
+  padding: 10px; /* Ajoute un espace intérieur de 10 pixels autour du contenu */
+  background-color: #fcf7ed; /* Définit une couleur de fond légère pour le conteneur */
+  border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour du conteneur */
 }
 
 /* Styles pour le label du sélecteur de journée */
 .matchday-selector label {
   display: block; /* Affiche le label sur une ligne distincte */
-  margin-bottom: 8px; /* Ajoute un espace sous le label */
-  font-size: 16px; /* Taille de la police pour le label */
-  color: #131313; /* Couleur du texte */
+  margin-bottom: 8px; /* Ajoute un espace de 8 pixels sous le label */
+  font-size: 16px; /* Définit la taille de la police pour le label à 16 pixels */
+  color: #131313; /* Définit la couleur du texte en gris foncé */
   font-weight: bold; /* Met le label en gras pour plus de visibilité */
 }
 
 /* Styles pour le sélecteur */
 .matchday-selector select {
-  padding: 8px 12px; /* Padding interne pour le sélecteur */
-  border: 1px solid #C8A764; /* Bordure colorée pour correspondre au thème */
-  border-radius: 4px; /* Coins arrondis pour le sélecteur */
-  background-color: #fff; /* Couleur de fond du sélecteur */
-  color: #131313; /* Couleur du texte dans le sélecteur */
-  font-size: 16px; /* Taille de la police pour le texte dans le sélecteur */
-  font-family: 'Arial', sans-serif; /* Police pour le texte */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Effets de transition pour la bordure et l'ombre */
+  padding: 8px 12px; /* Ajoute un espace intérieur de 8 pixels en haut et en bas, et 12 pixels à gauche et à droite */
+  border: 1px solid #C8A764; /* Ajoute une bordure de 1 pixel de couleur dorée */
+  border-radius: 4px; /* Arrondit les coins du sélecteur avec un rayon de 4 pixels */
+  background-color: #fff; /* Définit la couleur de fond en blanc pour le sélecteur */
+  color: #131313; /* Définit la couleur du texte dans le sélecteur en gris foncé */
+  font-size: 16px; /* Définit la taille de la police du texte dans le sélecteur à 16 pixels */
+  font-family: 'Arial', sans-serif; /* Définit la police du texte du sélecteur en Arial */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Ajoute une transition douce pour la couleur de la bordure et l'ombre au focus */
 }
 
 /* Styles pour le sélecteur au survol et lorsqu'il est actif */
 .matchday-selector select:focus {
-  border-color: #131313; /* Changement de la couleur de la bordure au focus */
-  outline: none; /* Supprime le contour par défaut */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère au focus pour effet de profondeur */
+  border-color: #131313; /* Change la couleur de la bordure en gris foncé au focus */
+  outline: none; /* Supprime le contour par défaut du sélecteur */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère au focus pour effet de profondeur */
 }
 
 /* Styles pour les options dans le sélecteur */
 .matchday-selector option {
-  padding: 10px; /* Padding interne pour les options */
-  background-color: #fff; /* Couleur de fond des options */
-  color: #131313; /* Couleur du texte dans les options */
+  padding: 10px; /* Ajoute un espace intérieur de 10 pixels aux options */
+  background-color: #fff; /* Définit la couleur de fond des options en blanc */
+  color: #131313; /* Définit la couleur du texte dans les options en gris foncé */
 }
 
 /* Styles pour le sélecteur au survol des options */
 .matchday-selector option:hover {
-  background-color: #C8A764; /* Couleur de fond au survol des options */
-  color: #fff; /* Couleur du texte au survol des options */
+  background-color: #C8A764; /* Change la couleur de fond des options au survol en doré */
+  color: #fff; /* Change la couleur du texte des options au survol en blanc */
 }
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
   .matches-section {
-      padding: 10px;
+      padding: 10px; /* Réduit le padding intérieur à 10 pixels pour les petits écrans */
   }
 
   .matches-section li {
-      grid-template-columns: 1fr; /* En colonne unique sur petits écrans */
+      grid-template-columns: 1fr; /* Passe à une colonne unique sur petits écrans */
       grid-template-areas:
         "team-home"
         "score"
-        "team-away";
-      align-items: start;
+        "team-away"; /* Définit l'agencement en une colonne pour chaque élément */
+      align-items: start; /* Aligne les éléments en haut */
   }
 
   .matches-section .team {
-      justify-content: center;
+      justify-content: center; /* Centre les équipes horizontalement */
   }
 
   .matches-section .score {
-      margin: 10px 0;
+      margin: 10px 0; /* Ajoute un espace de 10 pixels au-dessus et en dessous du score */
   }
 
   .pagination {
-      flex-direction: column;
+      flex-direction: column; /* Organise les éléments de pagination en colonne */
   }
 
   .pagination-button, .pagination-current {
-      margin: 5px 0;
+      margin: 5px 0; /* Ajoute une marge de 5 pixels au-dessus et en dessous des boutons de pagination */
   }
 }
+
+/* Indicateur en direct */
 .live-indicator {
-  color: green;
-  font-weight: bold;
-    font-size: 1.5em; /* Ajustez la taille selon vos besoins */
-    line-height: 0; /* Pour bien centrer le point verticalement */
-    margin-left: 5px;
-    animation: blink 1s linear infinite;
-  }
+  color: green; /* Définit la couleur du texte en vert */
+  font-weight: bold; /* Met le texte en gras */
+  font-size: 1.5em; /* Définit la taille de la police à 1.5 fois la taille de police par défaut */
+  line-height: 0; /* Réduit la hauteur de ligne à 0 pour un centrage vertical précis */
+  margin-left: 5px; /* Ajoute un espace de 5 pixels à gauche de l'indicateur */
+  animation: blink 1s linear infinite; /* Applique une animation de clignotement continue */
+}
 
-
+/* Animation de clignotement */
 @keyframes blink {
   30% {
-      opacity: 0;
+      opacity: 0; /* Rend l'indicateur transparent à 30% de l'animation */
   }
 }

@@ -1,181 +1,194 @@
+/* Style de la barre de navigation */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #131313;
-  padding: 1rem 2rem;
-  color: #FFFFFE;
-  position: relative;
-  height: 30px;
+  display: flex; /* Utilise Flexbox pour organiser les éléments horizontalement */
+  justify-content: space-between; /* Éspace les éléments à gauche et à droite */
+  align-items: center; /* Aligne les éléments verticalement au centre */
+  background: #131313; /* Définit la couleur de fond en gris très foncé */
+  padding: 1rem 2rem; /* Ajoute un espace intérieur de 1 rem en haut et en bas, 2 rem à gauche et à droite */
+  color: #FFFFFE; /* Définit la couleur du texte en blanc cassé */
+  position: relative; /* Définit la position comme relative pour le positionnement des éléments enfants */
+  height: 30px; /* Définit la hauteur de la barre de navigation */
 }
 
+/* Style du point de notification */
 .notification-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: red;
-  border-radius: 50%;
-  margin-left: 5px;
+  display: inline-block; /* Affiche le point comme un élément en ligne */
+  width: 8px; /* Définit la largeur du point */
+  height: 8px; /* Définit la hauteur du point */
+  background-color: red; /* Définit la couleur de fond du point en rouge */
+  border-radius: 50%; /* Arrondit le point pour qu'il soit circulaire */
+  margin-left: 5px; /* Ajoute un espace de 5 pixels à gauche du point */
 }
 
 /* Styles pour le menu burger */
 .burger {
-  display: none;
-  cursor: pointer;
+  display: none; /* Cache le menu burger par défaut */
+  cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
 }
 
 .burger div {
-  width: 25px;
-  height: 3px;
-  background-color: #C8A764;
-  margin: 5px;
-  transition: all 0.3s ease;
+  width: 25px; /* Définit la largeur des barres du menu burger */
+  height: 3px; /* Définit la hauteur des barres du menu burger */
+  background-color: #C8A764; /* Définit la couleur de fond des barres en doré */
+  margin: 5px; /* Ajoute un espace de 5 pixels entre les barres */
+  transition: all 0.3s ease; /* Ajoute une transition douce pour toutes les propriétés */
 }
 
+/* Conteneur de la bannière */
 .banner {
-  position: relative;
-  width: 100%;
-  height: 200px; /* Ajustez cette hauteur selon vos besoins */
-  margin: 0;
-  overflow: hidden; /* Pour éviter que le texte dépasse les limites */
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
+  position: relative; /* Définit la position comme relative pour permettre le positionnement des éléments internes */
+  width: 100%; /* Définit la largeur à 100% du conteneur parent */
+  height: 200px; /* Définit la hauteur de la bannière */
+  margin: 0; /* Supprime les marges */
+  overflow: hidden; /* Cache le contenu qui dépasse les limites de la bannière */
+  font-family: "Oswald", sans-serif; /* Définit la police de la bannière */
+  font-optical-sizing: auto; /* Ajuste la taille de la police en fonction de la taille de l'affichage */
+  font-weight: 500; /* Définit le poids de la police à 500 */
 }
 
+/* Image de la bannière */
 .banner-image {
-  width: 100%;
-  height: 100%;
+  width: 100%; /* Définit la largeur de l'image à 100% du conteneur */
+  height: 100%; /* Définit la hauteur de l'image à 100% du conteneur */
   object-fit: cover; /* Remplit le conteneur sans déformer l'image */
   /*opacity: 85%;*/
-  filter: brightness(50%);
+  filter: brightness(50%); /* Réduit la luminosité de l'image à 50% */
 }
 
+/* Légende de la bannière */
 .banner-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%; /* Assure que le texte est centré horizontalement */
+  position: absolute; /* Positionne la légende de façon absolue par rapport au conteneur parent */
+  top: 50%; /* Place la légende à 50% du haut du conteneur */
+  left: 50%; /* Place la légende à 50% de la gauche du conteneur */
+  transform: translate(-50%, -50%); /* Centre la légende horizontalement et verticalement */
+  text-align: center; /* Centre le texte horizontalement */
+  width: 100%; /* Définit la largeur de la légende à 100% du conteneur */
 }
 
+/* Style du texte de la légende */
 .banner-caption p {
-  margin: 0; /* Évite les marges par défaut */
-  color: #fcf7ed;
-  font-weight: 600;
-  padding: 20px;
-  font-size: 40px;
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
+  margin: 0; /* Supprime les marges par défaut autour du texte */
+  color: #fcf7ed; /* Définit la couleur du texte en crème */
+  font-weight: 600; /* Définit le poids de la police à 600 */
+  padding: 20px; /* Ajoute un espace intérieur de 20 pixels autour du texte */
+  font-size: 40px; /* Définit la taille de la police du texte à 40 pixels */
+  font-family: "Oswald", sans-serif; /* Définit la police du texte */
+  font-optical-sizing: auto; /* Ajuste la taille de la police en fonction de la taille de l'affichage */
+  font-weight: 500; /* Définit le poids de la police à 500 */
 }
 
+/* Logo dans la bannière */
 .banner-logo {
-  display: block; /* Pour éviter les espaces blancs sous l'image */
-  max-width: 80%; /* Ajustez cette valeur selon la taille désirée du logo */
+  display: block; /* Évite les espaces blancs sous l'image */
+  max-width: 80%; /* Définit la largeur maximale du logo à 80% du conteneur */
   height: auto; /* Conserve les proportions de l'image */
-  margin: 0 auto; /* Centre horizontalement l'image */
+  margin: 0 auto; /* Centre horizontalement le logo */
 }
 
 /* Styles pour les liens de navigation */
 .nav-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: space-around;
+  display: flex; /* Utilise Flexbox pour organiser les éléments horizontalement */
+  gap: 2rem; /* Ajoute un espace de 2 rem entre les éléments */
+  align-items: center; /* Aligne les éléments verticalement au centre */
+  justify-content: space-around; /* Répartit les éléments avec un espace égal autour */
 }
 
+/* Style des liens de navigation */
 .nav-links a {
-  text-decoration: none;
-  color: #C8A764;
-  transition: color 0.3s ease;
+  text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+  color: #C8A764; /* Définit la couleur du texte des liens en doré */
+  transition: color 0.3s ease; /* Ajoute une transition douce pour la couleur des liens au survol */
 }
 
+/* Style des liens de navigation au survol */
 .nav-links a:hover {
-  color: #C8A764;
+  color: #C8A764; /* Change la couleur du texte des liens en doré au survol */
 }
 
 /* Styles pour les liens de connexion et d'inscription */
 .auth-links {
-  display: flex;
-  gap: 1rem;
-  position: absolute;
-  right: 2rem;
+  display: flex; /* Utilise Flexbox pour organiser les éléments horizontalement */
+  gap: 1rem; /* Ajoute un espace de 1 rem entre les éléments */
+  position: absolute; /* Positionne les liens de manière absolue par rapport au conteneur parent */
+  right: 2rem; /* Place les liens à 2 rem du côté droit du conteneur */
 }
 
+/* Style des boutons arrondis */
 .btn-rounded {
-  background-color: #fcf7ed;
-  width: 120px;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  height: 30px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #fcf7ed; /* Définit la couleur de fond du bouton en crème */
+  width: 120px; /* Définit la largeur du bouton à 120 pixels */
+  border-radius: 20px; /* Arrondit les coins du bouton avec un rayon de 20 pixels */
+  text-decoration: none; /* Supprime la décoration par défaut du texte */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Ajoute une transition douce pour la couleur de fond et du texte */
+  height: 30px; /* Définit la hauteur du bouton à 30 pixels */
+  font-weight: 700; /* Définit le poids de la police du texte à 700 */
+  display: flex; /* Utilise Flexbox pour organiser le contenu du bouton */
+  justify-content: center; /* Centre le contenu horizontalement */
+  align-items: center; /* Centre le contenu verticalement */
 }
+
+/* Style du message de bienvenue */
 .welcome-message {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #fcf7ed;
-  font-weight: 900 ;
+  display: flex; /* Utilise Flexbox pour organiser les éléments horizontalement */
+  align-items: center; /* Aligne les éléments verticalement au centre */
+  gap: 0.5rem; /* Ajoute un espace de 0.5 rem entre les éléments */
+  color: #fcf7ed; /* Définit la couleur du texte en crème */
+  font-weight: 900; /* Définit le poids de la police à 900 (très gras) */
 }
 
+/* Style du logo du club */
 .club-logo {
-  height: 40px;
+  height: 40px; /* Définit la hauteur du logo du club à 40 pixels */
 }
-
 
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
   .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      text-align: center;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      background: #131313;
-      padding: 1rem;
-      z-index: 100;
-      overflow-x: hidden; /* Empêche le débordement à droite */
+      display: none; /* Cache les liens de navigation par défaut sur petits écrans */
+      flex-direction: column; /* Dispose les liens en colonne */
+      width: 100%; /* Définit la largeur à 100% du conteneur */
+      text-align: center; /* Centre le texte horizontalement */
+      position: absolute; /* Positionne les liens de manière absolue */
+      top: 70px; /* Place les liens à 70 pixels du haut du conteneur */
+      left: 0; /* Place les liens à gauche du conteneur */
+      background: #131313; /* Définit la couleur de fond en gris très foncé */
+      padding: 1rem; /* Ajoute un espace intérieur de 1 rem autour des liens */
+      z-index: 100; /* Assure que les liens se superposent aux autres éléments */
+      overflow-x: hidden; /* Empêche le débordement horizontal */
   }
 
   .nav-links.active {
-      display: flex;
+      display: flex; /* Affiche les liens lorsque le menu est actif */
   }
 
   .burger {
-      display: block;
+      display: block; /* Affiche le menu burger sur petits écrans */
   }
 
   .auth-links {
-      position: static;
-      flex-direction: column;
-      align-items: center; /* Centrer les éléments horizontalement */
-      gap: 0.5rem;
-      width: 100%; /* Prendre toute la largeur disponible */
+      position: static; /* Définit la position des liens de connexion et d'inscription comme statique */
+      flex-direction: column; /* Dispose les éléments en colonne */
+      align-items: center; /* Centre les éléments horizontalement */
+      gap: 0.5rem; /* Ajoute un espace de 0.5 rem entre les éléments */
+      width: 100%; /* Définit la largeur à 100% du conteneur */
   }
 
   .btn-rounded {
-      background: #131313;
+      background: #131313; /* Change la couleur de fond du bouton en gris très foncé */
       width: auto; /* Ajuste la largeur automatiquement */
-      text-align: center; /* Centrer le texte */
+      text-align: center; /* Centre le texte horizontalement */
   }
 }
-/* Animation du menu burger */
+
+/* Animation du menu burger pour le menu ouvert */
 .burger.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-5px, 6px); /* Fait pivoter la première barre en diagonale */
 }
 
 .burger.toggle .line2 {
-  opacity: 0;
+  opacity: 0; /* Rend la deuxième barre invisible */
 }
 
 .burger.toggle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(45deg) translate(-5px, -6px); /* Fait pivoter la troisième barre en diagonale */
 }

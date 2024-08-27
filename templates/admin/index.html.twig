@@ -1,36 +1,61 @@
 {% extends 'base.html.twig' %}
+{# Ce fichier étend un fichier de base nommé base.html.twig, qui contient probablement la structure HTML de base (head, header, footer, etc.). #}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('asset/css/admin-index.css') }}">
+    {# Le bloc "stylesheets" permet d'inclure des fichiers CSS spécifiques à cette page. Ici, le fichier admin-index.css est ajouté. #}
 {% endblock %}
 
 {% block body %}
     <div class="admin-section">
+        {# Le contenu principal de la page commence ici, dans une div avec la classe "admin-section". #}
+
         <h1>Menu d'administration du site Footix</h1>
+        {# Un titre principal pour la page d'administration. #}
+
         <span class="welcome-message">
             Bienvenue, {{ app.user.username }}
+            {# Affiche un message de bienvenue avec le nom de l'utilisateur connecté (username). #}
+
             {% if app.user.userProfile and app.user.userProfile.club and app.user.userProfile.club.logoClub %}
                 <img src="{{ asset(app.user.userProfile.club.logoClub) }}" alt="{{ app.user.userProfile.club.name }}" class="club-logo">
+                {# Si l'utilisateur a un profil, un club associé et que ce club a un logo, afficher ce logo. #}
             {% endif %}
         </span>
         <p>
             Tu trouveras ici toutes les fonctionnalités liées à la gestion du site.
             Réfères-toi au support d'utilisation que tu as reçu lors de ta désignation en tant qu'administrateur.
+            {# Un paragraphe d'introduction expliquant le but de cette section de la page. #}
         </p>
+
         {% if is_granted('ROLE_ADMIN') %}
+        {# Vérifie si l'utilisateur a le rôle d'administrateur (ROLE_ADMIN). Si oui, le menu d'administration est affiché. #}
+
         <div class="admin-menu-container">
             <ul class="admin-menu">
+                {# Un conteneur pour le menu d'administration, avec une liste de liens vers différentes pages d'administration. #}
                 <a href="{{ path("app_admin_category_index") }}">Gestion des categories</a>
+                {# Lien vers la gestion des catégories. #}
                 <a href="{{ path("app_admin_topic_index") }}">Gestion des sujets</a>
+                {# Lien vers la gestion des sujets. #}
                 <a href="{{ path("app_admin_post_index") }}">Gestion des posts</a>
+                {# Lien vers la gestion des posts. #}
                 <a href="{{ path("app_admin_contact_index") }}">Gestion des prises de contact</a>
+                {# Lien vers la gestion des contacts. #}
                 <a href="{{ path("app_admin_report_index") }}">Gestion des signalements</a>
+                {# Lien vers la gestion des signalements. #}
                 <a href="{{ path("app_admin_club_index") }}">Gestion des clubs</a>
+                {# Lien vers la gestion des clubs. #}
                 <a href="{{ path("app_admin_championnat_index") }}">Gestion des championnats</a>
+                {# Lien vers la gestion des championnats. #}
                 <a href="{{ path("app_admin_card_index") }}">Gestion des cartes</a>
+                {# Lien vers la gestion des cartes. #}
                 <a href="{{ path("app_admin_banned_index") }}">Gestion des bannissements</a>
+                {# Lien vers la gestion des bannissements. #}
             </ul>
         </div>
         {% endif %}
+        {# Fin de la vérification du rôle d'administrateur. #}
     </div>
 {% endblock %}
-
+{# Fin du bloc body, qui contient le contenu principal de la page d'administration. #}

@@ -1,15 +1,20 @@
+/* Style général pour le corps de la page */
 body {
-    font-family: "Arial", sans-serif;
-    color: #2e3136;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
+    font-family: "Arial", sans-serif; /* Définit la police de caractères utilisée pour le texte */
+    color: #2e3136; /* Couleur du texte */
+    background-color: #f5f5f5; /* Couleur de fond de la page */
+    margin: 0; /* Supprime les marges par défaut autour du corps */
+    padding: 0; /* Supprime le padding par défaut autour du corps */
 }
+
+/* Style pour tous les niveaux de titres */
 h1, h2, h3, h4, h5, h6 {
-    color: #2e3136;
+    color: #2e3136; /* Couleur du texte pour tous les titres */
 }
+
+/* Style pour les liens */
 a {
-    color: #2e3136;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: #2e3136; /* Couleur du texte des liens */
+    text-decoration: none; /* Supprime le soulignement par défaut des liens */
+    transition: color 0.3s ease; /* Transition douce pour la couleur du texte au survol */
 }

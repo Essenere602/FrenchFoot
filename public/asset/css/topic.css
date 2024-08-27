@@ -1,162 +1,164 @@
-/* Conteneur du forum */
+/* Conteneur principal du forum */
 .container {
-    position: relative; /* Ajoute cette ligne */
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Permet de positionner des éléments enfants de manière absolue par rapport à ce conteneur */
+    max-width: 1200px; /* Limite la largeur maximale du conteneur à 1200 pixels */
+    margin: 20px auto; /* Centre horizontalement le conteneur avec un espace de 20 pixels en haut et en bas */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce autour du conteneur */
 }
 
 /* Titre de la page */
 .page-title {
-    text-align: center;
-    font-size: 28px;
-    color: #131313;
-    margin-bottom: 30px;
+    text-align: center; /* Centre le titre horizontalement */
+    font-size: 28px; /* Définit la taille de la police à 28 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    margin-bottom: 30px; /* Ajoute un espace de 30 pixels en dessous du titre */
 }
 
-/* Bouton pour afficher/masquer le formulaire */
+/* Bouton pour afficher ou masquer le formulaire */
 #toggle-form {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #131313;
-    background-color: #C8A764;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    display: block; /* Le bouton prend toute la largeur disponible */
+    margin: 20px auto; /* Centre horizontalement le bouton avec un espace de 20 pixels en haut et en bas */
+    padding: 10px 20px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 20 pixels à gauche et à droite */
+    font-size: 16px; /* Définit la taille de la police à 16 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    background-color: #C8A764; /* Définit la couleur de fond du bouton en doré */
+    border: none; /* Supprime la bordure par défaut du bouton */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    cursor: pointer; /* Affiche un curseur de type "main" au survol */
 }
 
 #toggle-form:hover {
-    background-color: #131313;
-    color: #C8A764;
-
+    background-color: #131313; /* Change la couleur de fond en gris très foncé au survol */
+    color: #C8A764; /* Change la couleur du texte en doré au survol */
 }
 
 /* Formulaire de création de sujet */
 .forum-topic.form-topic-create {
-    margin-bottom: 40px;
+    margin-bottom: 40px; /* Ajoute un espace de 40 pixels en dessous du formulaire */
 }
 
+/* Titre du formulaire */
 .form-title {
-    font-size: 24px;
-    color: #131313;
-    margin-bottom: 15px;
+    font-size: 24px; /* Définit la taille de la police à 24 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    margin-bottom: 15px; /* Ajoute un espace de 15 pixels en dessous du titre */
 }
 
 /* Bouton de soumission du formulaire */
 .forum-topic form button[type="submit"] {
-    background-color: #C8A764;
-    color: #131313;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: #C8A764; /* Définit la couleur de fond du bouton en doré */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    border: none; /* Supprime la bordure par défaut du bouton */
+    padding: 10px 20px; /* Ajoute un espace intérieur de 10 pixels en haut et en bas, et 20 pixels à gauche et à droite */
+    font-size: 16px; /* Définit la taille de la police à 16 pixels */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    cursor: pointer; /* Affiche un curseur de type "main" au survol */
 }
 
 .forum-topic form button[type="submit"]:hover {
-    background-color: #131313;
-    color: #C8A764;
-
-}
-.back-button:hover {
-    text-decoration: underline;
+    background-color: #131313; /* Change la couleur de fond en gris très foncé au survol */
+    color: #C8A764; /* Change la couleur du texte en doré au survol */
 }
 
 /* Liste des sujets */
 .topic-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* Supprime les puces ou numéros par défaut des éléments de liste */
+    padding: 0; /* Supprime le padding par défaut de la liste */
+    margin: 0; /* Supprime les marges par défaut de la liste */
 }
 
 .topic-list li {
-    padding: 15px;
-    border-bottom: 1px solid #C8A764;
-    margin-bottom: 10px; /* Espacement entre les sujets */
+    padding: 15px; /* Ajoute un espace intérieur de 15 pixels dans chaque élément de la liste */
+    border-bottom: 1px solid #C8A764; /* Ajoute une bordure inférieure dorée à chaque élément de la liste */
+    margin-bottom: 10px; /* Ajoute un espace de 10 pixels en dessous de chaque élément */
 }
 
 .topic-list li:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Supprime la bordure inférieure du dernier élément de la liste */
 }
 
 /* Détails du sujet */
 .topic-list li a {
-    font-size: 20px;
-    font-weight: bold;
-    color: #131313;
-    display: block;
-    margin-bottom: 5px;
+    font-size: 20px; /* Définit la taille de la police à 20 pixels */
+    font-weight: bold; /* Met le texte en gras */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    display: block; /* Le lien prend toute la largeur disponible */
+    margin-bottom: 5px; /* Ajoute un espace de 5 pixels en dessous du lien */
 }
 
 .topic-list li a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Ajoute un soulignement au texte au survol */
 }
 
 .topic-list li small {
-    display: block;
-    font-size: 14px;
-    color: #666;
+    display: block; /* Affiche le texte sur une nouvelle ligne */
+    font-size: 14px; /* Définit la taille de la police à 14 pixels */
+    color: #666; /* Définit la couleur du texte en gris clair */
 }
 
-/* Date de création et nombre de posts */
+/* Style pour la première information (date de création) */
 .topic-list li small:first-of-type {
-    font-weight: bold;
+    font-weight: bold; /* Met le texte en gras */
 }
 
+/* Style pour la dernière information (nombre de posts) */
 .topic-list li small:last-of-type {
-    color: #C8A764;
+    color: #C8A764; /* Définit la couleur du texte en doré */
 }
+
+/* Boutons génériques */
 .btn {
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
+    text-decoration: none; /* Supprime la décoration de texte par défaut des liens */
+    padding: 5px 10px; /* Ajoute un espace intérieur de 5 pixels en haut et en bas, et 10 pixels à gauche et à droite */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    font-size: 14px; /* Définit la taille de la police à 14 pixels */
+    font-weight: bold; /* Met le texte en gras */
 }
 
+/* Bouton d'avertissement (couleur orange) */
 .btn-warning {
-    background-color: #f0ad4e;
+    background-color: #f0ad4e; /* Définit la couleur de fond en orange */
 }
 
+/* Bouton de petite taille */
 .btn-sm {
-    font-size: 12px;
-    padding: 4px 8px;
+    font-size: 12px; /* Définit la taille de la police à 12 pixels */
+    padding: 4px 8px; /* Ajoute un espace intérieur de 4 pixels en haut et en bas, et 8 pixels à gauche et à droite */
 }
 
-/* Ajouter un style pour la classe .topic-header */
+/* En-tête du sujet dans la liste */
 .topic-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
+    display: flex; /* Affiche les éléments de l'en-tête en flex */
+    justify-content: space-between; /* Espacement égal entre les éléments de l'en-tête */
+    align-items: center; /* Aligne verticalement les éléments au centre */
+    margin-bottom: 5px; /* Ajoute un espace de 5 pixels en dessous de l'en-tête */
 }
 
-/* Styles pour le titre du topic */
+/* Style pour le titre du sujet dans l'en-tête */
 .topic-header a {
-    font-size: 20px;  /* Assurez-vous que cette taille correspond à celle souhaitée */
-    font-weight: bold;
-    color: #131313;
-    text-decoration: none;
-    margin-right: 10px;
+    font-size: 20px;  /* Définit la taille de la police à 20 pixels */
+    font-weight: bold; /* Met le texte en gras */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    text-decoration: none; /* Supprime la décoration de texte par défaut des liens */
+    margin-right: 10px; /* Ajoute un espace de 10 pixels à droite du titre */
 }
 
+/* Bouton d'avertissement spécifique à l'en-tête du sujet */
 .topic-header .btn-warning {
-    background-color: #f0ad4e; /* Couleur de fond pour correspondre à celle utilisée dans les posts */
-    color: #fff; /* Couleur du texte */
-    border: none;
-    border-radius: 5px;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: none;
+    background-color: #f0ad4e; /* Définit la couleur de fond en orange */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    border: none; /* Supprime la bordure par défaut du bouton */
+    border-radius: 5px; /* Arrondit les coins du bouton avec un rayon de 5 pixels */
+    padding: 4px 8px; /* Ajoute un espace intérieur de 4 pixels en haut et en bas, et 8 pixels à gauche et à droite */
+    font-size: 12px; /* Définit la taille de la police à 12 pixels */
+    font-weight: bold; /* Met le texte en gras */
+    text-decoration: none; /* Supprime la décoration de texte par défaut des liens */
 }
 
 .topic-header .btn-warning:hover {
-    background-color: #ec971f; /* Effet hover similaire à celui dans les posts */
+    background-color: #ec971f; /* Change la couleur de fond en orange plus foncé au survol */
 }

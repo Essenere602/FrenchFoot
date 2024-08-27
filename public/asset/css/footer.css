@@ -1,74 +1,80 @@
 /* Style général du footer */
 .footer {
-    background-color: #131313; /* Couleur de fond */
-    height: 30px; /* Hauteur du footer */
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px 0;
-    margin-top: 50px;
-    bottom: 0;
+    background-color: #131313; /* Couleur de fond sombre pour le footer */
+    height: 30px; /* Hauteur fixe du footer */
+    display: flex; /* Utilisation de Flexbox pour la disposition */
+    align-items: center; /* Centre verticalement les éléments */
+    justify-content: space-around; /* Espace uniforme entre les éléments */
+    padding: 10px 0; /* Espacement vertical de 10px */
+    margin-top: 50px; /* Espacement au-dessus du footer pour le séparer du contenu précédent */
+    bottom: 0; /* Positionnement au bas de la page */
 }
 
+/* Conteneur du footer */
 .footer-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
+    width: 100%; /* Prend toute la largeur du conteneur parent */
+    display: flex; /* Utilisation de Flexbox pour la disposition */
+    justify-content: center; /* Centre les éléments horizontalement */
+    justify-content: space-around; /* Espace uniforme entre les éléments */
 }
 
+/* Navigation du footer */
 .footer-nav {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    width: 100%; /* Prend toute la largeur disponible */
+    display: flex; /* Utilisation de Flexbox pour la disposition */
+    align-items: center; /* Centre verticalement les éléments */
+    justify-content: space-around; /* Espace uniforme entre les éléments */
 }
 
+/* Liens dans la navigation du footer */
 .footer-nav a {
     color: #C8A764; /* Couleur des liens */
-    text-decoration: none;
-    margin: 0 15px;
-    display: flex;
-    align-items: center;
-    font-size: 14px; /* Taille de la police */
+    text-decoration: none; /* Supprime le soulignement des liens */
+    margin: 0 15px; /* Espacement horizontal autour des liens */
+    display: flex; /* Utilisation de Flexbox pour aligner les éléments enfants */
+    align-items: center; /* Centre verticalement les éléments enfants */
+    font-size: 14px; /* Taille de la police des liens */
 }
 
+/* Icônes dans les liens de la navigation */
 .footer-nav svg {
-    fill: #C8A764; /* Couleur de l'icône */
-    transition: fill 0.3s; /* Transition pour l'effet de survol */
-    margin-left: 15px; /* Espace entre les liens et l'icône */
+    fill: #C8A764; /* Couleur des icônes */
+    transition: fill 0.3s; /* Transition douce pour la couleur des icônes au survol */
+    margin-left: 15px; /* Espace à gauche de l'icône */
 }
 
+/* Changement de couleur des icônes au survol */
 .footer-nav a:hover svg {
-    fill: #F5E5D8; /* Couleur de l'icône au survol */
+    fill: #F5E5D8; /* Couleur des icônes au survol */
 }
+
 /* Responsivité pour les petits écrans */
 @media screen and (max-width: 768px) {
     .footer {
-        padding: 20px 0; /* Augmente le padding vertical pour donner plus d'espace */
-        height: auto; /* Permet au footer de s'ajuster automatiquement */
+        padding: 20px 0; /* Augmente le padding vertical pour donner plus d'espace sur les petits écrans */
+        height: auto; /* Permet au footer de s'ajuster automatiquement à son contenu */
     }
 
     .footer-container {
-        padding: 0 10px; /* Réduit le padding horizontal pour éviter le débordement */
+        padding: 0 10px; /* Réduit le padding horizontal pour éviter le débordement sur les petits écrans */
     }
 
     .footer-nav {
-        display: flex;
-        flex-direction: column; /* Aligne les éléments en colonne */
+        display: flex; /* Utilisation de Flexbox pour la disposition */
+        flex-direction: column; /* Aligne les éléments en colonne sur les petits écrans */
         align-items: center; /* Centre les éléments horizontalement */
         padding: 0; /* Réduit le padding pour éviter le débordement */
     }
 
     .footer-nav a {
         color: #C8A764; /* Couleur des liens */
-        text-decoration: none;
+        text-decoration: none; /* Supprime le soulignement des liens */
         margin: 5px 0; /* Espacement vertical entre les liens */
-        font-size: 16px; /* Augmente la taille de la police pour meilleure lisibilité */
+        font-size: 16px; /* Augmente la taille de la police pour une meilleure lisibilité sur les petits écrans */
     }
 
     .footer-nav svg {
-        fill: #C8A764; /* Couleur de l'icône */
+        fill: #C8A764; /* Couleur des icônes */
         margin-left: 0; /* Supprime l'espace à gauche de l'icône pour éviter les débordements */
         margin-top: 10px; /* Ajoute un espace au-dessus de l'icône pour séparer les liens */
     }

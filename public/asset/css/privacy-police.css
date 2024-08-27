@@ -1,58 +1,61 @@
+/* Conteneur pour la politique de confidentialité */
+.privacy-policy-container {
+    max-width: 800px; /* Limite la largeur maximale du conteneur à 800 pixels */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    padding: 20px; /* Ajoute un espace intérieur de 20 pixels */
+    background-color: #fff; /* Définit la couleur de fond en blanc */
+    border-radius: 8px; /* Arrondit les coins du conteneur avec un rayon de 8 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce autour du conteneur */
+    margin-top: 50px; /* Ajoute un espace de 50 pixels au-dessus du conteneur */
+}
 
-        .privacy-policy-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
+/* Styles pour les titres dans le conteneur de la politique de confidentialité */
+.privacy-policy-container h1,
+.privacy-policy-container h2 {
+    font-size: 24px; /* Définit la taille de la police pour h1 et h2 à 24 pixels */
+    color: #C8A764; /* Définit la couleur du texte en doré */
+    text-align: center; /* Centre le texte horizontalement */
+    margin-bottom: 30px; /* Ajoute un espace de 30 pixels en dessous du titre */
+}
 
-        .privacy-policy-container h1,
-        .privacy-policy-container h2 {
-            font-size: 24px;
-            color: #C8A764;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+/* Styles spécifiques pour h2 */
+.privacy-policy-container h2 {
+    font-size: 20px; /* Définit la taille de la police de h2 à 20 pixels */
+    margin-top: 20px; /* Ajoute un espace de 20 pixels au-dessus de h2 */
+}
 
-        .privacy-policy-container h2 {
-            font-size: 20px;
-            margin-top: 20px;
-        }
+/* Styles pour les paragraphes dans le conteneur de la politique de confidentialité */
+.privacy-policy-container p {
+    font-size: 16px; /* Définit la taille de la police des paragraphes à 16 pixels */
+    color: #131313; /* Définit la couleur du texte en gris très foncé */
+    line-height: 1.5; /* Définit la hauteur de ligne à 1.5 pour améliorer la lisibilité */
+    margin-bottom: 20px; /* Ajoute un espace de 20 pixels en dessous des paragraphes */
+}
 
-        .privacy-policy-container p {
-            font-size: 16px;
-            color: #131313;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
+/* Styles pour les liens dans le conteneur de la politique de confidentialité */
+.privacy-policy-container a {
+    color: #C8A764; /* Définit la couleur des liens en doré */
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+    transition: color 0.3s ease; /* Ajoute une transition douce pour le changement de couleur des liens */
+}
 
-        .privacy-policy-container a {
-            color: #C8A764;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.privacy-policy-container a:hover {
+    color: #131313; /* Change la couleur du texte des liens au survol */
+    text-decoration: underline; /* Ajoute un soulignement aux liens au survol */
+}
 
-        .privacy-policy-container a:hover {
-            color: #131313;
-            text-decoration: underline;
-        }
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+    .privacy-policy-container {
+        padding: 10px; /* Réduit l'espace intérieur à 10 pixels pour les petits écrans */
+    }
 
-        /* Responsivité pour les petits écrans */
-        @media screen and (max-width: 768px) {
-            .privacy-policy-container {
-                padding: 10px;
-            }
+    .privacy-policy-container h1,
+    .privacy-policy-container h2 {
+        font-size: 20px; /* Réduit la taille de la police des titres à 20 pixels */
+    }
 
-            .privacy-policy-container h1,
-            .privacy-policy-container h2 {
-                font-size: 20px;
-            }
-
-            .privacy-policy-container p {
-                font-size: 14px;
-            }
-        }
-
+    .privacy-policy-container p {
+        font-size: 14px; /* Réduit la taille de la police des paragraphes à 14 pixels */
+    }
+}

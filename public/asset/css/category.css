@@ -1,50 +1,55 @@
+/* Style pour le titre de la page */
 .page-title {
-    text-align: center;
-    font-size: 36px; /* Ajustez selon vos préférences */
-    margin: 30px 0;
-    color: #131313; /* Couleur du texte du titre */
-  }
-  
-  /* Style pour la catégorie du forum */
-  .forum-category {
-    display: flex;
-    flex-direction: column; /* Pour que les boutons soient empilés verticalement */
-    align-items: center; /* Centre les éléments horizontalement */
-    margin-top: 20px; /* Espacement au-dessus des boutons */
-  }
-  
-  .forum-category ul {
-    list-style: none; /* Supprime les puces des listes */
-    padding: 0;
-    margin: 0;
-  }
-  
-  .forum-category li {
-    margin: 15px 0; /* Espacement entre les boutons */
-  }
-  
-  .forum-category a {
-    display: block;
-    width: 250px; /* Fixe une largeur uniforme pour tous les boutons, ajustez selon vos préférences */
-    padding: 15px;
-    font-size: 18px; /* Ajustez la taille de la police selon vos préférences */
-    text-align: center;
-    text-decoration: none;
-    background-color: #C8A764; /* Couleur de fond initiale */
-    color: #131313; /* Couleur du texte initiale */
-    border-radius: 5px; /* Coins arrondis */
-    transition: background-color 0.3s, color 0.3s; /* Effet de transition pour les changements */
-  }
-  
-  .forum-category a:hover, 
-  .forum-category a:focus {
-    background-color: #131313; /* Couleur de fond au survol */
-    color: #C8A764; /* Couleur du texte au survol */
-    text-decoration: none; /* Retire la décoration du texte au survol */
-  }
-  
-  .forum-category a:active {
-    background-color: #a17740; /* Couleur de fond lors du clic (optionnel) */
-    color: #131313; /* Couleur du texte lors du clic (optionnel) */
-  }
-  
+  text-align: center; /* Centre le texte horizontalement */
+  font-size: 36px; /* Définit la taille de la police du titre (ajustez selon vos préférences) */
+  margin: 30px 0; /* Ajoute une marge de 30px en haut et en bas du titre */
+  color: #131313; /* Définit la couleur du texte du titre */
+}
+
+/* Style pour les catégories du forum */
+.forum-category {
+  display: flex; /* Utilise Flexbox pour la mise en page */
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center; /* Centre les éléments horizontalement */
+  margin-top: 20px; /* Ajoute un espacement de 20px au-dessus des boutons */
+}
+
+/* Style pour la liste des catégories du forum */
+.forum-category ul {
+  list-style: none; /* Supprime les puces des listes */
+  padding: 0; /* Supprime le padding par défaut */
+  margin: 0; /* Supprime la marge par défaut */
+}
+
+/* Style pour chaque élément de la liste de catégories */
+.forum-category li {
+  margin: 15px 0; /* Ajoute un espacement de 15px en haut et en bas de chaque bouton */
+}
+
+/* Style pour les liens dans les catégories du forum */
+.forum-category a {
+  display: block; /* Affiche les liens comme des blocs pour occuper toute la largeur définie */
+  width: 250px; /* Définit une largeur uniforme pour tous les boutons (ajustez selon vos préférences) */
+  padding: 15px; /* Ajoute un padding de 15px à l'intérieur des boutons */
+  font-size: 18px; /* Définit la taille de la police du texte dans les boutons */
+  text-align: center; /* Centre le texte horizontalement */
+  text-decoration: none; /* Supprime le soulignement par défaut des liens */
+  background-color: #C8A764; /* Définit la couleur de fond initiale des boutons */
+  color: #131313; /* Définit la couleur du texte initiale des boutons */
+  border-radius: 5px; /* Arrondit les coins des boutons */
+  transition: background-color 0.3s, color 0.3s; /* Ajoute une transition douce pour les changements de couleur de fond et de texte */
+}
+
+/* Style pour les liens lors du survol ou de la mise au point */
+.forum-category a:hover, 
+.forum-category a:focus {
+  background-color: #131313; /* Change la couleur de fond lors du survol ou de la mise au point */
+  color: #C8A764; /* Change la couleur du texte lors du survol ou de la mise au point */
+  text-decoration: none; /* Retire la décoration du texte au survol ou à la mise au point */
+}
+
+/* Style pour les liens lors du clic (optionnel) */
+.forum-category a:active {
+  background-color: #a17740; /* Change la couleur de fond lors du clic */
+  color: #131313; /* Change la couleur du texte lors du clic */
+}

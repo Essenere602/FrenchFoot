@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Charset -->
         <meta charset="UTF-8">
+
+        <!-- Viewport pour responsive design -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Titre de la page -->
         <title>{% block title %}Footix{% endblock %}</title>
+
+        <!-- Description de la page -->
+        <meta name="description" content="Un forum dédié aux passionnés de football avec les dernières résultats en live des matchs et scores des plus grands championnats européens de football.">
+
+        <!-- Balises d'indexation SEO -->
+        <meta name="robots" content="index, follow">
+
         <link rel="stylesheet" href="{{ asset('asset/style.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/navigation.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
         {% block stylesheets %}
+
+                
+                
         {% endblock %}
 
         {% block javascripts %}
-<script>
 
-// Ajoute un écouteur d'événement pour le moment où le document HTML est complètement chargé et analysé
-document.addEventListener('DOMContentLoaded', () => {
-    // Sélectionne l'élément avec la classe 'burger' et le stocke dans la variable 'burger'
-    const burger = document.querySelector('.burger');
-    // Sélectionne l'élément avec la classe 'nav-links' et le stocke dans la variable 'navLinks'
-    const navLinks = document.querySelector('.nav-links');
-    // Ajoute un écouteur d'événement pour les clics sur l'élément 'burger'
-    burger.addEventListener('click', () => {
-        // Bascule la classe 'active' sur l'élément 'navLinks' (ajoute ou enlève la classe)
-        navLinks.classList.toggle('active');
-        // Bascule la classe 'toggle' sur l'élément 'burger' (ajoute ou enlève la classe)
-        burger.classList.toggle('toggle');
+        <script>
+
+        // Ajoute un écouteur d'événement pour le moment où le document HTML est complètement chargé et analysé
+        document.addEventListener('DOMContentLoaded', () => {
+        // Sélectionne l'élément avec la classe 'burger' et le stocke dans la variable 'burger'
+        const burger = document.querySelector('.burger');
+        // Sélectionne l'élément avec la classe 'nav-links' et le stocke dans la variable 'navLinks'
+        const navLinks = document.querySelector('.nav-links');
+        // Ajoute un écouteur d'événement pour les clics sur l'élément 'burger'
+        burger.addEventListener('click', () => {
+                // Bascule la classe 'active' sur l'élément 'navLinks' (ajoute ou enlève la classe)
+                navLinks.classList.toggle('active');
+                // Bascule la classe 'toggle' sur l'élément 'burger' (ajoute ou enlève la classe)
+                burger.classList.toggle('toggle');
+                });
         });
-});
 
-</script>
+        </script>
+
         {% endblock %}
+
     </head>
+
     <body>
+
         <div class="wrapper">
+
                 <header>
-    {% block nav %}
-            {% set unreadMessagesCount = unread_messages_count() %}
-            {% include "layout/menu_top.twig"   %}
-    {% endblock %}
-            </header>
-<main>
-        {% block body %}
-        {% endblock %}
-</main>
-        <footer>
-    {% block footer %}
-            {% include "layout/menu_bottom.twig"   %}
-    {% endblock %}
-        </footer>
-</div>
+                        {% block nav %}
+                                {% set unreadMessagesCount = unread_messages_count() %}
+                                {% include "layout/menu_top.twig"   %}
+                        {% endblock %}
+                </header>
+
+                <main>
+                        {% block body %}
+                        {% endblock %}
+                </main>
+
+                <footer>
+                        {% block footer %}
+                                {% include "layout/menu_bottom.twig"   %}
+                        {% endblock %}
+                </footer>
+
+        </div>
+
     </body>
+    
 </html>
