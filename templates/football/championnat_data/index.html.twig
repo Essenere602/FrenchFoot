@@ -109,15 +109,6 @@
     </div>
 {% endblock %}
 {% block javascript %}
-<script>
-    setInterval(function() {
-        fetch(window.location.href)
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                document.querySelector('.matches-section').innerHTML = doc.querySelector('.matches-section').innerHTML;
-            });
-    }, 30000); // Mise à jour toutes les 30 secondes
-</script>
+{{ parent() }}
+    <script src="{{ asset('asset/js/refreshScore.js') }}"></script>
 {% endblock %}

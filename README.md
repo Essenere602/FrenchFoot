@@ -14,6 +14,7 @@ Beugs (back/front) répertoriés :
     - Optimisation format img
     - Tri et suppression de tout ce que je n'utilise plus
     - Police de caractere a mieux gérer
+    - Token csrf de partout
     
 Reste à faire :
 

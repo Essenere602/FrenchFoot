@@ -1,3 +1,4 @@
+{# templates/profile/manage_blocks.html.twig #}
 {% extends 'base.html.twig' %}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
@@ -28,40 +29,10 @@
         </ul>
     </div>
 
-    <script>
-document.getElementById('block_username').addEventListener('input', function() {
-    let query = this.value;
-    let results = document.getElementById('autocomplete-results');
+   
+{% endblock %}
 
-    // Réinitialiser les résultats si le champ est vide
-    if (query === '') {
-        results.innerHTML = '';
-        return;
-    }
-
-    fetch('{{ path('user_autocomplete') }}?q=' + query)
-        .then(response => response.json())
-        .then(data => {
-            results.innerHTML = '';
-            data.forEach(user => {
-                let div = document.createElement('div');
-                div.textContent = user.username;
-                div.dataset.userId = user.id;
-                div.classList.add('autocomplete-item'); // Ajout de la classe pour le style du curseur
-                div.addEventListener('click', function() {
-                    document.getElementById('block_username').value = this.textContent;
-                    results.innerHTML = '';
-                });
-                results.appendChild(div);
-            });
-        });
-});
-
-// Réinitialiser les résultats si le champ perd le focus et est vide
-document.getElementById('block_username').addEventListener('blur', function() {
-    if (this.value === '') {
-        document.getElementById('autocomplete-results').innerHTML = '';
-    }
-});
-    </script>
+ {% block javascripts %}
+        {{ parent() }}
+            <script src="{{ asset('asset/js/autocompleteBlock.js') }}"></script>
 {% endblock %}

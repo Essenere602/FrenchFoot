@@ -1,49 +1,59 @@
-/* Styles pour le conteneur de l'autocomplétion */
 .autocomplete {
-    position: relative; /* Définit la position relative pour permettre le positionnement absolu des éléments enfants */
-    display: inline-block; /* Affiche le conteneur en tant que bloc en ligne */
-    margin-top: 20px; /* Ajoute une marge supérieure de 20px au conteneur */
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
 }
-
-/* Styles pour le champ de saisie dans l'autocomplétion */
 .autocomplete input {
-    width: 300px; /* Définit la largeur du champ de saisie à 300px */
-    padding: 10px; /* Ajoute un espacement interne de 10px dans le champ de saisie */
-    font-size: 16px; /* Définit la taille de la police à 16px */
-    border: 1px solid #ccc; /* Ajoute une bordure grise claire autour du champ de saisie */
+    width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
 }
-
-/* Styles pour les éléments de la liste d'autocomplétion */
 .autocomplete .autocomplete-items {
-    position: absolute; /* Positionne les éléments de manière absolue par rapport au conteneur parent */
-    border: 1px solid #d4d4d4; /* Ajoute une bordure grise autour des éléments d'autocomplétion */
-    max-height: 200px; /* Définit une hauteur maximale de 200px pour la liste déroulante */
-    overflow-y: auto; /* Ajoute un défilement vertical si le contenu dépasse la hauteur maximale */
-    z-index: 99; /* Positionne les éléments au-dessus des autres éléments de la page */
-    background-color: #fff; /* Définit la couleur de fond des éléments d'autocomplétion en blanc */
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 99;
+    background-color: #fff;
+    width: 100%
 }
-
-/* Styles pour chaque élément dans la liste d'autocomplétion */
 .autocomplete .autocomplete-item {
-    display: flex; /* Utilise un conteneur flexible pour aligner les enfants en ligne */
-    align-items: center; /* Aligne les éléments enfants verticalement au centre */
-    padding: 10px; /* Ajoute un espacement interne de 10px dans chaque élément */
-    cursor: pointer; /* Change le curseur en pointeur lors du survol des éléments */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
 }
-
-/* Styles pour les logos des clubs dans les éléments d'autocomplétion */
 .club-logo {
-    width: 40px; /* Définit la largeur des logos à 40px */
-    height: auto; /* Ajuste automatiquement la hauteur en fonction de la largeur */
-    margin-right: 10px; /* Ajoute une marge droite de 10px entre le logo et le texte */
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
 }
-
-/* Styles pour le survol des éléments d'autocomplétion */
 .autocomplete .autocomplete-item:hover {
-    background-color: #e9e9e9; /* Change la couleur de fond lors du survol pour indiquer l'interaction */
+    background-color: #e9e9e9;
 }
-
-/* Styles pour le texte dans les éléments d'autocomplétion */
 .autocomplete-item span {
-    font-size: 16px; /* Définit la taille de la police du texte dans les éléments à 16px */
+    font-size: 16px;
+}
+@media (max-width: 768px) {
+    .autocomplete {
+        width: 100%;
+    }
+    .autocomplete input {
+        width: 100%; /* Prend toute la largeur disponible */
+        font-size: 14px; /* Réduit la taille de la police pour une meilleure lisibilité */
+    }
+    .autocomplete .autocomplete-items {
+        max-height: 150px; /* Ajuste la hauteur pour mieux s'adapter aux petits écrans */
+    }
+    .autocomplete .autocomplete-item {
+        padding: 8px; /* Réduit légèrement l'espace autour des éléments */
+    }
+    .club-logo {
+        width: 30px; /* Réduit la taille du logo pour s'adapter à l'espace plus restreint */
+        margin-right: 8px;
+    }
+    .autocomplete-item span {
+        font-size: 14px; /* Réduit la taille du texte pour une meilleure adaptation */
+    }
 }
